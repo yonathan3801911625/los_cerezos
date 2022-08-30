@@ -120,6 +120,9 @@ class CultivoController extends Controller
             $fase = Fase::findOrFail($request->fase);
             $cultivo->fases()->attach($fase);
         }
+        else{
+            session()->flash("flash.banner","No se puede agregar fase por que esta ya se encuentra creada");
+        }
         // die;
 
         return Redirect::route("cultivos.edit", $cultivo);
