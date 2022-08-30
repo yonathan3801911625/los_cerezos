@@ -18,21 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get("/", function () {
+    return view("welcome");
 });
 
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
+    "auth:sanctum",
+    config("jetstream.auth_session"),
+    "verified"
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get("/dashboard", function () {
+        return view("dashboard");
+    })->name("dashboard");
     Route::resource("/cultivos", CultivoController::class);
     Route::resource("/fases", FaseController::class);
     Route::resource("/costos", CostoAdicionalController::class);
     Route::resource("/actividades", ActividadController::class);
-    Route::resource('/insumos', InsumoController::class);
+    Route::resource("/insumos", InsumoController::class);
+    Route::post("/destroy_cultivo_fase", [CultivoController::class, 'destroyCultivoFase'])->name("destroyCultivoFase");
 });

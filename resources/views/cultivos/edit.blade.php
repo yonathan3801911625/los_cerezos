@@ -25,6 +25,7 @@
 
             {{-- traigo la relación con fases y la listo --}}
             @foreach ($cultivo->fases as $fase)
+                <!-- {{$fase->pivot}} -->
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 my-2">
                     <p>{{ $fase->nombre }}</p>
                     <ul class="list-disc list-inside">
@@ -32,9 +33,10 @@
                             <li class="my-2">{{ $actividad->nombre }}</li>
                         @endforeach
                     </ul>
-                    <form action="{{ route('fases.destroy', $fase) }}" method="POST">
+                    <form action="{{ route('destroyCultivoFase') }}" method="POST">
                         @csrf
-                        @method('DELETE')
+                        @method('POST')
+                        <input type="hidden" name="cultivo_fase" value="{{$fase->pivot}}">
                         <button
                             class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out "
                             type="submit">
