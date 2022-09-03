@@ -31,6 +31,10 @@
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                Codigo
+                                            </th>
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Nombre
                                             </th>
                                             <th scope="col"
@@ -65,6 +69,10 @@
                                                 <td
                                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                     {{ $insumo->id }}
+                                                </td>
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                    {{ $insumo->codigo }}
                                                 </td>
 
                                                 <td

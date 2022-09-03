@@ -39,6 +39,7 @@ class InsumoController extends Controller
     public function store(Request $request)
     {
         $insumo = new Insumo();
+        $insumo->codigo = $request->codigo;
         $insumo->nombre = $request->nombre;
         $insumo->unidad = $request->unidad;
         $insumo->precio = $request->precio;
@@ -48,6 +49,9 @@ class InsumoController extends Controller
         $insumo->save();
         session()->flash("flas.banner" , "Insumos creados de manera satisfactoria");
         return Redirect::route('insumos.index');
+
+
+
     }
 
     /**
@@ -81,6 +85,7 @@ class InsumoController extends Controller
      */
     public function update(Request $request, Insumo $insumo)
     {
+        $insumo->codigo = $request->codigo;
         $insumo->nombre = $request->nombre;
         $insumo->unidad = $request->unidad;
         $insumo->precio = $request->precio;

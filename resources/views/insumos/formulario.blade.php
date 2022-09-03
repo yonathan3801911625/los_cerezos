@@ -1,6 +1,9 @@
 @csrf 
 <div class ="block">
-    <x-jet-label for="nombre" value="{{ __('Nombre') }}" />
+    <x-jet-label for="codigo" value="{{ __('Codigo') }}" />
+    <x-jet-input id="codigo" class="block mt-1 w-full" type="text" name="codigo" :value="old('codigo', $insumo->codigo)" required autofocus />
+    
+        <x-jet-label for="nombre" value="{{ __('Nombre') }}" />
     <x-jet-input id="nombre" class="block mt-1 w-full" type="text" name="nombre" :value="old('nombre', $insumo->nombre)" required autofocus />
 
     <x-jet-label for="unidad" value="{{ __('unidad') }}" />
@@ -10,7 +13,7 @@
     <x-jet-input id="precio" class="block mt-1 w-full" type="text" name="precio" :value="old('precio', $insumo->precio)" required autofocus />
     
     <x-jet-label for="cantidad" value="{{ __('Cantidad') }}" />
-    <x-jet-input id="cantidad" class="block mt-1 w-full" type="text" name="cantidad" :value="old('cantidad', $insumo->cantidad)" required autofocus />
+    <x-jet-input id="cantidad" class="block mt-1 w-full" type="number" name="cantidad" :value="old('cantidad', $insumo->cantidad)" required autofocus />
     
     <x-jet-label for="tipo" value="{{ __('Tipo') }}" />
     <x-jet-input id="tipo" class="block mt-1 w-full" type="text" name="tipo" :value="old('tipo', $insumo->tipo)" required autofocus />
