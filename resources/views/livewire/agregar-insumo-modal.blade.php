@@ -67,28 +67,17 @@
                     </div>
 
                     @if ($tipoMovimiento == true)
-                    <div class="my-1 p-2">
-                        <x-jet-label>Cantidad de entrada</x-jet-label>
-                        <x-jet-input 
-                            type="number" 
-                            class="w-full"
-                            wire:model='cantidad' 
-                            wire:input='updatePrice' 
-                            min="0"
-                        />
-                    </div>
+                        <div class="my-1 p-2">
+                            <x-jet-label>Cantidad de entrada</x-jet-label>
+                            <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice'
+                                min="0" />
+                        </div>
                     @else
-                    <div class="my-1 p-2">
-                        <x-jet-label>Cantidad de salida</x-jet-label>
-                        <x-jet-input 
-                            type="number" 
-                            class="w-full"
-                            wire:model='cantidad' 
-                            wire:input='updatePrice' 
-                            min="0" 
-                            max="{{ $insumoSelected->cantidad }}" 
-                        />
-                    </div>
+                        <div class="my-1 p-2">
+                            <x-jet-label>Cantidad de salida</x-jet-label>
+                            <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice'
+                                min="0" max="{{ $insumoSelected->cantidad }}" />
+                        </div>
                     @endif
 
                     <div class="my-1 p-2">
@@ -110,11 +99,9 @@
                                 </td>
                             </tr>
                         </table>
-                        {{-- 
-                            {{Auth::user()}}
+                        {{-- {{Auth::user()}}
                             {{Auth::user()->id}} 
-                            {{Auth::user()->name}} 
-                        --}}
+                            {{Auth::user()->name}} --}}
                     </div>
                 @endif
             </div>
@@ -122,13 +109,20 @@
 
 
         <x-slot name="footer">
+            {{ $disableForm }}
             <x-jet-secondary-button wire:click="$toggle('abrirModal')" wire:loading.attr="disabled">
                 Cancelar
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled">
+            {{-- <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled" disabled="false">
                 Guardar
-            </x-jet-button>
+            </x-jet-button> --}}
+            <button
+                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-2"
+                {{ $disableForm ? 'disabled' : '' }}
+                wire:click="save" wire:loading.attr="disabled">
+                Guardar
+            </button>
         </x-slot>
     </x-jet-dialog-modal>
 </div>

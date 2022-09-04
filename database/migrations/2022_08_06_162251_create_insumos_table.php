@@ -22,7 +22,8 @@ return new class extends Migration
             $table->integer("cantidad")->default(0);
             $table->string("tipo");
             $table->date("fecha_vencimiento");
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

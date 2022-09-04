@@ -21,7 +21,8 @@ return new class extends Migration
             $table->double("area_terreno");
             $table->double("densidad");
             $table->enum("tipo", ["corta duración", "perenne"]);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 
