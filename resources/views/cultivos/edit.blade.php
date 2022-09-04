@@ -58,7 +58,7 @@
                 
                
             </div> --}}
-            <livewire:agregar-actividad-modal :actividad=$actividad /><br>
+            <livewire:agregar-actividad-modal > <br>
 
 
 

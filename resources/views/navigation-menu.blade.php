@@ -21,7 +21,7 @@
                     <x-jet-nav-link href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
                         {{ __('Insumos') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('actividades.index') }}" :active="request()->routeIs('actividades*')">
+                    <x-jet-nav-link href="{{ route('actividads.index') }}" :active="request()->routeIs('actividads*')">
                         {{ __('Actividades') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('fases.index') }}" :active="request()->routeIs('fases*')">
@@ -162,7 +162,7 @@
             <x-jet-responsive-nav-link href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
                 {{ __('Insumos') }}
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('actividades.index') }}" :active="request()->routeIs('actividades*')">
+            <x-jet-responsive-nav-link href="{{ route('actividads.index') }}" :active="request()->routeIs('actividads*')">
                 {{ __('Actividades') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('fases.index') }}" :active="request()->routeIs('fases*')">
