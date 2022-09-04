@@ -3,6 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Actividad;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class AgregarActividadModal extends Component
@@ -10,13 +13,14 @@ class AgregarActividadModal extends Component
 
     public bool $abrirModal = false;
 
-
+    public $cultivo = null;
     public $actividads = null;
     public $keyActividadSelected;
     public $actividadSelected;
 
     public $cantidad = 0;
     public $cantidadMaxima = 10;
+    public bool $disableForm = true;
     public bool $tipoMovimiento = true;
     public $valor = 0;
 
@@ -65,7 +69,16 @@ class AgregarActividadModal extends Component
 
     public function save()
     {
+        DB::table('insumo_actividad')->insert(
+            [
+                'actividad_id' => $this->actividadSelected->id,
+                'cantidad' => $this->cantidad,
+                'user_id' => Auth::user()->id
+            ]
+        );
         
+        
+       
     }
     
 }

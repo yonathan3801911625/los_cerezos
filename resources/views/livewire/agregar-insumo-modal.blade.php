@@ -99,6 +99,25 @@
                                 </td>
                             </tr>
                         </table>
+                        <table class="table table-bordered">
+                        <tr>
+                            <th>Id Usuario</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                {{Auth::user()->id}}
+                            </td>
+                            <td>
+                                {{Auth::user()->name}}
+                            </td>
+                            <td>
+                                {{Auth::user()->email}}
+                            </td>
+                        </tr>
+                    </table>
                         {{-- {{Auth::user()}}
                             {{Auth::user()->id}} 
                             {{Auth::user()->name}} --}}
