@@ -61,8 +61,8 @@
             <livewire:agregar-actividad-modal :actividad=$actividad /><br>
 
 
-
-            <livewire:agregar-insumo-modal :insumo=$insumo />
+            {{-- {{$insumo}} --}}
+            <livewire:agregar-insumo-modal/>
         </div>
 
     </div>

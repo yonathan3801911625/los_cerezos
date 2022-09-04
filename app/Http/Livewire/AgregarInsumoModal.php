@@ -4,117 +4,115 @@ namespace App\Http\Livewire;
 
 use App\Models\Insumo;
 use Livewire\Component;
+use PhpParser\Node\Expr\Cast\Array_;
 
 class AgregarInsumoModal extends Component
 {
-    
-    public $insumo;
+
     public bool $abrirModal = false;
-    public $nombre = "";
-    public $unidad = "";
-    // public $precio = "";
-    public $cantidad;
-    // public $tipo = "";
-    // public $fecha_vencimiento = "";
 
-    public $idInsumo = null;
-    public $precio_movimiento = 0;
-    public $tipo_movimiento = "salida";
-    public $msg = "";
 
-    
-    public function mount($insumo)
+    public $insumos = null;
+    public $keyInsumoSelected;
+    public $insumoSelected;
+
+    public $cantidad = 0;
+    public $cantidadMaxima = 10;
+    public bool $tipoMovimiento = true;
+    public $precio = 0;
+
+    public function mount()
     {
         // $this->fase = $fase;
-        $this->insumo = $insumo;
+        // $this->insumo = $insumo;
+        $this->getInsumos();
     }
-
-    public function toggleMoviento()
-    {
-        if ($this->tipo_movimiento == "salida") {
-            $this->tipo_movimiento = "entrada";
-        } else {
-            $this->tipo_movimiento = "salida";
-        }
-    }
-
 
     public function render()
     {
         return view('livewire.agregar-insumo-modal');
     }
 
-    public function updatePrice()
+    public function getInsumos()
     {
+        $this->insumos = Insumo::all();
+    }
 
-        $this->msg = "";
-
-        if ($this->tipo_movimiento != "salida") {
-            $this->msg = "";
-            return;
-        }
-
-        if ($this->cantidad == "") {
-            $this->precio_movimiento = 0;
-        }
-
-        if (
-            $this->cantidad > $this->insumo->cantidad
-        ) {
-            $this->msg = "La cantidad ingresada supera el inventario";
-            return;
-        }
-
-        if ($this->tipo_movimiento == "salida" && $this->cantidad > 0) {
-            $this->precio_movimiento = $this->cantidad * $this->insumo->precio;
+    public function onChangeInsumo()
+    {
+        $this->insumoSelected = $this->insumos[$this->keyInsumoSelected];
+        if(!$this->tipoMovimiento) {
+            $this->checkCantidad();
         }
     }
+
+    public function updatePrice() {
+        $this->precio = (int)$this->cantidad * (int)$this->insumoSelected->precio;
+    }
+
+    public function setTipoMovimiento($bool)
+    {
+        $this->tipoMovimiento = $bool;
+        if(!$this->tipoMovimiento) {
+            $this->checkCantidad();
+        }
+    }
+
+    public function checkCantidad() {
+        if($this->cantidad > $this->insumoSelected->cantidad) {
+            $this->cantidad = $this->insumoSelected->cantidad;
+        }
+    }
+
+   
 
     public function save()
     {
-        $cantidad_acutalizada = 0;
-
-
-
-        if ($this->tipo_movimiento == "salida") {
-            if ($this->cantidad > $this->insumo->cantidad) {
-                $this->msg = "La cantidad ingresada supera el inventario";
-                return;
-            }
-
-            $cantidad_acutalizada = $this->insumo->cantidad - $this->cantidad;
-        } else {
-            $cantidad_acutalizada = $this->insumo->cantidad + $this->cantidad;
-        }
-
-        $this->insumo->cantidad = $cantidad_acutalizada;
-
-        $this->insumo->update();
-
-        $this->msg = "";
-
-
-
-        $movement = new Insumo();
-        $movement->cantidad = $this->cantidad;
-        $movement->tipo = $this->tipo_movimiento;
-        $movement->insumo_id = $this->insumo->id;
-        $movement->precio = $this->precio_movimiento;
-
-        $movement->save();
-
-        $this->cantidad = 0;
-        $this->precio_movimiento = 0;
-
-        session()->flash('flash.banner', "Moviemientod e inventario registrado");
-
-        $this->abrirModal = !$this->abrirModal;
+        
     }
+        
+
+
+
+    //     if ($this->tipo_movimiento == "salida") {
+    //         if ($this->cantidad > $this->insumo->cantidad) {
+    //             $this->msg = "La cantidad ingresada supera el inventario";
+    //             return;
+    //         }
+
+    //         $cantidad_acutalizada = $this->insumo->cantidad - $this->cantidad;
+    //     } else {
+    //         $cantidad_acutalizada = $this->insumo->cantidad + $this->cantidad;
+    //     }
+
+    //     $this->insumo->cantidad = $cantidad_acutalizada;
+
+    //     $this->insumo->update();
+
+    //     $this->msg = "";
+
+
+
+    //     $movement = new Insumo();
+    //     $movement->cantidad = $this->cantidad;
+    //     $movement->tipo = $this->tipo_movimiento;
+    //     $movement->insumo_id = $this->insumo->id;
+    //     $movement->precio = $this->precio_movimiento;
+
+    //     $movement->save();
+
+    //     $this->cantidad = 0;
+    //     $this->precio_movimiento = 0;
+
+    //     session()->flash('flash.banner', "Moviemientod e inventario registrado");
+
+    //     $this->abrirModal = !$this->abrirModal;
+    // }
 
 
     // public function save(){
 
-    
+
     // // 
     // //     $insumo = new Insumo();
     // //     $insumo->nombre = $this->nombre;

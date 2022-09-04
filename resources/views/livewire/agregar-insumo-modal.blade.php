@@ -4,67 +4,131 @@
 
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
-            Agregar insumo {{ $nombre }}
+            <div class="p-2">
+                <h2>Agregar insumo</h2>
+            </div>
         </x-slot>
 
         <x-slot name="content">
-            <div class="my-1 p-2">
-                <x-jet-label>Nombre del insumo {{ $idInsumo }}</x-jet-label>
-                <select
-                    class="border-gray-300 focus:border-indigo-300 
-                    focus:ring focus:ring-indigo-200 focus:ring-opacity-50 
-                    rounded-md shadow-sm w-full"
-                    wire:model="idInsumo">
-                    <option value="">-- Seleccione el insumo --</option>
-                    @foreach ($insumo as $insumo)
-                        <option value="{{ $insumo->id }}">{{ $insumo->nombre }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </x-slot> 
+            <div>
+                <div class="my-1 p-2">
+                    <x-jet-label>Nombre del insumo</x-jet-label>
+                    {{-- {{ $insumos }} --}}
+                    <select
+                        class="border-gray-300 focus:border-indigo-300 
+                        focus:ring focus:ring-indigo-200 focus:ring-opacity-50 
+                        rounded-md shadow-sm w-full"
+                        wire:model="keyInsumoSelected" wire:change='onChangeInsumo'>
+                        <option value="">-- Seleccione el insumo --</option>
+                        @foreach ($insumos as $key => $insumo)
+                            <option value="{{ $key }}">{{ $insumo->nombre }}</option>
+                        @endforeach
+                    </select>
+                    {{-- <br>
+                    {{ $keyInsumoSelected }} --}}
+                    {{-- <br>
+                    {{ $insumoSelected }} --}}
 
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-3 my-4">
-            <p>
-                {{ $insumo->nombre }} <span class="bg-slate-600 py-1 px-2 rounded text-white">Cantidad:
-                    {{ $insumo->cantidad }}</span>
-            </p>
-       
-    
-            <x-slot name="content">
-                <div class="my-1 p-2">
-                    <x-jet-label>Cantidad</x-jet-label>
-                    <x-jet-input type="number" wire:model='cantidad' wire:change='updatePrice' />
                 </div>
-                <div class="my-1 p-2">
-                    <span
-                        class="px-2 py-1 mx-1 border border-dotted rounded-full border-green-700 cursor-pointer @if ($tipo_movimiento == 'entrada') {{ 'bg-green-700 text-white' }} @endif"
-                        wire:click="toggleMoviento">
-                        Entrada
-                    </span>
-                    <span
-                        class="px-2 py-1 mx-1 border border-dotted rounded-full border-red-700 cursor-pointer @if ($tipo_movimiento == 'salida') {{ 'bg-red-700 text-white' }} @endif"
-                        wire:click="toggleMoviento">
-                        Salida
-                    </span>
-                </div>
-                @if ($tipo_movimiento == 'salida')
+                @if ($insumoSelected)
                     <div class="my-1 p-2">
-                        <p>Precio movimiento: {{ $precio_movimiento }}</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Insumo</th>
+                                <th>Cantidad actual</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ $insumoSelected->nombre }}
+                                </td>
+                                <td>
+                                    {{ $insumoSelected->cantidad }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="my-1 p-2">
+                        <x-jet-label>Tipo de movimiento</x-jet-label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento1"
+                                wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento == true) checked @endif>
+                            <label class="form-check-label" for="tipoMovimiento1">
+                                Entrada
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento2"
+                                wire:click="setTipoMovimiento(false)" @if ($tipoMovimiento == false) checked @endif>
+                            <label class="form-check-label" for="tipoMovimiento2">
+                                Salida
+                            </label>
+                        </div>
+                    </div>
+
+                    @if ($tipoMovimiento == true)
+                    <div class="my-1 p-2">
+                        <x-jet-label>Cantidad de entrada</x-jet-label>
+                        <x-jet-input 
+                            type="number" 
+                            class="w-full"
+                            wire:model='cantidad' 
+                            wire:input='updatePrice' 
+                            min="0"
+                        />
+                    </div>
+                    @else
+                    <div class="my-1 p-2">
+                        <x-jet-label>Cantidad de salida</x-jet-label>
+                        <x-jet-input 
+                            type="number" 
+                            class="w-full"
+                            wire:model='cantidad' 
+                            wire:input='updatePrice' 
+                            min="0" 
+                            max="{{ $insumoSelected->cantidad }}" 
+                        />
+                    </div>
+                    @endif
+
+                    <div class="my-1 p-2">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Cantidad</th>
+                                <th>Precio unidad</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ $cantidad }}
+                                </td>
+                                <td>
+                                    ${{ $insumoSelected->precio }}
+                                </td>
+                                <td>
+                                    ${{ $precio }}
+                                </td>
+                            </tr>
+                        </table>
+                        {{-- 
+                            {{Auth::user()}}
+                            {{Auth::user()->id}} 
+                            {{Auth::user()->name}} 
+                        --}}
                     </div>
                 @endif
-                <p class="text-red-600">{{$msg}}</p>
-            </x-slot>
-        
-    
-            <x-slot name="footer">
-                <x-jet-secondary-button wire:click="$toggle('abrirModal')" wire:loading.attr="disabled">
-                    Cancelar
-                </x-jet-secondary-button>
-    
-                <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled">
-                    Guardar
-                </x-jet-button>
-            </x-slot>
-        </x-jet-dialog-modal>
-    </div>
+            </div>
+        </x-slot>
+
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$toggle('abrirModal')" wire:loading.attr="disabled">
+                Cancelar
+            </x-jet-secondary-button>
+
+            <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled">
+                Guardar
+            </x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>
