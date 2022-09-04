@@ -7,21 +7,21 @@ use Livewire\Component;
 
 class AgregarActividadModal extends Component
 {
-    
-    public $actividad;
-    public bool $abrirModal = false;
-    public $nombre = "";
-    public $idActividad = null;
 
-    // esto sera para calcular costos dentro del componente 
-    public $cantidad;
-    public $precio_movimiento = 0;
-    public $tipo_movimiento = "salida";
-    public $msg = "";
+    public bool $abrirModal = false;
+
+
+    public $actividads = null;
+    public $keyActividadSelected;
+    public $actividadSelected;
+
+    public $cantidad = 0;
+    public $cantidadMaxima = 10;
+    public bool $tipoMovimiento = true;
+    public $valor = 0;
 
     public function mount()
     {
-        // $this->fase = $fase;
         $this->getActividads();
     }
 
@@ -32,95 +32,40 @@ class AgregarActividadModal extends Component
 
     public function getActividads()
     {
-        // $this->fase = $fase;
-        $this->actividad = Actividad::all();
+        $this->actividads = Actividad::all();
     }
+
     public function onChangeActividad()
     {
-        // $this->fase = $fase;
-        $this->actividadSelected = $this->actividads[$this->KeyActividadSelected];
-        if(!$this->tipoActividad){
+        $this->actividadSelected = $this->actividads[$this->keyActividadSelected];
+        if(!$this->tipoMovimiento) {
             $this->checkCantidad();
         }
     }
 
+    public function updatePrice() {
+        $this->valor = (int)$this->cantidad * (int)$this->actividadSelected->valor;
+    }
 
-    
-
-    public function toggleMoviento()
+    public function setTipoMovimiento($bool)
     {
-        if ($this->tipo_movimiento == "salida") {
-            $this->tipo_movimiento = "entrada";
-        } else {
-            $this->tipo_movimiento = "salida";
+        $this->tipoMovimiento = $bool;
+        if(!$this->tipoMovimiento) {
+            $this->checkCantidad();
         }
     }
 
-    public function updatePrice()
-    {
-
-        $this->msg = "";
-
-        if ($this->tipo_movimiento != "salida") {
-            $this->msg = "";
-            return;
-        }
-
-        if ($this->cantidad == "") {
-            $this->precio_movimiento = 0;
-        }
-
-        if (
-            $this->cantidad > $this->actividad->cantidad
-        ) {
-            $this->msg = "La cantidad ingresada supera el inventario";
-            return;
-        }
-
-        if ($this->tipo_movimiento == "salida" && $this->cantidad > 0) {
-            $this->precio_movimiento = $this->cantidad * $this->actividad->precio;
+    public function checkCantidad() {
+        if($this->cantidad > $this->actividadSelected->cantidad) {
+            $this->cantidad = $this->actividadSelected->cantidad;
         }
     }
+
+   
 
     public function save()
     {
-        $cantidad_acutalizada = 0;
-
-
-
-        if ($this->tipo_movimiento == "salida") {
-            if ($this->cantidad > $this->actividad->cantidad) {
-                $this->msg = "La cantidad ingresada supera el inventario";
-                return;
-            }
-
-            $cantidad_acutalizada = $this->actividad->cantidad - $this->cantidad;
-        } else {
-            $cantidad_acutalizada = $this->actividad->cantidad + $this->cantidad;
-        }
-
-        $this->actividad->cantidad = $cantidad_acutalizada;
-
-        $this->actividad->update();
-
-        $this->msg = "";
-
-
-
-        $actividad = new actividad();
-        $actividad->cantidad = $this->cantidad;
-        $actividad->tipo = $this->tipo_movimiento;
-        $actividad->actividad_id = $this->actividad->id;
-        $actividad->precio = $this->precio_movimiento;
-
-        $actividad->save();
-
-        $this->cantidad = 0;
-        $this->precio_movimiento = 0;
-
-        session()->flash('flash.banner', "Actividad e inventario registrado");
-
-        $this->openModal = !$this->openModal;
+        
     }
     
 }
