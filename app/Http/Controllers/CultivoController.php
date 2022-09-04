@@ -95,8 +95,8 @@ class CultivoController extends Controller
         return view("cultivos.edit", [
             "cultivo" => $cultivo,
             "actividad" => Actividad::all(),
-            "fases" => Fase::all(),
-            "insumo" => Insumo::all()
+            "fases" => Fase::all()
+            // "insumo" => Insumo::all()
         ]);
     }
 

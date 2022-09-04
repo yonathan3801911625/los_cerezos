@@ -19,7 +19,7 @@
                 <x-jet-input id="precio" class="block mt-1 w-full" type="text" name="precio" :value="old('precio', $insumo->precio)" readonly/>
 
                 <x-jet-label for="cantidad" value="{{ __('Cantidad') }}" />
-                <x-jet-input id="cantidad" class="block mt-1 w-full" type="text" name="cantidad" :value="old('cantidad', $insumo->cantidad)" readonly/>
+                <x-jet-input id="cantidad" class="block mt-1 w-full" type="number" name="cantidad" :value="old('cantidad', $insumo->cantidad)" readonly/>
 
                 <x-jet-label for="tipo" value="{{ __('Tipo') }}" />
                 <x-jet-input id="tipo" class="block mt-1 w-full" type="text" name="tipo" :value="old('tipo', $insumo->tipo)" readonly />
