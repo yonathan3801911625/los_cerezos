@@ -3,35 +3,30 @@
 namespace App\Http\Livewire;
 
 use App\Models\Actividad;
-use App\Models\Fase;
-use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class AgregarActividadModal extends Component
 {
 
-    public $actividad;
-    public $abrirModal = false;
-    public $nombre = "";
-    // public $estado = "pendiente";
-    // public $valor = "";
+    public bool $abrirModal = false;
 
-    public $idActividad = null;
+    public $cultivo = null;
+    public $actividads = null;
+    public $keyActividadSelected;
+    public $actividadSelected;
 
-    // public $fase;
-    // public $costos;
+    public $cantidad = 0;
+    public $cantidadMaxima = 10;
+    public bool $disableForm = true;
+    public bool $tipoMovimiento = true;
+    public $valor = 0;
 
-    public function mount($actividad)
+    public function mount()
     {
-        // $this->fase = $fase;
-        $this->actividad = $actividad;
-    }
-
-    
-    public function add($costos)
-    {
-        // $this->costos = $costos;
+        $this->getActividads();
     }
 
     public function render()
@@ -39,30 +34,52 @@ class AgregarActividadModal extends Component
         return view('livewire.agregar-actividad-modal');
     }
 
+    public function getActividads()
+    {
+        $this->actividads = Actividad::all();
+    }
+
+    public function onChangeActividad()
+    {
+        $this->actividadSelected = $this->actividads[$this->keyActividadSelected];
+        if(!$this->tipoMovimiento) {
+            $this->checkCantidad();
+        }
+    }
+
+    public function updatePrice() {
+        $this->valor = (int)$this->cantidad * (int)$this->actividadSelected->valor;
+    }
+
+    public function setTipoMovimiento($bool)
+    {
+        $this->tipoMovimiento = $bool;
+        if(!$this->tipoMovimiento) {
+            $this->checkCantidad();
+        }
+    }
+
+    public function checkCantidad() {
+        if($this->cantidad > $this->actividadSelected->cantidad) {
+            $this->cantidad = $this->actividadSelected->cantidad;
+        }
+    }
+
+   
+
     public function save()
     {
-        // $actividad = new Actividad();
-        // $actividad->nombre = $this->nombre;
-        // $actividad->estado = $this->estado;
-        // $actividad->valor = $this->valor;
-
-        // $actividad->save();
-
-        // // $actividad->fase()->attach($this->fase);
-        // $actividad->costoAdicional()->attach($this->costos);
-
-        // $this->nombre = "";
-        // $this->estado = "pendiente";
-        // $this->valor = "";
-
-        // $this->abrirModal = false;
+        DB::table('insumo_actividad')->insert(
+            [
+                'actividad_id' => $this->actividadSelected->id,
+                
+                'cantidad' => $this->cantidad,
+                'user_id' => Auth::user()->id
+            ]
+        );
         
-    }
-    public function destroy(Fase $fase)
-    {
-        $fase= Fase::all();
-        $fase->delete();
-        return back()->with("flash.banner", "Fase eliminada de manera exitosa");
+        
+       
     }
     
 }

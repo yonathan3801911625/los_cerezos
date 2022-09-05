@@ -8,6 +8,7 @@ use App\Models\Fase;
 use App\Models\Insumo;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class CultivoController extends Controller
@@ -19,6 +20,7 @@ class CultivoController extends Controller
      */
     public function index()
     {
+        // dd(get_class_methods('App\Http\Controllers\CultivoController'));
         return view("cultivos.index", ["cultivos" => Cultivo::all()]);
     }
 
@@ -75,7 +77,7 @@ class CultivoController extends Controller
      */
     public function show(Cultivo $cultivo)
     {
-        return view('cultivos.ver',compact('cultivo'));
+        return view('cultivos.ver', compact('cultivo'));
     }
 
     /**
@@ -93,8 +95,8 @@ class CultivoController extends Controller
         return view("cultivos.edit", [
             "cultivo" => $cultivo,
             "actividad" => Actividad::all(),
-            "fases" => Fase::all(),
-            "insumo" => Insumo::all()
+            "fases" => Fase::all()
+            // "insumo" => Insumo::all()
         ]);
     }
 
@@ -107,9 +109,21 @@ class CultivoController extends Controller
      */
     public function update(Request $request, Cultivo $cultivo)
     {
-        $fase = Fase::findOrFail($request->fase);
+        $faseExists =  DB::table('cultivo_fase')
+            ->where('fase_id', $request->fase)
+            ->where('cultivo_id', $cultivo->id)
+            ->get();
 
-        $cultivo->fases()->attach($fase);
+        // dd($faseExists);
+        // echo count($faseExists);
+        if (count($faseExists) <= 0) {
+            $fase = Fase::findOrFail($request->fase);
+            $cultivo->fases()->attach($fase);
+        }
+        else{
+            session()->flash("flash.banner","No se puede agregar fase por que esta ya se encuentra creada");
+        }
+        // die;
 
         return Redirect::route("cultivos.edit", $cultivo);
     }
@@ -123,5 +137,19 @@ class CultivoController extends Controller
     public function destroy(Cultivo $cultivo)
     {
         //
+    }
+
+
+    public function destroyCultivoFase(Request $request)
+    {
+        //
+        // dd($request);
+        // dd( $request->cultivo_fase);
+        $cultivo_fase = json_decode($request->cultivo_fase);
+        // dd( $cultivo_fase);
+        // die;
+        DB::table('cultivo_fase')->where('fase_id', $cultivo_fase->fase_id)
+            ->where('cultivo_id', $cultivo_fase->cultivo_id)->delete();
+        return Redirect::route("cultivos.edit", $cultivo_fase->cultivo_id);
     }
 }

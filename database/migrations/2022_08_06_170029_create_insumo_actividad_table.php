@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('insumo_actividad', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("insumo_id")->constrained();
             $table->foreignId("actividad_id")->constrained();
+            $table->integer("cantidad");
+            $table->foreignId("user_id")->constrained();
             $table->timestamps();
         });
     }

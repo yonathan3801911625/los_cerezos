@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_add__supply', function (Blueprint $table) {
+        Schema::create('movimientos_insumos', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre");
-            $table->integer("unidad");
-            $table->integer("precio");
+            $table->foreignId("insumo_id")->constrained();
             $table->integer("cantidad");
-            $table->string("tipo");
-            $table->date("fecha_vencimiento");
-            $table->string("responsable");
-            $table->foreignId("actividad_id")->constrained();
+            $table->boolean("tipo");
+            $table->foreignId("user_id")->constrained();
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_add__supply');
+        Schema::dropIfExists('movimientos_insumos');
     }
 };

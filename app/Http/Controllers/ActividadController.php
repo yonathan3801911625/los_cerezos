@@ -15,8 +15,8 @@ class ActividadController extends Controller
      */
     public function index()
     {
-        $actividades= Actividad::all();
-        return view('actividades.index', compact("actividades"));
+        $actividads= Actividad::all();
+        return view('actividads.index', compact("actividads"));
     }
 
     /**
@@ -27,7 +27,7 @@ class ActividadController extends Controller
     public function create()
     {
         $actividad = new Actividad();
-        return view('actividades.crear',compact('actividad'));
+        return view('actividads.crear',compact('actividad'));
     }
 
     /**
@@ -47,7 +47,7 @@ class ActividadController extends Controller
         $actividad->observacion  = $request->observacion;
         $actividad->save();
         session()->flash("flash.banner","Actividad creada la actividad de manera satisfactoria");
-        return Redirect::route("actividades.index");
+        return Redirect::route("actividads.index");
     }
 
     /**
@@ -58,7 +58,7 @@ class ActividadController extends Controller
      */
     public function show(Actividad $actividad)
     {
-        return view('actividades.ver',compact('actividad'));
+        return view('actividads.ver',compact('actividad'));
     }
 
     /**
@@ -69,7 +69,7 @@ class ActividadController extends Controller
      */
     public function edit(Actividad $actividad)
     {
-        return view('actividades.edit', compact("actividad"));
+        return view('actividads.edit', compact("actividad"));
     }
 
     /**
@@ -88,7 +88,7 @@ class ActividadController extends Controller
         $actividad->observacion  = $request->observacion;
         $actividad->save();
         session()->flash("flash.banner","Actividad modificada de manera satisfactoria");
-        return Redirect::route("actividades.index");
+        return Redirect::route("actividads.index");
     }
 
     /**
