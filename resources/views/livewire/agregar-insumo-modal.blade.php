@@ -5,7 +5,7 @@
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
             <div class="p-2">
-                <h2>Agregar insumo</h2>
+            <a href="{{ route('insumos.create') }}"> Agregar Insumo</a>
             </div>
         </x-slot>
 
@@ -62,6 +62,13 @@
                                 wire:click="setTipoMovimiento(false)" @if ($tipoMovimiento == false) checked @endif>
                             <label class="form-check-label" for="tipoMovimiento2">
                                 Salida
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento3"
+                                wire:click="setTipoMovimiento(false)" @if ($tipoMovimiento == false) checked @endif>
+                            <label class="form-check-label" for="tipoMovimiento2">
+                                Entrada 
                             </label>
                         </div>
                     </div>
