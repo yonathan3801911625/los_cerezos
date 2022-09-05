@@ -109,7 +109,6 @@
 
 
         <x-slot name="footer">
-            {{ $disableForm }}
             <x-jet-secondary-button wire:click="$toggle('abrirModal')" wire:loading.attr="disabled">
                 Cancelar
             </x-jet-secondary-button>
