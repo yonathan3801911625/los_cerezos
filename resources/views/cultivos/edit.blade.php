@@ -55,20 +55,6 @@
             @endforeach
 
 
-<<<<<<< HEAD
-=======
-            {{-- <div>
-           
-                <livewire:agregar-insumo-modal />
-                
-               
-            </div> --}}
-            <livewire:agregar-actividad-modal > <br>
-
-
-            {{-- {{$insumo}} --}}
-            <livewire:agregar-insumo-modal/>
->>>>>>> 0eb129fdf5b1f09f42a4488d3eab87b90b6606c3
         </div>
 
     </div>
