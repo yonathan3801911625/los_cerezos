@@ -54,7 +54,7 @@
                             <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento1"
                                 wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento == true) checked @endif>
                             <label class="form-check-label" for="tipoMovimiento1">
-                                Entrada
+                                Devolucion
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
