@@ -99,6 +99,25 @@
                                 </td>
                             </tr>
                         </table>
+                        <table class="table table-bordered">
+                        <tr>
+                            <th>Id Usuario</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                {{Auth::user()->id}}
+                            </td>
+                            <td>
+                                {{Auth::user()->name}}
+                            </td>
+                            <td>
+                                {{Auth::user()->email}}
+                            </td>
+                        </tr>
+                    </table>
                         {{-- {{Auth::user()}}
                             {{Auth::user()->id}} 
                             {{Auth::user()->name}} --}}
@@ -109,6 +128,10 @@
 
 
         <x-slot name="footer">
+<<<<<<< HEAD
+=======
+            {{-- {{ $disableForm }} --}}
+>>>>>>> 0eb129fdf5b1f09f42a4488d3eab87b90b6606c3
             <x-jet-secondary-button wire:click="$toggle('abrirModal')" wire:loading.attr="disabled">
                 Cancelar
             </x-jet-secondary-button>

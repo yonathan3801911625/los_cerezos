@@ -8,10 +8,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="block">
-                    <form action="{{route('actividades.update', $actividad )}}" > method="post">
+                    <form action="{{route('actividads.update', $actividad )}}"  method="post">
                         @method('PUT')
-                        @include('actividades.formulario')
-                        
+                        @include('actividads.formulario')
                     </form>
                 </div>
             </div>

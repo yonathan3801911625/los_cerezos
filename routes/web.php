@@ -33,7 +33,7 @@ Route::middleware([
     Route::resource("/cultivos", CultivoController::class);
     Route::resource("/fases", FaseController::class);
     Route::resource("/costos", CostoAdicionalController::class);
-    Route::resource("/actividades", ActividadController::class);
+    Route::resource("/actividads", ActividadController::class);
     Route::resource("/insumos", InsumoController::class);
     Route::post("/destroy_cultivo_fase", [CultivoController::class, 'destroyCultivoFase'])->name("destroyCultivoFase");
 });

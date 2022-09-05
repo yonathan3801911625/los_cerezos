@@ -13,7 +13,7 @@
     <div class="flex justify-center">
         <div class="p-2">
             <div class="flex justify-end">
-                <a href="{{('actividades.create')}}">
+                <a href="{{('actividads.create')}}">
                     <x-jet-button type="submit">
                         Guardar
                     </x-jet-button>

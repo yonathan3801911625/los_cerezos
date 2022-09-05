@@ -1,41 +1,105 @@
 <div>
-    <x-jet-button wire:click="$toggle('abrirModal')">Agregar actividad</x-jet-button>
+    <x-jet-button wire:click="$toggle('abrirModal')">Agregar Actividad
+    </x-jet-button>
 
     <x-jet-dialog-modal wire:model="abrirModal">
-
-
         <x-slot name="title">
-            Agregar actividad {{ $nombre }}
+            <div class="p-2">
+                <h2>Agregar Actividad</h2>
+            </div>
         </x-slot>
 
         <x-slot name="content">
-            <div class="my-1 p-2">
-                <x-jet-label>Nombre de la actividad {{ $idActividad }}</x-jet-label>
-                <select
-                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full"
-                    wire:model="idActividad">
-                    <option value="">-- Seleccione la actividad --</option>
-                    @foreach ($actividad as $act)
-                        <option value="{{ $act->id }}">{{ $act->nombre }}</option>
-                    @endforeach
-                    {{-- <option value="finalizado">Finalizado</option>
-                    <option value="en_proceso">En proceso</option>
-                    <option value="pendiente">Pendiente</option> --}}
-                </select>
+            <div>
+                <div class="my-1 p-2">
+                    <x-jet-label>Nombre de la Actividad</x-jet-label>
+                    {{--{{ $actividads }} --}}
+                    <select class="border-gray-300 focus:border-indigo-300 
+                        focus:ring focus:ring-indigo-200 focus:ring-opacity-50 
+                        rounded-md shadow-sm w-full" wire:model="keyActividadSelected" wire:change='onChangeActividad'>
+                        <option value="">-- Seleccione la actividad --</option>
+                        @foreach ($actividads as $key => $actividad)
+                        <option value="{{ $key }}">{{ $actividad->nombre }}</option>
+                        @endforeach
+                    </select>
+                    {{-- <br>
+                    {{ $keyactividadSelected }} --}}
+                    {{-- <br>
+                    {{ $actividadSelected }} --}}
+
+                </div>
+                @if ($actividadSelected)
+                <div class="my-1 p-2">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Actividad</th>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ $actividadSelected->nombre }}
+                            </td>
+
+                        </tr>
+                    </table>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Horas laboradas
+                                <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice' min="0" max="{{ $actividadSelected->cantidad }}" />
+                            </th>
+                        </tr>
+                </div>
+                <div class="my-1 p-2">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Cantidad Horas</th>
+                            <th>Hora labor</th>
+                            <th>Precio total</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ $cantidad  }}
+                            </td>
+                            <td>
+                                ${{ $actividadSelected->valor }}
+                            </td>
+                            <td>
+                                ${{ $valor }}
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Id Usuario</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                {{Auth::user()->id}}
+                            </td>
+                            <td>
+                                {{Auth::user()->name}}
+                            </td>
+                            <td>
+                                {{Auth::user()->email}}
+                            </td>
+                        </tr>
+                    </table>
+                    {{--{{Auth::user()}}
+                    {{Auth::user()->id}}
+                    {{Auth::user()->name}}--}}
+
+                    
+
+
+                </div>
+                @endif
             </div>
-            {{-- <div class="my-1 p-2">
-                <x-jet-label>Estado</x-jet-label>
-                <select wire:model="estado">
-                    <option value="finalizado">Finalizado</option>
-                    <option value="en_proceso">En proceso</option>
-                    <option value="pendiente">Pendiente</option>
-                </select>
-            </div> --}}
-            {{-- <div class="my-1 p-2">
-                <x-jet-label>valor</x-jet-label>
-                <x-jet-input type="number" wire:model="valor" class="w-full" />
-            </div> --}}
         </x-slot>
+
 
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$toggle('abrirModal')" wire:loading.attr="disabled">

@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2">
-                <form action="{{ route('actividades.store') }}" method="post">
+                <form action="{{ route('actividads.store') }}" method="post">
                     @csrf
                     <div class="my-1">
                         <x-jet-label for="nombre">Nombre</x-jet-label>
