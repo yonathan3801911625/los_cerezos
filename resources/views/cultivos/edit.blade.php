@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar cultivo') }} {{ $cultivo->nombre }}
+            {{ __('Editar') }} {{ $cultivo->nombre }}
         </h2>
     </x-slot>
 
@@ -20,12 +20,13 @@
                         </select>
                     </div>
                     <x-jet-button>Agregar</x-jet-button>
+
                 </form>
             </div><br>
 
             {{-- traigo la relación con fases y la listo --}}
             @foreach ($cultivo->fases as $fase)
-                <!-- {{$fase->pivot}} -->
+                <!-- {{ $fase->pivot }} -->
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 my-2">
                     <p>{{ $fase->nombre }}</p>
                     <ul class="list-disc list-inside">
@@ -36,34 +37,31 @@
                     <form action="{{ route('destroyCultivoFase') }}" method="POST">
                         @csrf
                         @method('POST')
-                        <input type="hidden" name="cultivo_fase" value="{{$fase->pivot}}">
+                        <input type="hidden" name="cultivo_fase" value="{{ $fase->pivot }}">
                         <button
-                            class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out "
+                            class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs 
+                            leading-tight uppercase rounded 
+                            shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 
+                            focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg 
+                            transition duration-150 ease-in-out "
                             type="submit">
                             Eliminar
-                        </button>
+                        </button><br><br>
 
                     </form>
-
-                    {{-- {{$fase}} --}}
-                    {{-- {{$actividad}} --}}
-
+                    <livewire:agregar-insumo-modal /><br>
+                    <livewire:agregar-actividad-modal :actividad=$actividad /><br>
                 </div>
             @endforeach
 
 
-            {{-- <div>
-           
-                <livewire:agregar-insumo-modal />
-                
-               
-            </div> --}}
-            <livewire:agregar-actividad-modal > <br>
-
-
-            {{-- {{$insumo}} --}}
-            <livewire:agregar-insumo-modal/>
         </div>
 
     </div>
 </x-app-layout>
+
+
+
+{{-- {{$fase}} --}}
+{{-- {{$actividad}} --}}
+{{-- {{$insumo}} --}}
