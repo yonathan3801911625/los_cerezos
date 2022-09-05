@@ -72,6 +72,7 @@ class AgregarActividadModal extends Component
         DB::table('insumo_actividad')->insert(
             [
                 'actividad_id' => $this->actividadSelected->id,
+                
                 'cantidad' => $this->cantidad,
                 'user_id' => Auth::user()->id
             ]
