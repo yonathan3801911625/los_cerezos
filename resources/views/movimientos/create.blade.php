@@ -8,8 +8,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2">
-                <form action="{{ route('movimientos.store') }}" method="post">
-                    @csrf
+                <livewire:total-salida :insumos="$insumos"/>
+                   <!-- @csrf
                     <div class="my-1">
                         <x-jet-label for="insumo_id">insumo</x-jet-label>
                         <x-jet-input type="text" id="insumo_id" name="insumo_id" class="w-full" />
@@ -32,7 +32,8 @@
                     </div>
                     
                     <x-jet-button>Guardar</x-jet-button>
-                </form>
+                </form>-->
+                
             </div>
         </div>
     </div>

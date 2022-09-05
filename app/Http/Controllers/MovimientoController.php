@@ -37,24 +37,25 @@ class MovimientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Movimiento $movimiento)
+    public function store(Request $request)
     {
         $movimiento = new Movimiento();
-        //$insumo = insumo::find($request->insumo);  
+        $insumo = insumo::find($request->insumo);  
         $movimiento->insumo_id = $request->insumo;
         $movimiento->tipoMovimiento = $request->tipoMovimiento;
         $movimiento->cantidad = $request->cantidad;
         $movimiento->valor = $request->valor;
         $movimiento->fecha = $request->fecha;
-        /*if($request->tipomovimiento == "Salida"){
+        if($request->tipomovimiento == "Salida"){
             $insumo->cantidad = $insumo->cantidad - $request->cantidad;
         }else{
             $insumo->cantidad = $insumo->cantidad + $request->cantidad;
         }
         $movimiento->valor = $request->valor;
-        $movimiento->fecha = $request->fecha;
+        $valortotal= $request->precio*$request->cantidad;
 
-        $insumo->save();*/
+
+        $insumo->save();
 
         $movimiento->save();
         session()->flash("flash.banner","Movimiento Creado Satisfatoriamente");
@@ -80,7 +81,7 @@ class MovimientoController extends Controller
      */
     public function edit(Movimiento $movimiento)
     {
-        //
+        return view ('movimientos.edit', compact('movimiento'));
     }
 
     /**
@@ -92,7 +93,15 @@ class MovimientoController extends Controller
      */
     public function update(Request $request, Movimiento $movimiento)
     {
-        //
+        $movimiento->insumo_id = $request->insumo;
+        $movimiento->tipoMovimiento = $request->tipoMovimiento;
+        $movimiento->cantidad = $request->cantidad;
+        $movimiento->valor = $request->valor;
+        $movimiento->fecha = $request->fecha;      
+
+        $movimiento->save();
+        session()->flash("flash.banner","Movimiento Creado Satisfatoriamente");
+        return Redirect::route("movimientos.index");
     }
 
     /**
@@ -103,6 +112,8 @@ class MovimientoController extends Controller
      */
     public function destroy(Movimiento $movimiento)
     {
-        //
+        $movimiento->delete();
+        session()->flash("flash.banner","Insumo Eliminado Satisfatoriamente");
+        return Redirect::route("productos.index");
     }
 }
