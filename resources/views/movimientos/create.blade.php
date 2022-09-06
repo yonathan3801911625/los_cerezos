@@ -33,7 +33,9 @@
                     
                     <x-jet-button>Guardar</x-jet-button>
                 </form>-->
-                
+                <form action="{{ route('movimientos.store') }}" method="post">
+                    @include('movimientos.form')
+                </form>
             </div>
         </div>
     </div>

@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('movimientos_insumos', function (Blueprint $table) {
             $table->id();
             $table->foreignId("insumo_id")->constrained();
+            $table->date("fecha");
             $table->integer("cantidad");
             $table->boolean("tipo");
             $table->foreignId("user_id")->constrained();
+            $table->string("observacion");
             $table->timestamps();
         });
     }

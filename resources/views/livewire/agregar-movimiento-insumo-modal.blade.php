@@ -5,7 +5,7 @@
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
             <div class="p-2">
-            <a class="btn btn-success" href="{{ route('insumos.create') }}"> Agregar Insumo</a>
+            <a class="btn btn-success" href="{{ route('insumos.create') }}"> Crear Insumo  >> </a>
             </div>
         </x-slot>
 
@@ -31,10 +31,12 @@
                     {{ $insumoSelected }} --}}
 
                 </div>
+
+
                 @if ($insumoSelected)
                 <div class="my-1 p-2">
                     <x-jet-label>Fecha del movimiento</x-jet-label>
-                    <x-jet-input id="fecha" class="block mt-1 w-full" type="date" name="fecha" required autofocus />
+                    <x-jet-input id="fecha" class="block mt-1" type="date" name="fecha" wire:model='fecha'/>
 
                 </div>
                     <div class="my-1 p-2">
@@ -135,6 +137,16 @@
                             {{Auth::user()->id}} 
                             {{Auth::user()->name}} --}}
                     </div>
+
+                    <div class="my-1 p-2">
+                    <x-jet-label>Observaciones</x-jet-label>
+                    <textarea class="form-control" wire:model='observacion' name="observacion" id="observacion" style="height: 100px"></textarea>
+                </div>
+                
+  
+  
+
+
                 @endif
             </div>
         </x-slot>

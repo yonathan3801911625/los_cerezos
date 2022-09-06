@@ -52,13 +52,13 @@ class MovimientoController extends Controller
             $insumo->cantidad = $insumo->cantidad + $request->cantidad;
         }
         $movimiento->valor = $request->valor;
-        $valortotal= $request->precio*$request->cantidad;
+        //$valortotal= $request->precio*$request->cantidad;
 
 
         $insumo->save();
 
         $movimiento->save();
-        session()->flash("flash.banner","Movimiento Creado Satisfatoriamente");
+        session()->flash("flash.banner","Movimiento realizado con exito");
         return Redirect::route("movimientos.index");
     }
 
