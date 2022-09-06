@@ -42,6 +42,7 @@
                             <tr>
                                 <th>Insumo</th>
                                 <th>Cantidad actual</th>
+                                <th>Unidad Medida</th>
                             </tr>
                             <tr>
                                 <td>
@@ -49,6 +50,9 @@
                                 </td>
                                 <td>
                                     {{ $insumoSelected->cantidad }}
+                                </td>
+                                <td>
+                                    {{ $insumoSelected->unidad}}
                                 </td>
                             </tr>
                         </table>
