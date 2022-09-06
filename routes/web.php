@@ -5,6 +5,7 @@ use App\Http\Controllers\CostoAdicionalController;
 use App\Http\Controllers\CultivoController;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\InsumoController;
+use App\Models\Cultivo;
 use Illuminate\Support\Facades\Route;
 
 /*
