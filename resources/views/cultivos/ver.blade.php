@@ -21,7 +21,7 @@
                     <x-jet-label for="tipo" value="{{ __('Tipo Cultivo')}}" />
                     <x-jet-input id="tipo" class="block mt-1 w-full" type="enum" name="tipo" :value="old('tipo', $cultivo->tipo)" readonly />
                     
-
+                    
                     
                     <div class="flex justify-center">
                         <div class="p-2">
@@ -34,6 +34,8 @@
                         </div>
                     </div>
                 </div>
+
+                
             </div>
         </div>
     </div>

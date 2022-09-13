@@ -16,4 +16,5 @@ class Cultivo extends Model
     {
         return $this->belongsToMany(Fase::class);
     }
+
 }

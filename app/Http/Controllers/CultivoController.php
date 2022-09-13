@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Actividad;
 use App\Models\Cultivo;
 use App\Models\Fase;
-use App\Models\Insumo;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -78,6 +76,13 @@ class CultivoController extends Controller
     public function show(Cultivo $cultivo)
     {
         return view('cultivos.ver', compact('cultivo'));
+        
+    }
+
+    public function showCultivo(Cultivo $cultivo)
+    {
+        return view('cultivos.vercultivo', compact('cultivo'));
+        
     }
 
     /**
@@ -152,4 +157,5 @@ class CultivoController extends Controller
             ->where('cultivo_id', $cultivo_fase->cultivo_id)->delete();
         return Redirect::route("cultivos.edit", $cultivo_fase->cultivo_id);
     }
+
 }
