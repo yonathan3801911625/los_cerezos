@@ -77,7 +77,7 @@
                                                     <x-jet-button>Ver</x-jet-button>
                                                 </a>
                                                 <a href="{{ route('cultivos.edit', $cultivo) }}">
-                                                    <x-jet-button>Editar</x-jet-button>
+                                                    <x-jet-button>Agregar</x-jet-button>
                                                 </a>
                                                 <form action="{{route('cultivos.destroy', $cultivo)}}" method="POST">
                                                     @csrf
