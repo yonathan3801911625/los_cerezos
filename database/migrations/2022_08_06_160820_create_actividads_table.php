@@ -20,7 +20,8 @@ return new class extends Migration
             $table->dateTime("fecha_realizacion")->nullable();
             $table->integer("valor")->comment("Valor por hora de trabajo");
             $table->longText("observacion")->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

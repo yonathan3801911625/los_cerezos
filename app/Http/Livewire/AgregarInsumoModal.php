@@ -12,7 +12,7 @@ class AgregarInsumoModal extends Component
 {
 
     public bool $abrirModal = false;
-
+    public $cultivo_fase_id;
 
     public $insumos = null;
     public $keyInsumoSelected;
@@ -105,6 +105,7 @@ class AgregarInsumoModal extends Component
     {
         DB::table('movimientos_insumos')->insert(
             [
+                'cultivo_fase_id' => $this->cultivo_fase_id,
                 'insumo_id' => $this->insumoSelected->id,
                 'cantidad' => $this->cantidad,
                 'tipo' => $this->tipoMovimiento,

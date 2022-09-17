@@ -75,7 +75,24 @@ class CultivoController extends Controller
      */
     public function show(Cultivo $cultivo)
     {
-        return view('cultivos.ver', compact('cultivo'));
+        $fasesCultivo =  DB::table('cultivo_fase')
+            ->where('cultivo_id', $cultivo->id)
+            // ->select('cultivos.nombre as nombre_cultivo','fases.nombre as nombre_fase', 'fases.*')
+            ->select('fases.nombre as nombre_fase', 'cultivo_fase.created_at')
+            ->join('cultivos', 'cultivo_fase.cultivo_id','=','cultivos.id')
+            ->join('fases', 'cultivo_fase.fase_id','=','fases.id')
+            ->get();
+        
+            // $faseActividad = DB::table('fase_actividad')
+            // ->where('cultivo_id', $cultivo->id)
+            // ->get();
+            
+
+        return view('cultivos.ver', [
+            'cultivo' => $cultivo ,
+            'fasesCultivo' => $fasesCultivo,
+            // 'fasesActividad' => $fasesActividad
+        ]);
         
     }
 
@@ -97,8 +114,16 @@ class CultivoController extends Controller
         // $insumo = Insumo::all();
         // $actividad = Actividad::all();
         // return view('cultivos.edit', compact("insumo", 'actividad', 'cultivo'));
+        $cultivoFases =  DB::table('cultivo_fase')
+            ->select('cultivo_fase.id as cultivo_fase_id', 'fases.nombre', 'cultivo_fase.cultivo_id')
+            ->where('cultivo_id', $cultivo->id)
+            ->join('fases', 'cultivo_fase.fase_id','=','fases.id')
+            ->get();
+        
+
         return view("cultivos.edit", [
             "cultivo" => $cultivo,
+            "cultivo_fases" => $cultivoFases,
             "actividad" => Actividad::all(),
             "fases" => Fase::all()
             // "insumo" => Insumo::all()
@@ -150,12 +175,12 @@ class CultivoController extends Controller
         //
         // dd($request);
         // dd( $request->cultivo_fase);
-        $cultivo_fase = json_decode($request->cultivo_fase);
+        $cultivo_fase_id = json_decode($request->cultivo_fase_id);
+        $cultivo_id = json_decode($request->cultivo_id);
         // dd( $cultivo_fase);
         // die;
-        DB::table('cultivo_fase')->where('fase_id', $cultivo_fase->fase_id)
-            ->where('cultivo_id', $cultivo_fase->cultivo_id)->delete();
-        return Redirect::route("cultivos.edit", $cultivo_fase->cultivo_id);
+        DB::table('cultivo_fase')->where('id', $cultivo_fase_id)->delete();
+        return Redirect::route("cultivos.edit", $cultivo_id);
     }
 
 }
