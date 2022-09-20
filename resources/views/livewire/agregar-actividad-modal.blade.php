@@ -109,6 +109,12 @@
             <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled">
                 Guardar
             </x-jet-button>
+            <!-- <button
+                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-2"
+                {{ $disableForm ? 'disabled' : '' }}
+                wire:click="save" wire:loading.attr="disabled">
+                Guardar
+            </button> -->
         </x-slot>
     </x-jet-dialog-modal>
 </div>

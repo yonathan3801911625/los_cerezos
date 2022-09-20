@@ -31,8 +31,5 @@
             <a href="{{ route('insumos.index',$insumo) }}"> 
             <x-jet-button>Volver</x-jet-button>
         </div>
-        <div>
-            <livewire:agregar-modal/>
-        </div>
     </div>
 </x-app-layout>

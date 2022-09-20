@@ -12,6 +12,7 @@ class AgregarActividadModal extends Component
 {
 
     public bool $abrirModal = false;
+    public $cultivo_fase_id;
 
     public $cultivo = null;
     public $actividads = null;
@@ -23,6 +24,8 @@ class AgregarActividadModal extends Component
     public bool $disableForm = true;
     public bool $tipoMovimiento = true;
     public $valor = 0;
+
+
 
     public function mount()
     {
@@ -42,44 +45,54 @@ class AgregarActividadModal extends Component
     public function onChangeActividad()
     {
         $this->actividadSelected = $this->actividads[$this->keyActividadSelected];
-        if(!$this->tipoMovimiento) {
+        if (!$this->tipoMovimiento) {
             $this->checkCantidad();
         }
     }
 
-    public function updatePrice() {
+    public function updatePrice()
+    {
         $this->valor = (int)$this->cantidad * (int)$this->actividadSelected->valor;
     }
 
     public function setTipoMovimiento($bool)
     {
         $this->tipoMovimiento = $bool;
-        if(!$this->tipoMovimiento) {
+        if (!$this->tipoMovimiento) {
             $this->checkCantidad();
         }
     }
 
-    public function checkCantidad() {
-        if($this->cantidad > $this->actividadSelected->cantidad) {
+    public function checkCantidad()
+    {
+        if ($this->cantidad > $this->actividadSelected->cantidad) {
             $this->cantidad = $this->actividadSelected->cantidad;
         }
     }
 
-   
+
 
     public function save()
     {
-        DB::table('insumo_actividad')->insert(
+        $this->disableForm = true;
+        DB::table('movimientos_actividad')->insert(
             [
+                'cultivo_fase_id' => $this->cultivo_fase_id,
                 'actividad_id' => $this->actividadSelected->id,
-                
                 'cantidad' => $this->cantidad,
                 'user_id' => Auth::user()->id
             ]
         );
-        
-        
-       
+
+        $this->resetForm();
     }
-    
+
+    public function resetForm()
+    {
+        $this->actividadSelected = null;
+        $this->keyActividadSelected = null;
+        $this->abrirModal = false;
+        $this->cantidad = 0;
+        $this->disableForm = false;
+    }
 }
