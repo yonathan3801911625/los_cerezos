@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Actividad;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class AgregarActividadModal extends Component
@@ -21,9 +20,10 @@ class AgregarActividadModal extends Component
 
     public $cantidad = 0;
     public $cantidadMaxima = 10;
-    public bool $disableForm = true;
+    public bool $disableForm = false;  //para la validacion del boton debe se true
     public bool $tipoMovimiento = true;
     public $valor = 0;
+   
 
 
 
@@ -74,12 +74,13 @@ class AgregarActividadModal extends Component
 
     public function save()
     {
-        $this->disableForm = true;
+        $this->disableForm = false;
         DB::table('movimientos_actividad')->insert(
             [
                 'cultivo_fase_id' => $this->cultivo_fase_id,
                 'actividad_id' => $this->actividadSelected->id,
                 'cantidad' => $this->cantidad,
+                'valor' => $this->valor,
                 'user_id' => Auth::user()->id
             ]
         );

@@ -5,7 +5,7 @@
         <x-slot name="title">
             <div class="p-2">
                 <h2>Ver Estado
-                    {{$cultivo_fase_id}}
+                    <!-- {{$cultivo_fase_id}} -->
                 </h2>
             </div>
         </x-slot>
@@ -80,6 +80,8 @@
                                         <tr>
                                             <th>Nombre Actividad</th>
                                             <th>Horas Laboradas</th>
+                                            <th>Precio</th>
+                                            <th>Fecha</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -87,6 +89,8 @@
                                         <tr>
                                             <td>{{$item->nombre_actividad}}</td>
                                             <td>{{$item->cantidad_movimiento}}</td>
+                                            <td>{{$item->valor_movimiento}}</td>
+                                            <td>{{$item->fecha_movimiento}}
                                         </tr>
                                         @endforeach
                                     </tbody>

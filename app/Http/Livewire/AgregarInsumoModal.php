@@ -103,6 +103,7 @@ class AgregarInsumoModal extends Component
 
     public function save()
     {
+        $this->disableForm = false;
         DB::table('movimientos_insumos')->insert(
             [
                 'cultivo_fase_id' => $this->cultivo_fase_id,

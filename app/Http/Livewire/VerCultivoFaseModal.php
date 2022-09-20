@@ -25,6 +25,10 @@ class VerCultivoFaseModal extends Component
     public $actividadSelected;
     public $actividad;
     public $movimientosActividad;
+
+    public $cantidad = 0;
+    public $valor = 0;
+
     
 
 
@@ -66,7 +70,9 @@ class VerCultivoFaseModal extends Component
         $this->movimientosActividad =  DB::table('movimientos_actividad')
             ->select(
                 'actividads.nombre as nombre_actividad',
-                'movimientos_actividad.cantidad as cantidad_movimiento',  
+                'movimientos_actividad.cantidad as cantidad_movimiento',
+                'movimientos_actividad.valor as valor_movimiento',
+                'movimientos_actividad.created_at as fecha_movimiento',  
             )
             ->where('cultivo_fase_id', $this->cultivo_fase_id)
             ->join('actividads', 'movimientos_actividad.actividad_id', '=', 'actividads.id')

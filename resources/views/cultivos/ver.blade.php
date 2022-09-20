@@ -66,7 +66,7 @@
                                         </th>
 
                                         <th>
-                                            echa asignacion fase
+                                            Fecha asignación fase
                                         </th>
                                     </tr>
                                 </thead>

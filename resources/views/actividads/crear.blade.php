@@ -34,11 +34,11 @@
                         <x-jet-label for="observacion">Observacion</x-jet-label>
                         <x-jet-input type="longtext" id="observacion" name="observacion" class="w-full" />
                     </div>
-                    
+
                     <x-jet-button>Guardar</x-jet-button>
                 </form>
             </div>
         </div>
     </div>
-    
+
 </x-app-layout>
