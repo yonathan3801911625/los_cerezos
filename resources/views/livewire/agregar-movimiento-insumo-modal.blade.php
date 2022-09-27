@@ -4,8 +4,8 @@
 
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
-        <div class="p-2">
-                <h2>Agregar Insumo</h2>
+            <div class="p-2">
+                <a class="btn btn-success" href="{{ route('insumos.create') }}"> Crear Insumo >> </a>
             </div>
         </x-slot>
 
@@ -29,13 +29,19 @@
                     {{ $insumoSelected }} --}}
 
                 </div>
+
+
                 @if ($insumoSelected)
+                <div class="my-1 p-2">
+                    <x-jet-label>Fecha del movimiento</x-jet-label>
+                    <x-jet-input id="fecha" class="block mt-1" type="date" name="fecha" wire:model='fecha' />
+
+                </div>
                 <div class="my-1 p-2">
                     <table class="table table-bordered">
                         <tr>
                             <th>Insumo</th>
                             <th>Cantidad actual</th>
-                            <th>Unidad Medida</th>
                         </tr>
                         <tr>
                             <td>
@@ -43,9 +49,6 @@
                             </td>
                             <td>
                                 {{ $insumoSelected->cantidad }}
-                            </td>
-                            <td>
-                                {{ $insumoSelected->unidad}}
                             </td>
                         </tr>
                     </table>
@@ -65,11 +68,22 @@
                             Salida
                         </label>
                     </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento3" wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento==true) checked @endif>
+                        <label class="form-check-label" for="tipoMovimiento3">
+                            Entrada
+                        </label>
+                    </div>
                 </div>
 
                 @if ($tipoMovimiento == true)
                 <div class="my-1 p-2">
                     <x-jet-label>Cantidad de entrada</x-jet-label>
+                    <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice' min="0" />
+                </div>
+                @elseif($tipoMovimiento == true)
+                <div class="my-1 p-2">
+                    <x-jet-label>Cantidad de devolucion</x-jet-label>
                     <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice' min="0" />
                 </div>
                 @else
@@ -121,6 +135,16 @@
                     {{Auth::user()->id}}
                     {{Auth::user()->name}} --}}
                 </div>
+
+                <div class="my-1 p-2">
+                    <x-jet-label>Observaciones</x-jet-label>
+                    <textarea class="form-control" wire:model='observacion' name="observacion" id="observacion" style="height: 100px"></textarea>
+                </div>
+
+
+
+
+
                 @endif
             </div>
         </x-slot>
@@ -131,15 +155,10 @@
                 Cancelar
             </x-jet-secondary-button>
 
-            <!-- <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled" disabled="false">
+            {{-- <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled" disabled="false">
                 Guardar
-            </x-jet-button> -->
-            <button class="inline-flex items-center px-4 py-2
-             bg-gray-800 border border-transparent rounded-md 
-             font-semibold text-xs text-white uppercase tracking-widest 
-             hover:bg-gray-700 active:bg-gray-900 focus:outline-none 
-             focus:border-gray-900 focus:ring focus:ring-gray-300 
-             disabled:opacity-25 transition ml-2" {{ $disableForm ? 'disabled' : '' }} wire:click="save" wire:loading.attr="disabled">
+            </x-jet-button> --}}
+            <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-2" {{ $disableForm ? 'disabled' : '' }} wire:click="save" wire:loading.attr="disabled">
                 Guardar
             </button>
         </x-slot>

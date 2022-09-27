@@ -5,6 +5,7 @@ use App\Http\Controllers\CostoAdicionalController;
 use App\Http\Controllers\CultivoController;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\InsumoController;
+use App\Http\Controllers\MovimientoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,11 @@ Route::middleware([
     Route::resource("/cultivos", CultivoController::class);
     Route::resource("/fases", FaseController::class);
     Route::resource("/costos", CostoAdicionalController::class);
+
+    Route::resource("/actividades", ActividadController::class);
+    Route::resource("/insumos", InsumoController::class);
+    Route::resource("/movimientos", MovimientoController::class);
+
     Route::resource("/actividads", ActividadController::class);
     Route::resource("/insumos", InsumoController::class);
     Route::post("/destroy_cultivo_fase", [CultivoController::class, 'destroyCultivoFase'])->name("destroyCultivoFase"); 
