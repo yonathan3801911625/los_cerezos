@@ -4,9 +4,7 @@
 
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
-            <div class="p-2">
-            <a class="btn btn-success" href="{{ route('insumos.create') }}"> Agregar Insumo</a>
-            </div>
+
         </x-slot>
 
         <x-slot name="content">

@@ -104,7 +104,7 @@ class AgregarMovimientoInsumoModal extends Component
 
     public function save()
     {
-        DB::table('movimientos_insumos')->insert(
+        DB::table('registros_movimientos')->insert(
             [
                 'insumo_id' => $this->insumoSelected->id,
                 'fecha' => $this->fecha,
