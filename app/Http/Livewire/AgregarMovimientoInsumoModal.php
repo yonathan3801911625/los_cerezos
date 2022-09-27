@@ -81,6 +81,7 @@ class AgregarMovimientoInsumoModal extends Component
             } else {
                 $this->disableForm = false;
             }
+            
         } 
         else {
             if ($this->cantidad == 0 ||

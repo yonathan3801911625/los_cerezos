@@ -4,12 +4,14 @@
 
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
-
+        <div class="p-2">
+                <h2>Agregar Insumo</h2>
+            </div>
         </x-slot>
 
         <x-slot name="content">
             <div>
-            
+
                 <div class="my-1 p-2">
                     <x-jet-label>Nombre del insumo</x-jet-label>
                     {{-- {{ $insumos }} --}}
@@ -137,8 +139,7 @@
              font-semibold text-xs text-white uppercase tracking-widest 
              hover:bg-gray-700 active:bg-gray-900 focus:outline-none 
              focus:border-gray-900 focus:ring focus:ring-gray-300 
-             disabled:opacity-25 transition ml-2" 
-             {{ $disableForm ? 'disabled' : '' }} wire:click="save" wire:loading.attr="disabled">
+             disabled:opacity-25 transition ml-2" {{ $disableForm ? 'disabled' : '' }} wire:click="save" wire:loading.attr="disabled">
                 Guardar
             </button>
         </x-slot>
