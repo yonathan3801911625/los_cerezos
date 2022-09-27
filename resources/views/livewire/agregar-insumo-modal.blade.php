@@ -4,13 +4,12 @@
 
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
-            <div class="p-2">
-                <h2>Agregar insumo</h2>
-            </div>
+
         </x-slot>
 
         <x-slot name="content">
             <div>
+            
                 <div class="my-1 p-2">
                     <x-jet-label>Nombre del insumo</x-jet-label>
                     {{-- {{ $insumos }} --}}
