@@ -55,7 +55,7 @@ class CostoAdicionalController extends Controller
      */
     public function show(CostoAdicional $costoAdicional)
     {
-        return view('costos.ver',compact('costo'));
+        return view('costos.ver',compact('costoAdicional'));
     }
 
     /**
