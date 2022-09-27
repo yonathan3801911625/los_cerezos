@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('cultivo_fase_id');
             $table->foreign("cultivo_fase_id")->references('id')->on('cultivo_fase')->cascadeOnDelete();
             $table->foreignId("insumo_id")->constrained();
-            $table->date("fecha");
             $table->integer("cantidad");
             $table->boolean("tipo");
             $table->foreignId("user_id")->constrained();
