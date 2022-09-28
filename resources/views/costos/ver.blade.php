@@ -8,6 +8,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="block">
+                    <x-jet-label for="fecha" value="{{ __('Fecha')}}" />
+                    <x-jet-input id="fecha" class="block mt-1 w-full" type="date" name="fecha" :value="old('fecha', $costo->fecha)" required autofocus />
                     <x-jet-label for="precio" value="{{ __('Precio')}}" />
                     <x-jet-input id="precio" class="block mt-1 w-full" type="number" name="precio" :value="old('precio', $costo->precio)" required autofocus />
                     <x-jet-label for="descripcion" value="{{ __('Descripcion')}}" />
