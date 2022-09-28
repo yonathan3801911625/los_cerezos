@@ -39,9 +39,12 @@ class CostoAdicionalController extends Controller
     public function store(Request $request)
     {
         $costo = new CostoAdicional();
-        $costo->id=$request->id;
+        // $costo->id=$request->id;
+        $costo->fecha=$request->fecha;
         $costo->precio=$request->precio;
         $costo->descripcion=$request->descripcion;
+        $costo->fase_id =$request->fase;
+        $costo->actividad_id =$request->actividad;
         $costo->save();
         session()->flash("flash.banner","Costo creado de manera satisfactoria");
         return Redirect::route('costos.index');
@@ -53,7 +56,7 @@ class CostoAdicionalController extends Controller
      * @param  \App\Models\CostoAdicional  $costoAdicional
      * @return \Illuminate\Http\Response
      */
-    public function show(CostoAdicional $costoAdicional)
+    public function show(CostoAdicional $costo)
     {
         return view('costos.ver',compact('costoAdicional'));
     }
@@ -64,7 +67,7 @@ class CostoAdicionalController extends Controller
      * @param  \App\Models\CostoAdicional  $costoAdicional
      * @return \Illuminate\Http\Response
      */
-    public function edit(CostoAdicional $costoAdicional)
+    public function edit(CostoAdicional $costo)
     {
         return view('costos.edit',compact("costo"));
     }
@@ -78,8 +81,11 @@ class CostoAdicionalController extends Controller
      */
     public function update(Request $request, CostoAdicional $costo)
     {
+        $costo->fecha=$request->fecha;
         $costo->precio=$request->precio;
         $costo->descripcion=$request->descripcion;
+        $costo->fase_id =$request->fase;
+        $costo->actividad_id =$request->actividad;
         $costo->save();
         session()->flash("flash.banner","Costo modificado de manera satisfactoria");
         return Redirect::route('costos.index');

@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('costo_adicionals', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha');
             $table->longText("descripcion");
             $table->integer("precio");
+            $table->foreignId('fase_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('actividad_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
