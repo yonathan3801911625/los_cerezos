@@ -10,11 +10,11 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2">
                 <form action="{{ route('actividads.store') }}" method="post">
                     @csrf
-                    <div class="my-1">
+                    <div class="my-4">
                         <x-jet-label for="nombre">Nombre</x-jet-label>
                         <x-jet-input type="text" id="nombre" name="nombre" class="w-full" />
                     </div>
-                    <div class="my-1">
+                    <div class="my-4">
                         <x-jet-label for="estado">Estado</x-jet-label>
                         <select name="estado" id="estado">
                             <option value="finalizado">Finalizado</option>
@@ -22,15 +22,15 @@
                             <option value="pendiente">Pendiente</option>
                         </select>
                     </div>
-                    <div class="my-1">
+                    <div class="my-4">
                         <x-jet-label for="fecha_realizacion">Fecha Realizacion</x-jet-label>
                         <x-jet-input type="date" id="fecha_realizacion" name="fecha_realizacion" class="w-full" />
                     </div>
-                    <div class="my-1">
+                    <div class="my-4">
                         <x-jet-label for="valor">Valor</x-jet-label>
                         <x-jet-input type="integer" id="valor" name="valor" class="w-full" />
                     </div>
-                    <div class="my-1">
+                    <div class="my-4">
                         <x-jet-label for="observacion">Observacion</x-jet-label>
                         <x-jet-input type="longtext" id="observacion" name="observacion" class="w-full" />
                     </div>

@@ -1,15 +1,25 @@
 @csrf
 <div class="block">
-    <x-jet-label for="nombre" value="{{ __('Nombre')}}" />
-    <x-jet-input id="nombre" class="block mt-1 w-full" type="text" name="nombre" :value="old('nombre', $actividad->nombre)" required autofocus />
-    <x-jet-label for="estado" value="{{ __('Estado')}}" />
-    <x-jet-input id="estado" class="block mt-1 w-full" type="enum" name="estado" :value="old('estado', $actividad->estado)" required autofocus />
-    <x-jet-label for="fecha_realizacion" value="{{ __('Fecha Realizacion')}}" />
-    <x-jet-input id="fecha_realizacion" class="block mt-1 w-full" type="date" name="fecha_realizacion" :value="old('fecha_realizacion', $actividad->fecha_realizacion)" required autofocus />
-    <x-jet-label for="valor" value="{{ __('Valor')}}" />
-    <x-jet-input id="valor" class="block mt-1 w-full" type="integer" name="valor" :value="old('valor', $actividad->valor)" required autofocus />
-    <x-jet-label for="observacion" value="{{ __('Observacion')}}" />
-    <x-jet-input id="observacion" class="block mt-1 w-full" type="longtext" name="observacion" :value="old('observacion', $actividad->observacion)" required autofocus />
+    <div class="my-4">
+        <x-jet-label for="nombre" value="{{ __('Nombre')}}" />
+        <x-jet-input id="nombre" class="block mt-1 w-full" type="text" name="nombre" :value="old('nombre', $actividad->nombre)" required autofocus />
+    </div>
+    <div class="my-4">
+        <x-jet-label for="estado" value="{{ __('Estado')}}" />
+        <x-jet-input id="estado" class="block mt-1 w-full" type="enum" name="estado" :value="old('estado', $actividad->estado)" required autofocus />
+    </div>
+    <div class="my-4">
+        <x-jet-label for="fecha_realizacion" value="{{ __('Fecha Realizacion')}}" />
+        <x-jet-input id="fecha_realizacion" class="block mt-1 w-full" type="date" name="fecha_realizacion" :value="old('fecha_realizacion', $actividad->fecha_realizacion)" required autofocus />
+    </div>
+    <div class="my-4">
+        <x-jet-label for="valor" value="{{ __('Valor')}}" />
+        <x-jet-input id="valor" class="block mt-1 w-full" type="integer" name="valor" :value="old('valor', $actividad->valor)" required autofocus />
+    </div>
+    <div class="my-4">
+        <x-jet-label for="observacion" value="{{ __('Observacion')}}" />
+        <x-jet-input id="observacion" class="block mt-1 w-full" type="longtext" name="observacion" :value="old('observacion', $actividad->observacion)" required autofocus />
+    </div>
     <div class="flex justify-center">
         <div class="p-2">
             <div class="flex justify-end">
