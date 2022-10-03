@@ -1,5 +1,5 @@
 <div>
-    <x-jet-button wire:click="$toggle('abrirModal')">Agregar Costo
+    <x-jet-button wire:click="$toggle('abrirModal')">Agregar Costo Adicional
     </x-jet-button>
 
     <x-jet-dialog-modal wire:model="abrirModal">

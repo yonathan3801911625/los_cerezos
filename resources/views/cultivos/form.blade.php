@@ -38,6 +38,6 @@
                         Guardar
                     </x-jet-button>
             </div>
-        </div>s
+        </div>
     </div>
 </div>

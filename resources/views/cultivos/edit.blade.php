@@ -5,13 +5,19 @@
         </h2>
     </x-slot>
 
+
     <div class="p-4">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-            <div class="w-full">
+        <div class="flex justify-end">
+            <div class="py-2">
                 <a href="{{ route('cultivo.reporte', $cultivo) }}" target="_blank">
-                    <x-jet-button>Ver reporte</x-jet-button>
+                    <x-jet-button>Generar Reporte</x-jet-button>
                 </a>
             </div>
+        </div>
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
+
+
+
             <div class="my-6">
                 <form action="{{ route('cultivos.update', $cultivo) }}" method="post">
                     @method('PUT')
@@ -66,10 +72,10 @@
                         <div>
                             <div class="justify-end d-flex align-center">
                                 <livewire:agregar-insumo-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id" />
-                                <livewire:agregar-actividad-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id"/>
+                                <livewire:agregar-actividad-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id" />
                                 <livewire:agregar-costos-modal />
                                 <livewire:ver-cultivo-fase-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id" />
-                                
+
                             </div>
                         </div>
                     </div>
