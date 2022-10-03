@@ -8,6 +8,8 @@ use App\Models\Fase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class CultivoController extends Controller
 {
@@ -79,27 +81,25 @@ class CultivoController extends Controller
             ->where('cultivo_id', $cultivo->id)
             // ->select('cultivos.nombre as nombre_cultivo','fases.nombre as nombre_fase', 'fases.*')
             ->select('fases.nombre as nombre_fase', 'cultivo_fase.created_at')
-            ->join('cultivos', 'cultivo_fase.cultivo_id','=','cultivos.id')
-            ->join('fases', 'cultivo_fase.fase_id','=','fases.id')
+            ->join('cultivos', 'cultivo_fase.cultivo_id', '=', 'cultivos.id')
+            ->join('fases', 'cultivo_fase.fase_id', '=', 'fases.id')
             ->get();
-        
-            // $faseActividad = DB::table('fase_actividad')
-            // ->where('cultivo_id', $cultivo->id)
-            // ->get();
-            
+
+        // $faseActividad = DB::table('fase_actividad')
+        // ->where('cultivo_id', $cultivo->id)
+        // ->get();
+
 
         return view('cultivos.ver', [
-            'cultivo' => $cultivo ,
+            'cultivo' => $cultivo,
             'fasesCultivo' => $fasesCultivo,
             // 'fasesActividad' => $fasesActividad
         ]);
-        
     }
 
     public function showCultivo(Cultivo $cultivo)
     {
         return view('cultivos.vercultivo', compact('cultivo'));
-        
     }
 
     /**
@@ -117,9 +117,9 @@ class CultivoController extends Controller
         $cultivoFases =  DB::table('cultivo_fase')
             ->select('cultivo_fase.id as cultivo_fase_id', 'fases.nombre', 'cultivo_fase.cultivo_id')
             ->where('cultivo_id', $cultivo->id)
-            ->join('fases', 'cultivo_fase.fase_id','=','fases.id')
+            ->join('fases', 'cultivo_fase.fase_id', '=', 'fases.id')
             ->get();
-        
+
 
         return view("cultivos.edit", [
             "cultivo" => $cultivo,
@@ -149,9 +149,8 @@ class CultivoController extends Controller
         if (count($faseExists) <= 0) {
             $fase = Fase::findOrFail($request->fase);
             $cultivo->fases()->attach($fase);
-        }
-        else{
-            session()->flash("flash.banner","No se puede agregar fase por que esta ya se encuentra creada");
+        } else {
+            session()->flash("flash.banner", "No se puede agregar fase por que esta ya se encuentra creada");
         }
         // die;
 
@@ -183,4 +182,14 @@ class CultivoController extends Controller
         return Redirect::route("cultivos.edit", $cultivo_id);
     }
 
+    public function reporte(Cultivo $cultivo)
+    {
+        $fases =  DB::table('cultivo_fase')
+            ->select('cultivo_fase.id as cultivo_fase_id', 'fases.nombre', 'cultivo_fase.cultivo_id')
+            ->where('cultivo_id', $cultivo->id)
+            ->join('fases', 'cultivo_fase.fase_id', '=', 'fases.id')
+            ->get();
+        $pdf = Pdf::loadview('cultivos.reporte', compact("cultivo", "fases"));
+        return $pdf->stream();
+    }
 }

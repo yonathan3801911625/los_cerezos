@@ -7,7 +7,11 @@
 
     <div class="p-4">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-
+            <div class="w-full">
+                <a href="{{ route('cultivo.reporte', $cultivo) }}" target="_blank">
+                    <x-jet-button>Ver reporte</x-jet-button>
+                </a>
+            </div>
             <div class="my-6">
                 <form action="{{ route('cultivos.update', $cultivo) }}" method="post">
                     @method('PUT')
