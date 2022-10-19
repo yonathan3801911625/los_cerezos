@@ -13,7 +13,7 @@
                         <x-jet-button>Crear</x-jet-button>
                     </a>
                 </div>
-                
+
             </div>
         </div>
 
@@ -46,8 +46,8 @@
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Acciones
                                             </th>
-                                            
-                        
+
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,14 +69,8 @@
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {{ $costo->descripcion }}
                                                 </td>
-                                                <td
-                                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    {{ $costo->fase->nombre }}</td>
-                                                <td
-                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $costo->actividad->nombre }}
-                                                </td>
-                    
+
+
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     <a href="{{ route('costos.show', $costo) }}">
@@ -91,7 +85,7 @@
                                                         <button class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out " type="submit"  >
                                                            Eliminar
                                                         </button>
-                                                   
+
                                                     </form>
                                                 </td>
                                             </tr>
@@ -105,4 +99,4 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+</x-app-layout>

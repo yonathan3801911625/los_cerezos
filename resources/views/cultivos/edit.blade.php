@@ -47,10 +47,10 @@
                                 @method('POST')
                                 <input type="hidden" name="cultivo_fase_id" value="{{ $cultivo_fase->cultivo_fase_id }}">
                                 <input type="hidden" name="cultivo_id" value="{{ $cultivo_fase->cultivo_id }}">
-                                <button class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs 
-                            leading-tight uppercase rounded 
-                            shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 
-                            focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg 
+                                <button class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs
+                            leading-tight uppercase rounded
+                            shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700
+                            focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg
                             transition duration-150 ease-in-out " type="submit">
                                     Eliminar
                                 </button>
@@ -63,9 +63,9 @@
                             <div class="justify-end d-flex align-center">
                                 <livewire:agregar-insumo-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id" />
                                 <livewire:agregar-actividad-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id"/>
-                                <livewire:agregar-costos-modal />
+                                <livewire:agregar-costos-modal  ::cultivo_fase_id="$cultivo_fase->cultivo_fase_id"/>
                                 <livewire:ver-cultivo-fase-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id" />
-                                
+
                             </div>
                         </div>
                     </div>
