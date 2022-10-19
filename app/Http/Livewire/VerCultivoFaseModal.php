@@ -26,10 +26,14 @@ class VerCultivoFaseModal extends Component
     public $actividad;
     public $movimientosActividad;
 
+
+    public $costo;
+
+
     public $cantidad = 0;
     public $valor = 0;
 
-    
+
 
 
     public function mount()
@@ -53,10 +57,10 @@ class VerCultivoFaseModal extends Component
         $this->movimientosInsumos =  DB::table('movimientos_insumos')
             ->select(
                 'insumos.nombre as nombre_insumo',
-                'movimientos_insumos.tipo as tipo_movimiento', 
-                'movimientos_insumos.cantidad as cantidad_movimientos_insumos', 
-                'insumos.precio as precio_insumo', 
-                'movimientos_insumos.created_at as fecha_movimiento', 
+                'movimientos_insumos.tipo as tipo_movimiento',
+                'movimientos_insumos.cantidad as cantidad_movimientos_insumos',
+                'insumos.precio as precio_insumo',
+                'movimientos_insumos.created_at as fecha_movimiento',
             )
             ->where('cultivo_fase_id', $this->cultivo_fase_id)
             ->join('insumos', 'movimientos_insumos.insumo_id', '=', 'insumos.id')
@@ -72,10 +76,26 @@ class VerCultivoFaseModal extends Component
                 'actividads.nombre as nombre_actividad',
                 'movimientos_actividad.cantidad as cantidad_movimiento',
                 'movimientos_actividad.valor as valor_movimiento',
-                'movimientos_actividad.created_at as fecha_movimiento',  
+                'movimientos_actividad.created_at as fecha_movimiento',
             )
             ->where('cultivo_fase_id', $this->cultivo_fase_id)
             ->join('actividads', 'movimientos_actividad.actividad_id', '=', 'actividads.id')
+            // ->select('fases.nombre as nombre_fase', 'cultivo_fase.created_at')
+            // ->join('cultivos', 'cultivo_fase.cultivo_id', '=', 'cultivos.id')
+            // ->join('fases', 'cultivo_fase.fase_id', '=', 'fases.id')
+            ->get();
+    }
+    public function loadCostos() {
+        $this->movimientosInsumos =  DB::table('movimientos_insumos')
+            ->select(
+                'insumos.nombre as nombre_insumo',
+                'movimientos_insumos.tipo as tipo_movimiento',
+                'movimientos_insumos.cantidad as cantidad_movimientos_insumos',
+                'insumos.precio as precio_insumo',
+                'movimientos_insumos.created_at as fecha_movimiento',
+            )
+            ->where('cultivo_fase_id', $this->cultivo_fase_id)
+            ->join('insumos', 'movimientos_insumos.insumo_id', '=', 'insumos.id')
             // ->select('fases.nombre as nombre_fase', 'cultivo_fase.created_at')
             // ->join('cultivos', 'cultivo_fase.cultivo_id', '=', 'cultivos.id')
             // ->join('fases', 'cultivo_fase.fase_id', '=', 'fases.id')
@@ -88,11 +108,11 @@ class VerCultivoFaseModal extends Component
         return view('livewire.ver-cultivo-fase-modal');
     }
 
-    
+
 
     public function show()
     {
-        
+
 
         // $faseActividad = DB::table('fase_actividad')
         // ->where('cultivo_id', $cultivo->id)

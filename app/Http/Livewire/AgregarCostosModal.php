@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class AgregarCostosModal extends Component
 {
-    public $disableForm;
+    public bool $disableForm = false;
     public bool $abrirModal = false;
     public $fecha;
     public $precio;

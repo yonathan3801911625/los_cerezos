@@ -40,7 +40,7 @@ class MovimientoController extends Controller
     public function store(Request $request)
     {
         $movimiento = new Movimiento();
-        $insumo = insumo::find($request->insumo);  
+        $insumo = insumo::find($request->insumo);
         $movimiento->insumo_id = $request->insumo;
         $movimiento->tipoMovimiento = $request->tipoMovimiento;
         $movimiento->cantidad = $request->cantidad;
@@ -70,7 +70,7 @@ class MovimientoController extends Controller
      */
     public function show(Movimiento $movimiento)
     {
-        //
+        return view('movimientos.ver',compact('movimiento'));
     }
 
     /**
@@ -97,7 +97,7 @@ class MovimientoController extends Controller
         $movimiento->tipoMovimiento = $request->tipoMovimiento;
         $movimiento->cantidad = $request->cantidad;
         $movimiento->valor = $request->valor;
-        $movimiento->fecha = $request->fecha;      
+        $movimiento->fecha = $request->fecha;
 
         $movimiento->save();
         session()->flash("flash.banner","Movimiento Creado Satisfatoriamente");
@@ -113,7 +113,6 @@ class MovimientoController extends Controller
     public function destroy(Movimiento $movimiento)
     {
         $movimiento->delete();
-        session()->flash("flash.banner","Insumo Eliminado Satisfatoriamente");
-        return Redirect::route("productos.index");
+        return back()->with("flash.banner", "Movimiento eliminada de manera exitosa");
     }
 }

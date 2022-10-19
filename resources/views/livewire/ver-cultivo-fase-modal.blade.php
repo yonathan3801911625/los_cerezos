@@ -11,8 +11,8 @@
         </x-slot>
         <x-slot name="content">
             {{-- {{ $insumos }} --}}
-            <div class="border-gray-300 focus:border-indigo-300 
-                        focus:ring focus:ring-indigo-200 focus:ring-opacity-50 
+            <div class="border-gray-300 focus:border-indigo-300
+                        focus:ring focus:ring-indigo-200 focus:ring-opacity-50
                         rounded-md shadow-sm w-full" wire:model="keyInsumoSelected">
 
                 @foreach ($insumos as $key => $insumoSelected)
@@ -97,6 +97,35 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Costos Adicionales
+                            </button>
+                        </h2>
+                        {{-- <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                            <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Precio</th>
+                                            <th>Descripcion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($costos as $item)
+                                        <tr>
+                                            <td>{{$item->fecha}}</td>
+                                            <td>{{$item->precio}}</td>
+                                            <td>{{$item->fecha}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

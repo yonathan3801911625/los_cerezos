@@ -13,14 +13,14 @@
             <div class="my-1 p-2">
                 <div class="block">
                     <x-jet-label for="fecha" value="{{ __('Fecha') }}" />
-                    <x-jet-input id="fecha" class="block mt-1 w-full" wire:model='fecha' type="date" name="fecha" :value="old('fecha')"
-                        required autofocus />
+                    <x-jet-input id="fecha" class="block mt-1 w-full" wire:model='fecha' type="date" name="fecha"
+                        :value="old('fecha')" required autofocus />
                     <x-jet-label for="precio" value="{{ __('Precio') }}" />
-                    <x-jet-input id="precio" class="block mt-1 w-full"  wire:model='precio' type="number" name="precio"
-                        :value="old('precio')" required autofocus />
+                    <x-jet-input id="precio" class="block mt-1 w-full" wire:model='precio' type="number"
+                        name="precio" :value="old('precio')" required autofocus />
                     <x-jet-label for="descripcion" value="{{ __('Descripcion') }}" />
-                    <x-jet-input id="descripcion" class="block mt-1 w-full" wire:model='descripcion' type="text" name="descripcion"
-                        :value="old('descripcion')" required autofocus />
+                    <x-jet-input id="descripcion" class="block mt-1 w-full" wire:model='descripcion' type="text"
+                        name="descripcion" :value="old('descripcion')" required autofocus />
                 </div>
 
         </x-slot>
