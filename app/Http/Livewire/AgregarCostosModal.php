@@ -14,7 +14,8 @@ class AgregarCostosModal extends Component
     public $fecha;
     public $precio;
     public $descripcion;
-    public $costo;
+    public $costos;
+    public $costosAdicionales;
 
     // public function mount()
     // {
@@ -52,7 +53,20 @@ class AgregarCostosModal extends Component
         $this->descripcion = null;
     }
 
+    public function verCosto() {
+        $this->costosAdicionales =  DB::table('costo_adicionals')
+            ->select(
+                'costo_adicionals.fecha as fecha_movimiento',
+                'costo_adicionals.precio as precio_costo',
+                'costo_adicionals.observacion as observacion_costo',
+            )
+            ->join('costo', 'costo_adicionals.costo_id', '=', 'costos.id')
+            ->get();
+    }
 
+
+
+    //otras maneras de guardar
     // public function insert(Request $request){
     //     $fecha = $request->input('fecha');
     //     $precio = $request->input('precio');
