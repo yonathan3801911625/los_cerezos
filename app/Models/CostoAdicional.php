@@ -24,4 +24,5 @@ class CostoAdicional extends Model
     {
         return $this->belongsToMany(Insumo::class);
     }
+
 }

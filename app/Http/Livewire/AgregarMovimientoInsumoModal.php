@@ -18,6 +18,7 @@ class AgregarMovimientoInsumoModal extends Component
     public $insumos = null;
     public $keyInsumoSelected;
     public $insumoSelected;
+    public $registro_movimientos;
 
     public $cantidad = 0;
     public bool $disableForm = true;
@@ -74,15 +75,15 @@ class AgregarMovimientoInsumoModal extends Component
 
     public function validateForm() {
         if(!$this->tipoMovimiento) {
-            if ($this->cantidad > $this->insumoSelected->cantidad || 
+            if ($this->cantidad > $this->insumoSelected->cantidad ||
                 $this->cantidad == 0 ||
                 $this->cantidad == null) {
                 $this->disableForm = true;
             } else {
                 $this->disableForm = false;
             }
-            
-        } 
+
+        }
         else {
             if ($this->cantidad == 0 ||
                 $this->cantidad == null) {
@@ -105,7 +106,7 @@ class AgregarMovimientoInsumoModal extends Component
 
     public function save()
     {
-        DB::table('registros_movimientos')->insert(
+        DB::table('movimientos')->insert(
             [
                 'insumo_id' => $this->insumoSelected->id,
                 'fecha' => $this->fecha,
@@ -131,6 +132,19 @@ class AgregarMovimientoInsumoModal extends Component
         $this->abrirModal = false;
         $this->cantidad = 0;
         $this->tipoMovimiento = true;
+    }
+
+    public function verMovimiento() {
+        $this->movimientosActividad =  DB::table('registros_movimientos')
+            ->select(
+                'registros_movimientos.insumo_id as insumo_id_movimiento',
+                'registros_movimientos.fecha as fecha_movimiento',
+                'registros_movimientos.cantidad as cantidad_movimiento',
+                'registros_movimientos.tipo as tipo_movimiento',
+                'registros_movimientos.observacion as observacion_movimiento',
+            )
+            ->join('movimientos', 'registros_movimientos.movimiento_id', '=', 'movimientos.id')
+            ->get();
     }
 
 
@@ -175,7 +189,7 @@ class AgregarMovimientoInsumoModal extends Component
     // public function save(){
 
 
-    // // 
+    // //
     // //     $insumo = new Insumo();
     // //     $insumo->nombre = $this->nombre;
     // //     $insumo->unidad = $this->unidad;

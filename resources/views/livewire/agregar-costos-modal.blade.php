@@ -10,19 +10,19 @@
         </x-slot>
 
         <x-slot name="content">
-        <div>
             <div class="my-1 p-2">
-                    <x-jet-label>Nombre del costo</x-jet-label>
-                    {{--{{ $costos }} --}}
-                    <select class="border-gray-300 focus:border-indigo-300 
-                        focus:ring focus:ring-indigo-200 focus:ring-opacity-50 
-                        rounded-md shadow-sm w-full" wire:model="keyCostoSelected" wire:change='onChangeCosto'>
-                        <option value="">-- Seleccione el costo--</option>
-                    </select>
-            </div>
-        </div>
-        
-            
+                <div class="block">
+                    <x-jet-label for="fecha" value="{{ __('Fecha') }}" />
+                    <x-jet-input id="fecha" class="block mt-1 w-full" wire:model='fecha' type="date" name="fecha"
+                        :value="old('fecha')" required autofocus />
+                    <x-jet-label for="precio" value="{{ __('Precio') }}" />
+                    <x-jet-input id="precio" class="block mt-1 w-full" wire:model='precio' type="number"
+                        name="precio" :value="old('precio')" required autofocus />
+                    <x-jet-label for="descripcion" value="{{ __('Descripcion') }}" />
+                    <x-jet-input id="descripcion" class="block mt-1 w-full" wire:model='descripcion' type="text"
+                        name="descripcion" :value="old('descripcion')" required autofocus />
+                </div>
+
         </x-slot>
 
         <x-slot name="footer">
@@ -32,8 +32,7 @@
 
             <button
                 class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-2"
-                {{ $disableForm ? 'disabled' : '' }}
-                wire:click="save" wire:loading.attr="disabled">
+                {{ $disableForm ? 'disabled' : '' }} wire:click="save" wire:loading.attr="disabled">
                 Guardar
             </button>
         </x-slot>

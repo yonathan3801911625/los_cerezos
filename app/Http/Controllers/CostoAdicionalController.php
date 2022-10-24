@@ -6,6 +6,7 @@ use App\Models\CostoAdicional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
+
 class CostoAdicionalController extends Controller
 {
     /**
@@ -43,8 +44,7 @@ class CostoAdicionalController extends Controller
         $costo->fecha=$request->fecha;
         $costo->precio=$request->precio;
         $costo->descripcion=$request->descripcion;
-        $costo->fase_id =$request->fase;
-        $costo->actividad_id =$request->actividad;
+
         $costo->save();
         session()->flash("flash.banner","Costo creado de manera satisfactoria");
         return Redirect::route('costos.index');
@@ -84,8 +84,6 @@ class CostoAdicionalController extends Controller
         $costo->fecha=$request->fecha;
         $costo->precio=$request->precio;
         $costo->descripcion=$request->descripcion;
-        $costo->fase_id =$request->fase;
-        $costo->actividad_id =$request->actividad;
         $costo->save();
         session()->flash("flash.banner","Costo modificado de manera satisfactoria");
         return Redirect::route('costos.index');

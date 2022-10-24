@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('movimientos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('insumo_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('tipoMovimiento');
-            $table->integer('cantidad');
-            $table->integer('valor');
-            $table->date('fecha');
+            $table->foreignId("insumo_id")->constrained();
+            $table->date("fecha");
+            $table->integer("cantidad");
+            $table->boolean("tipo");
+            $table->foreignId("user_id")->constrained();
+            $table->string("observacion");
             $table->timestamps();
         });
     }

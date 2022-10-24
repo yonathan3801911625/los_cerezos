@@ -1,5 +1,5 @@
 <div>
-    <x-jet-button wire:click="$toggle('abrirModal')">Agregar Insumo
+    <x-jet-button wire:click="$toggle('abrirModal')">Agregar Movimiento
     </x-jet-button>
 
     <x-jet-dialog-modal wire:model="abrirModal">
@@ -15,8 +15,8 @@
                 <div class="my-1 p-2">
                     <x-jet-label>Nombre del insumo</x-jet-label>
                     {{-- {{ $insumos }} --}}
-                    <select class="border-gray-300 focus:border-indigo-300 
-                        focus:ring focus:ring-indigo-200 focus:ring-opacity-50 
+                    <select class="border-gray-300 focus:border-indigo-300
+                        focus:ring focus:ring-indigo-200 focus:ring-opacity-50
                         rounded-md shadow-sm w-full" wire:model="keyInsumoSelected" wire:change='onChangeInsumo'>
                         <option value="">-- Seleccione el insumo --</option>
                         @foreach ($insumos as $key => $insumo)
@@ -76,12 +76,12 @@
                     </div>
                 </div>
 
-                @if ($tipoMovimiento == true)
+                @if ($tipoMovimiento == 1)
                 <div class="my-1 p-2">
                     <x-jet-label>Cantidad de entrada</x-jet-label>
                     <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice' min="0" />
                 </div>
-                @elseif($tipoMovimiento == true)
+                @elseif($tipoMovimiento == 2)
                 <div class="my-1 p-2">
                     <x-jet-label>Cantidad de devolucion</x-jet-label>
                     <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice' min="0" />

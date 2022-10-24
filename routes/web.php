@@ -6,6 +6,7 @@ use App\Http\Controllers\CultivoController;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\MovimientoController;
+use App\Http\Livewire\AgregarCostosModal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,4 +44,5 @@ Route::middleware([
     Route::resource("/actividads", ActividadController::class);
     Route::resource("/insumos", InsumoController::class);
     Route::post("/destroy_cultivo_fase", [CultivoController::class, 'destroyCultivoFase'])->name("destroyCultivoFase");
+    Route::resource("/livewire", AgregarCostosModal::class);
 });
