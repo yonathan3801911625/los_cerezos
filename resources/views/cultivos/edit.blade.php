@@ -72,13 +72,8 @@
                         <div>
                             <div class="justify-end d-flex align-center">
                                 <livewire:agregar-insumo-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id" />
-<<<<<<< HEAD
                                 <livewire:agregar-actividad-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id" />
                                 <livewire:agregar-costos-modal />
-=======
-                                <livewire:agregar-actividad-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id"/>
-                                <livewire:agregar-costos-modal  ::cultivo_fase_id="$cultivo_fase->cultivo_fase_id"/>
->>>>>>> origin/master
                                 <livewire:ver-cultivo-fase-modal :cultivo_fase_id="$cultivo_fase->cultivo_fase_id" />
 
                             </div>
