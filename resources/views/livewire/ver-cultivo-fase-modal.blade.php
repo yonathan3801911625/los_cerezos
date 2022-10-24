@@ -125,11 +125,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($movimientosActividad as $item)
+                                            @foreach ($costos as $item)
                                                 <tr>
                                                     <td>{{ $item->fecha }}</td>
                                                     <td>{{ $item->precio }}</td>
-                                                    <td>{{ $item->fecha }}</td>
+                                                    <td>{{ $item->descripcion }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
