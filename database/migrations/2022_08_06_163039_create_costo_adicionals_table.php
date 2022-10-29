@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->longText("descripcion");
             $table->integer("precio");
+            $table->foreignId("user_id")->constrained();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

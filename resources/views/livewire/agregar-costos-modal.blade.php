@@ -21,6 +21,25 @@
                 <x-jet-input id="descripcion" class="block mt-1 w-full" wire:model='descripcion' type="text"
                     name="descripcion" :value="old('descripcion')" required autofocus />
             </div>
+            <table class="table table-bordered m-2 p-2">
+                <tr>
+                    <th>Id Usuario</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                </tr>
+                <tr>
+
+                    <td>
+                        {{Auth::user()->id}}
+                    </td>
+                    <td>
+                        {{Auth::user()->name}}
+                    </td>
+                    <td>
+                        {{Auth::user()->email}}
+                    </td>
+                </tr>
+            </table>
 
 
 

@@ -33,7 +33,10 @@ Route::middleware([
         return view("dashboard");
     })->name("dashboard");
     Route::resource("/cultivos", CultivoController::class);
-    Route::get("/cultivos/reporte/{cultivo}", [CultivoController::class, "reporte"])->name("cultivo.reporte");
+    Route::post("/cultivos/reporte/{cultivo}", [CultivoController::class, "reporte"])->name("cultivos.reporte");
+    Route::put("/cultivos/updateCultivo/{cultivo}", [CultivoController::class, "updateCultivo"])->name("cultivos.updateCultivo");
+
+    Route::get("/cultivos/extras/{cultivo}", [CultivoController::class, 'extras'])->name("cultivos.extras");
     Route::resource("/fases", FaseController::class);
     Route::resource("/costos", CostoAdicionalController::class);
 
@@ -44,5 +47,6 @@ Route::middleware([
     Route::resource("/actividads", ActividadController::class);
     Route::resource("/insumos", InsumoController::class);
     Route::post("/destroy_cultivo_fase", [CultivoController::class, 'destroyCultivoFase'])->name("destroyCultivoFase");
+    // Route::get("/editar", [CultivoController::class, 'cultivos.editar'])->name("editar");
     Route::resource("/livewire", AgregarCostosModal::class);
 });

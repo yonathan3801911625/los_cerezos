@@ -76,13 +76,16 @@
                                                 <a href="{{ route('cultivos.show', $cultivo) }}">
                                                     <x-jet-button>Ver</x-jet-button>
                                                 </a>
+                                                <a href="{{ route('cultivos.extras', $cultivo) }}">
+                                                    <x-jet-button>Extras</x-jet-button>
+                                                </a>
                                                 <a href="{{ route('cultivos.edit', $cultivo) }}">
-                                                    <x-jet-button>Agregar</x-jet-button>
+                                                    <x-jet-button>Editar</x-jet-button>
                                                 </a>
                                                 <form action="{{route('cultivos.destroy', $cultivo)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs 
+                                                    <button class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs
                                                     leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out " type="submit">
                                                         Eliminar
                                                     </button>
@@ -102,6 +105,6 @@
         </div>
     </div>
 
-    
+
 
 </x-app-layout>

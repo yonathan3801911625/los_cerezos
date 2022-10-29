@@ -57,19 +57,19 @@
                 <div class="my-1 p-2">
                     <x-jet-label>Tipo de movimiento</x-jet-label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento1" wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento==true) checked @endif>
+                        <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento1" wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento=='devolucion') checked @endif>
                         <label class="form-check-label" for="tipoMovimiento1">
                             Devolucion
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento2" wire:click="setTipoMovimiento(false)" @if ($tipoMovimiento==false) checked @endif>
+                        <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento2" wire:click="setTipoMovimiento(false)" @if ($tipoMovimiento=='salida') checked @endif>
                         <label class="form-check-label" for="tipoMovimiento2">
                             Salida
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento3" wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento==true) checked @endif>
+                        <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento3" wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento=='entrada') checked @endif>
                         <label class="form-check-label" for="tipoMovimiento3">
                             Entrada
                         </label>
@@ -81,7 +81,7 @@
                     <x-jet-label>Cantidad de entrada</x-jet-label>
                     <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice' min="0" />
                 </div>
-                @elseif($tipoMovimiento == 2)
+                @elseif($tipoMovimiento == true)
                 <div class="my-1 p-2">
                     <x-jet-label>Cantidad de devolucion</x-jet-label>
                     <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice' min="0" />

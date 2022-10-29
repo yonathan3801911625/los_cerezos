@@ -73,14 +73,14 @@ class AgregarInsumoModal extends Component
 
     public function validateForm() {
         if(!$this->tipoMovimiento) {
-            if ($this->cantidad > $this->insumoSelected->cantidad || 
+            if ($this->cantidad > $this->insumoSelected->cantidad ||
                 $this->cantidad == 0 ||
                 $this->cantidad == null) {
                 $this->disableForm = true;
             } else {
                 $this->disableForm = false;
             }
-        } 
+        }
         else {
             if ($this->cantidad == 0 ||
                 $this->cantidad == null) {
@@ -173,7 +173,7 @@ class AgregarInsumoModal extends Component
     // public function save(){
 
 
-    // // 
+    // //
     // //     $insumo = new Insumo();
     // //     $insumo->nombre = $this->nombre;
     // //     $insumo->unidad = $this->unidad;

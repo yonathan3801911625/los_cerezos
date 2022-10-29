@@ -110,6 +110,11 @@ class CultivoController extends Controller
      */
     public function edit(Cultivo $cultivo)
     {
+        return view('cultivos.edit', compact("cultivo"));
+    }
+
+    public function extras(Cultivo $cultivo)
+    {
         // $cultivo = Cultivo::all();
         // $insumo = Insumo::all();
         // $actividad = Actividad::all();
@@ -121,7 +126,7 @@ class CultivoController extends Controller
             ->get();
 
 
-        return view("cultivos.edit", [
+        return view("cultivos.extras", [
             "cultivo" => $cultivo,
             "cultivo_fases" => $cultivoFases,
             "actividad" => Actividad::all(),
@@ -129,6 +134,7 @@ class CultivoController extends Controller
             // "insumo" => Insumo::all()
         ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -154,7 +160,7 @@ class CultivoController extends Controller
         }
         // die;
 
-        return Redirect::route("cultivos.edit", $cultivo);
+        return Redirect::route("cultivos.extras", $cultivo);
     }
 
     /**
@@ -163,9 +169,11 @@ class CultivoController extends Controller
      * @param  \App\Models\Cultivo  $cultivo
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Cultivo $cultivo)
     {
-        //
+        $cultivo->delete();
+        return back()->with("flash.banner", "Actividad eliminada de manera exitosa");
     }
 
 
@@ -176,10 +184,11 @@ class CultivoController extends Controller
         // dd( $request->cultivo_fase);
         $cultivo_fase_id = json_decode($request->cultivo_fase_id);
         $cultivo_id = json_decode($request->cultivo_id);
+        $cultivo_costo_id = json_decode($request->cultivo_costo_id);
         // dd( $cultivo_fase);
         // die;
         DB::table('cultivo_fase')->where('id', $cultivo_fase_id)->delete();
-        return Redirect::route("cultivos.edit", $cultivo_id);
+        return Redirect::route("cultivos.extras", $cultivo_id);
     }
 
     public function reporte(Cultivo $cultivo)
@@ -189,7 +198,21 @@ class CultivoController extends Controller
             ->where('cultivo_id', $cultivo->id)
             ->join('fases', 'cultivo_fase.fase_id', '=', 'fases.id')
             ->get();
-        $pdf = Pdf::loadview('cultivos.reporte', compact("cultivo", "fases"));
+        $pdf = pdf::loadview('cultivos.reporte', compact("cultivo", "fases"));
         return $pdf->stream();
+    }
+
+
+    public function updateCultivo(Request $request, Cultivo $cultivo)
+    {
+        $cultivo->nombre  = $request->nombre;
+        $cultivo->fecha_inicio  = $request->fecha_inicio;
+        $cultivo->fecha_cosecha  = $request->fecha_cosecha;
+        $cultivo->area_terreno  = $request->area_terreno;
+        $cultivo->densidad  = $request->densidad;
+        $cultivo->tipo  = $request->tipo;
+        $cultivo->save();
+        session()->flash("flash.banner","Actividad modificada de manera satisfactoria");
+        return Redirect::route("cultivos.index");
     }
 }

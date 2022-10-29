@@ -26,7 +26,10 @@
 
     <div class="my-2 px-6">
         <x-jet-label for="tipo" value="{{ __('Tipo Cultivo')}}" />
-        <x-jet-input id="tipo" class="block mt-1 w-full" type="enum" name="tipo" :value="old('tipo', $cultivo->tipo)" required autofocus />
+        <select name="tipo" id="tipo">
+            <option value="corta duración">Corta duración</option>
+            <option value="perenne">Perenne</option>
+        </select>
     </div>
 
 

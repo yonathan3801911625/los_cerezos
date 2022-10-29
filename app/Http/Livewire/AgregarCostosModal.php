@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -11,6 +12,7 @@ class AgregarCostosModal extends Component
 {
     public bool $disableForm = false;
     public bool $abrirModal = false;
+    public $cultivo_fase_id = null;
     public $fecha;
     public $precio;
     public $descripcion;
@@ -36,10 +38,11 @@ class AgregarCostosModal extends Component
         $this->disableForm = false;
         DB::table('costo_adicionals')->insert(
             [
+                // 'cultivo_fase_id' => $this->cultivo_fase_id,
                 'fecha' => $this->fecha,
                 'precio' => $this->precio,
                 'descripcion' => $this->descripcion,
-
+                'user_id' => Auth::user()->id,
             ]
 
 

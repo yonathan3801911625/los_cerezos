@@ -106,15 +106,15 @@
                                                     </a>
                                                     <a href="{{ route('insumos.edit', $insumo) }}">
                                                         <x-jet-button>Editar</x-jet-button>
-                                                    </a> 
-                                                    
+                                                    </a>
+
                                                     <form action="{{ route('insumos.destroy', $insumo) }}"
                                                         method="post">
                                                         @method('DELETE')
                                                         @csrf
                                                         <x-jet-danger-button type="submit" class="display:containt">Eliminar
                                                         </x-jet-danger-button>
-                                                    
+
                                                     </form>
                                                 </td>
                                             </tr>
