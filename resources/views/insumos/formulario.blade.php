@@ -28,8 +28,13 @@
         <x-jet-input id="cantidad" class="block mt-1 w-full" type="number" name="cantidad" :value="old('cantidad', $insumo->cantidad)" required autofocus />
     </div>
     <div class="my-2 px-6">
-        <x-jet-label for="tipo" value="{{ __('Tipo') }}" />
-        <x-jet-input id="tipo" class="block mt-1 w-full" type="text" name="tipo" :value="old('tipo', $insumo->tipo)" required autofocus />
+        <x-jet-label for="tipo">Estado</x-jet-label>
+        <select name="tipo" id="tipo">
+            <option value="Fungicidas">Fungicidas</option>
+            <option value="Insecticidas">Insecticidas</option>
+            <option value="Herbicidas">Herbicidas</option>
+            <option value="Fertilizantes">Fertilizantes</option>
+        </select>
     </div>
     <div class="my-2 px-6">
         <x-jet-label for="fecha_vencimiento" value="{{ __('Fecha_vencimiento') }}" />

@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string("unidad");
             $table->integer("precio");
             $table->integer("cantidad")->default(0);
-            $table->string("tipo");
+            $table->enum("tipo", ["Fungicidas",
+            "Insecticidas", "Herbicidas",
+            "Fertilizantes"]);
             $table->date("fecha_vencimiento");
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();

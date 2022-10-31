@@ -25,25 +25,32 @@
                                 <table class="min-w-full">
                                     <thead class="border-b">
                                         <tr>
-                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Nombre
                                             </th>
-                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Fecha Inicio
                                             </th>
-                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Fecha Cosecha
                                             </th>
-                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Area Terreno
                                             </th>
-                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Densidad
                                             </th>
-                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Tipo Cultivo
                                             </th>
-                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Acciones
                                             </th>
 
@@ -52,47 +59,57 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($cultivos as $cultivo)
-                                        <tr class="border-b">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                {{ $cultivo->nombre }}
-                                            </td>
-                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $cultivo->fecha_inicio }}
-                                            </td>
-                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $cultivo->fecha_cosecha }}
-                                            </td>
-                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $cultivo->area_terreno }}
-                                            </td>
-                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $cultivo->densidad }}
-                                            </td>
-                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $cultivo->tipo }}
-                                            </td>
+                                            <tr class="border-b">
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                    {{ $cultivo->nombre }}
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{ $cultivo->fecha_inicio }}
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{ $cultivo->fecha_cosecha }}
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{ $cultivo->area_terreno }}
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{ $cultivo->densidad }}
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{ $cultivo->tipo }}
+                                                </td>
 
-                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <a href="{{ route('cultivos.show', $cultivo) }}">
-                                                    <x-jet-button>Ver</x-jet-button>
-                                                </a>
-                                                <a href="{{ route('cultivos.extras', $cultivo) }}">
-                                                    <x-jet-button>Extras</x-jet-button>
-                                                </a>
-                                                <a href="{{ route('cultivos.edit', $cultivo) }}">
-                                                    <x-jet-button>Editar</x-jet-button>
-                                                </a>
-                                                <form action="{{route('cultivos.destroy', $cultivo)}}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs
-                                                    leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out " type="submit">
-                                                        Eliminar
-                                                    </button>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    <a href="{{ route('cultivos.show', $cultivo) }}">
+                                                        <x-jet-button>Ver</x-jet-button>
+                                                    </a>
+                                                    <a href="{{ route('cultivos.extras', $cultivo) }}">
+                                                        <x-jet-button>Agregar Fase</x-jet-button>
+                                                    </a>
+                                                    <a href="{{ route('cultivos.edit', $cultivo) }}">
+                                                        <x-jet-button>Editar</x-jet-button>
+                                                    </a>
+                                                    <form action="{{ route('cultivos.destroy', $cultivo) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button
+                                                            class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs
+                                                    leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out "
+                                                            type="submit">
+                                                            Eliminar
+                                                        </button>
 
-                                                </form>
-                                            </td>
-                                        </tr>
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>

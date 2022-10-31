@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end">
                 <div class="py-2">
-                    <livewire:agregar-cosecha-modal />
+                    <livewire:agregar-cosecha-modal  :cultivo_id="$cultivo->id" />
                 </div>
             </div>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">

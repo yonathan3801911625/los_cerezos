@@ -173,7 +173,7 @@ class CultivoController extends Controller
     public function destroy(Cultivo $cultivo)
     {
         $cultivo->delete();
-        return back()->with("flash.banner", "Actividad eliminada de manera exitosa");
+        return back()->with("flash.banner", "Cultivo eliminado de manera exitosa");
     }
 
 
@@ -184,7 +184,7 @@ class CultivoController extends Controller
         // dd( $request->cultivo_fase);
         $cultivo_fase_id = json_decode($request->cultivo_fase_id);
         $cultivo_id = json_decode($request->cultivo_id);
-        $cultivo_costo_id = json_decode($request->cultivo_costo_id);
+        //$cultivo_costo_id = json_decode($request->cultivo_costo_id);
         // dd( $cultivo_fase);
         // die;
         DB::table('cultivo_fase')->where('id', $cultivo_fase_id)->delete();
@@ -212,7 +212,7 @@ class CultivoController extends Controller
         $cultivo->densidad  = $request->densidad;
         $cultivo->tipo  = $request->tipo;
         $cultivo->save();
-        session()->flash("flash.banner","Actividad modificada de manera satisfactoria");
+        session()->flash("flash.banner","Cultivo modificado de manera satisfactoria");
         return Redirect::route("cultivos.index");
     }
 }

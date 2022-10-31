@@ -27,7 +27,7 @@
                         <x-jet-input type="number" id="area_terreno" name="area_terreno" class="w-full" />
                     </div>
                     <div class="my-1">
-                        <x-jet-label for="densidad">Densidad del terreno</x-jet-label>
+                        <x-jet-label for="densidad">Densidad por hectarea</x-jet-label>
                         <x-jet-input type="number" id="densidad" name="densidad" class="w-full" />
                     </div>
                     <div class="my-1">

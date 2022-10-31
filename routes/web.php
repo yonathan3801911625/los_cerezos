@@ -33,7 +33,7 @@ Route::middleware([
         return view("dashboard");
     })->name("dashboard");
     Route::resource("/cultivos", CultivoController::class);
-    Route::post("/cultivos/reporte/{cultivo}", [CultivoController::class, "reporte"])->name("cultivos.reporte");
+    Route::get("/cultivos/reporte/{cultivo}", [CultivoController::class, "reporte"])->name("cultivos.reporte");
     Route::put("/cultivos/updateCultivo/{cultivo}", [CultivoController::class, "updateCultivo"])->name("cultivos.updateCultivo");
 
     Route::get("/cultivos/extras/{cultivo}", [CultivoController::class, 'extras'])->name("cultivos.extras");

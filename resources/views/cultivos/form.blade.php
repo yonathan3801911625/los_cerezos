@@ -20,7 +20,7 @@
     </div>
 
     <div class="my-2 px-6">
-        <x-jet-label for="densidad" value="{{ __('Densidad')}}" />
+        <x-jet-label for="densidad" value="{{ __('Densidad ')}}" />
         <x-jet-input id="densidad" class="block mt-1 w-full" type="double" name="densidad" :value="old('densidad', $cultivo->densidad)" required autofocus />
     </div>
 
