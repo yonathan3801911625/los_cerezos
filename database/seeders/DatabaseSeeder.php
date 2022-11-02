@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'lvhernandez0082@misena.edu.co',
         //     'password' => '12345678'
         // ]);
+        $this->call(RoleSeeder::class);
 
         $this->call([
             UserSeeder::class,

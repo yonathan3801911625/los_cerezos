@@ -6,9 +6,9 @@ use App\Http\Controllers\CultivoController;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\MovimientoController;
+use App\Http\Controllers\UserController;
 use App\Http\Livewire\AgregarCostosModal;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,21 +32,25 @@ Route::middleware([
     Route::get("/dashboard", function () {
         return view("dashboard");
     })->name("dashboard");
-    Route::resource("/cultivos", CultivoController::class);
-    Route::get("/cultivos/reporte/{cultivo}", [CultivoController::class, "reporte"])->name("cultivos.reporte");
-    Route::put("/cultivos/updateCultivo/{cultivo}", [CultivoController::class, "updateCultivo"])->name("cultivos.updateCultivo");
 
-    Route::get("/cultivos/extras/{cultivo}", [CultivoController::class, 'extras'])->name("cultivos.extras");
-    Route::resource("/fases", FaseController::class);
-    Route::resource("/costos", CostoAdicionalController::class);
+    Route::resource('/users', UserController::class)->middleware('can:users.index');
 
-    Route::resource("/actividades", ActividadController::class);
-    Route::resource("/insumos", InsumoController::class);
-    Route::resource("/movimientos", MovimientoController::class);
+    Route::resource("/cultivos", CultivoController::class)->middleware('can:cultivos index');
+    ;
+    Route::get("/cultivos/reporte/{cultivo}", [CultivoController::class, "reporte"])->name("cultivos.reporte")->middleware('can:cultivos index');
+    Route::put("/cultivos/updateCultivo/{cultivo}", [CultivoController::class, "updateCultivo"])->name("cultivos.updateCultivo")->middleware('can:cultivos index');
 
-    Route::resource("/actividads", ActividadController::class);
-    Route::resource("/insumos", InsumoController::class);
-    Route::post("/destroy_cultivo_fase", [CultivoController::class, 'destroyCultivoFase'])->name("destroyCultivoFase");
+    Route::get("/cultivos/extras/{cultivo}", [CultivoController::class, 'extras'])->name("cultivos.extras")->middleware('can:cultivos index');
+    Route::resource("/fases", FaseController::class)->middleware('can:Inicio fases');
+    Route::resource("/costos", CostoAdicionalController::class)->middleware('can:Inicio costos');
+
+    Route::resource("/actividades", ActividadController::class)->middleware('can:Inicio actividades');
+    Route::resource("/insumos", InsumoController::class)->middleware('can:Inicio insumos');
+    Route::resource("/movimientos", MovimientoController::class)->middleware('can:Inicio movimientos');
+
+    Route::resource("/actividads", ActividadController::class)->middleware('can:Inicio actividades');
+    Route::resource("/insumos", InsumoController::class)->middleware('can:Inicio insumos');
+    Route::post("/destroy_cultivo_fase", [CultivoController::class, 'destroyCultivoFase'])->name("destroyCultivoFase")->middleware('can:cultivos index');
     // Route::get("/editar", [CultivoController::class, 'cultivos.editar'])->name("editar");
-    Route::resource("/livewire", AgregarCostosModal::class);
+    Route::resource("/livewire", AgregarCostosModal::class)->middleware('can:Inicio costos');
 });
