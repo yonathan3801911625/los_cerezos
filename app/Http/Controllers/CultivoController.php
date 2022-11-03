@@ -202,6 +202,15 @@ class CultivoController extends Controller
         return $pdf->stream();
     }
 
+    public function downloadPDF()
+    {
+        $cultivos = Cultivo::all();
+ 
+         $pdf = Pdf::loadView('cultivos.download', ['cultivos' => $cultivos]);
+ 
+         return $pdf->stream();
+    }
+
 
     public function updateCultivo(Request $request, Cultivo $cultivo)
     {

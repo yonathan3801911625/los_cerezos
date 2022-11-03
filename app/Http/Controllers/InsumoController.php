@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Insumo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class InsumoController extends Controller
 {
@@ -108,5 +109,14 @@ class InsumoController extends Controller
         $insumo->delete();
         session()->flash("flash.banner", "Insumo eliminado de manera satisfactoria");
         return Redirect::route('insumos.index');
+    }
+
+    public function downloadPDF()
+    {
+        $insumos = Insumo::all();
+ 
+         $pdf = Pdf::loadView('insumos.download', ['insumos' => $insumos]);
+ 
+         return $pdf->stream();
     }
 }

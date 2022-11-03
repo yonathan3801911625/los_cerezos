@@ -5,12 +5,15 @@
         </h2>
     </x-slot>
 
-    <div class="py-10">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 my-2">
-                <livewire:agregar-movimiento-insumo-modal /><br>
+   
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="p-2">
+                    <div class="flex justify-end">
+                        <livewire:agregar-movimiento-insumo-modal /><br>
+                        <a href="{{ route('download-pdf-movimientos') }}" target="_blank" class="btn btn-success btn-sm ">Exportar a PDF</a>
+                </div>
             </div>
-        </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">

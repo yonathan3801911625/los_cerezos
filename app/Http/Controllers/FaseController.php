@@ -6,6 +6,7 @@ use App\Models\Fase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class FaseController extends Controller
 {
@@ -100,4 +101,14 @@ class FaseController extends Controller
         $fase->delete();
         return back()->with("flash.banner", "Fase eliminada de manera exitosa");
     }
+
+    public function downloadPDF()
+    {
+        $fases = Fase::all();
+ 
+         $pdf = Pdf::loadView('fases.download', ['fases' => $fases]);
+ 
+         return $pdf->stream();
+    }
+
 }

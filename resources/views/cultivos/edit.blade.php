@@ -7,9 +7,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end">
-                <div class="py-2">
-                    <livewire:agregar-cosecha-modal  :cultivo_id="$cultivo->id" />
-                </div>
+                
+                <livewire:agregar-cosecha-modal  :cultivo_id="$cultivo->id" />
+                <a href="{{ route('cosechas.index') }}">
+
+                    <x-jet-button>Ver cosechas</x-jet-button>
+                </a>
             </div>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="block">

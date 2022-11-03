@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Actividad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ActividadController extends Controller
 {
@@ -101,5 +102,14 @@ class ActividadController extends Controller
     {
         $actividad->delete();
         return back()->with("flash.banner", "Actividad eliminada de manera exitosa");
+    }
+
+    public function downloadPDF()
+    {
+        $actividads = Actividad::all();
+ 
+         $pdf = Pdf::loadView('actividads.download', ['actividads' => $actividads]);
+ 
+         return $pdf->stream();
     }
 }
