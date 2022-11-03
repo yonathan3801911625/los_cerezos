@@ -31,6 +31,10 @@
                         <x-jet-input type="number" id="densidad" name="densidad" class="w-full" />
                     </div>
                     <div class="my-1">
+                        <x-jet-label for="plantas_area">Numero de plantas por area</x-jet-label>
+                        <x-jet-input type="number" id="plantas_area" name="plantas_area" class="w-full" />
+                    </div>
+                    <div class="my-1">
                         <x-jet-label for="tipo">Tipo de cultivo</x-jet-label>
                         <select name="tipo" id="tipo">
                             <option value="corta duración">Corta duración</option>

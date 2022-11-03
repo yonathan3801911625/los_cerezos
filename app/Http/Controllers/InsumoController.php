@@ -43,8 +43,8 @@ class InsumoController extends Controller
         $insumo->codigo = $request->codigo;
         $insumo->nombre = $request->nombre;
         $insumo->unidad = $request->unidad;
-        $insumo->precio = $request->precio;
         $insumo->cantidad = $request->cantidad;
+        $insumo->precio = $request->precio;
         $insumo->tipo = $request->tipo;
         $insumo->fecha_vencimiento = $request->fecha_vencimiento;
         $insumo->save();
@@ -89,8 +89,8 @@ class InsumoController extends Controller
         $insumo->codigo = $request->codigo;
         $insumo->nombre = $request->nombre;
         $insumo->unidad = $request->unidad;
-        $insumo->precio = $request->precio;
         $insumo->cantidad = $request->cantidad;
+        $insumo->precio = $request->precio;
         $insumo->tipo = $request->tipo;
         $insumo->fecha_vencimiento = $request->fecha_vencimiento;
         $insumo->save();
@@ -114,9 +114,9 @@ class InsumoController extends Controller
     public function downloadPDF()
     {
         $insumos = Insumo::all();
- 
+
          $pdf = Pdf::loadView('insumos.download', ['insumos' => $insumos]);
- 
+
          return $pdf->stream();
     }
 }

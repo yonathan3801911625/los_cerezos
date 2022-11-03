@@ -27,7 +27,7 @@
                         <x-jet-input type="date" id="fecha_realizacion" name="fecha_realizacion" class="w-full" />
                     </div>
                     <div class="my-4">
-                        <x-jet-label for="valor">Valor</x-jet-label>
+                        <x-jet-label for="valor">Valor por hora</x-jet-label>
                         <x-jet-input type="integer" id="valor" name="valor" class="w-full" />
                     </div>
                     <div class="my-4">

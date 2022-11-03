@@ -22,8 +22,9 @@ class CultivosSeeder extends Seeder
                 'nombre' => 'Cultivo de mora',
                 'fecha_inicio' => Carbon::now(),
                 'fecha_cosecha' => Carbon::now(),
-                'area_terreno' => 2,
-                'densidad' => 2,
+                'area_terreno' => 650,
+                'densidad' => 346,
+                'plantas_area' => 200,
                 'tipo' => 1
             ]
         ]);

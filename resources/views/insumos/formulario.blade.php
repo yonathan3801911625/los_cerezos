@@ -12,20 +12,21 @@
         <div class="my-2 px-6">
             <x-jet-label for="tipo">Selecciona la unidad de medida</x-jet-label>
             <select name="unidad" id="unidad">
+                <option value="Mg">Mg</option>
+                <option value="Gr">Gr</option>
                 <option value="Kg">Kg</option>
-                <option value="M">M</option>
-                <option value="M2">M2</option>
-                <option value="L">L</option>
+                <option value="Ml">Ml</option>
+                <option value="Lt">Lt</option>
             </select>
         </div>
     </div>
     <div class="my-2 px-6">
-        <x-jet-label for="precio" value="{{ __('precio') }}" />
-        <x-jet-input id="precio" class="block mt-1 w-full" type="text" name="precio" :value="old('precio', $insumo->precio)" required autofocus />
+        <x-jet-label for="cantidad" value="{{ __('Cantidad') }}" />
+        <x-jet-input id="cantidad" class="block mt-1 w-full" type="double" name="cantidad" :value="old('cantidad', $insumo->cantidad)" required autofocus />
     </div>
     <div class="my-2 px-6">
-        <x-jet-label for="cantidad" value="{{ __('Cantidad') }}" />
-        <x-jet-input id="cantidad" class="block mt-1 w-full" type="number" name="cantidad" :value="old('cantidad', $insumo->cantidad)" required autofocus />
+        <x-jet-label for="precio" value="{{ __('precio') }}" />
+        <x-jet-input id="precio" class="block mt-1 w-full" type="text" name="precio" :value="old('precio', $insumo->precio)" required autofocus />
     </div>
     <div class="my-2 px-6">
         <x-jet-label for="tipo">Estado</x-jet-label>
