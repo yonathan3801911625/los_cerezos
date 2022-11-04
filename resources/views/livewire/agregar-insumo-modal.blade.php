@@ -1,6 +1,7 @@
 <div>
-    <x-jet-button wire:click="$toggle('abrirModal')">Agregar Insumo
-    </x-jet-button>
+   
+    <button id="grand" wire:click="$toggle('abrirModal')">Agregar Insumo
+    </button>
 
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">

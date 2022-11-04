@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class AdminUser-index extends Component
+class AdminUserindex extends Component
 {
     /**
      * Create a new component instance.
