@@ -46,6 +46,11 @@
                             </div>
 
                             <div class="my-4">
+                                <x-jet-label for="plantas_area" value="{{ __('Plantas area')}}" />
+                                <x-jet-input id="plantas_area" class="block mt-1 w-full" type="number" name="area_terreno" :value="old('plantas_area', $cultivo->plantas_area)" readonly />
+                            </div>
+
+                            <div class="my-4">
                                 <x-jet-label for="densidad" value="{{ __('Densidad')}}" />
                                 <x-jet-input id="densidad" class="block mt-1 w-full" type="number" name="densidad" :value="old('densidad', $cultivo->densidad)" readonly />
                             </div>

@@ -6,6 +6,7 @@ use App\Models\Movimiento;
 use App\Models\Insumo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MovimientoController extends Controller
 {
@@ -114,5 +115,14 @@ class MovimientoController extends Controller
     {
         $movimiento->delete();
         return back()->with("flash.banner", "Movimiento eliminada de manera exitosa");
+    }
+
+    public function downloadPDF()
+    {
+        $movimientos = Movimiento::all();
+ 
+         $pdf = Pdf::loadView('movimientos.download', ['movimientos' => $movimientos]);
+ 
+         return $pdf->stream();
     }
 }

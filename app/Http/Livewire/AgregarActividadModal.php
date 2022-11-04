@@ -23,7 +23,7 @@ class AgregarActividadModal extends Component
     public bool $disableForm = false;  //para la validacion del boton debe se true
     public bool $tipoMovimiento = true;
     public $valor = 0;
-   
+
 
 
 

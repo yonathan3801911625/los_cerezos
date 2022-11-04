@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cultivos') }}
+            {{ __('Cosechas') }}
         </h2>
     </x-slot>
 
@@ -9,11 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="p-2">
                 <div class="flex justify-end">
-                    <a href="{{ route('cultivos.create') }}">
-                        <x-jet-button>Crear</x-jet-button>
-                    </a>
-                    <a href="{{ route('download-pdf') }}" target="_blank" class="btn btn-success btn-sm ">Exportar a PDF</a>
                 </div>
+                <a href="{{ route('download-pdf-cosechas') }}" target="_blank" class="btn btn-success btn-sm ">Exportar a PDF</a>
             </div>
         </div>
 
@@ -28,31 +25,19 @@
                                         <tr>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Nombre
+                                                Cultivo Id
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Fecha Inicio
+                                                Fecha
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Fecha Cosecha
+                                                Cantidad
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Area Terreno
-                                            </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Densidad
-                                            </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Plantas cultivadas
-                                            </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Tipo Cultivo
+                                                Usuario Id
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -63,58 +48,40 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($cultivos as $cultivo)
+                                        @foreach ($cosechas as $cosecha)
                                             <tr class="border-b">
                                                 <td
                                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    {{ $cultivo->nombre }}
+                                                    {{ $cosecha->cultivo_id }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $cultivo->fecha_inicio }}
+                                                    {{ $cosecha->fecha }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $cultivo->fecha_cosecha }}
+                                                    {{ $cosecha->cantidad }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $cultivo->area_terreno }}
+                                                    {{ $cosecha->user_id }}
                                                 </td>
-                                                <td
-                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $cultivo->densidad }}
-                                                </td>
-                                                <td
-                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $cultivo->plantas_area }}
-                                                </td>
-                                                <td
-                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $cultivo->tipo }}
-                                                </td>
+
 
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    <a href="{{ route('cultivos.show', $cultivo) }}">
+                                                    <a href="{{ route('cosechas.show', $cosecha) }}">
                                                         <x-jet-button>Ver</x-jet-button>
                                                     </a>
-                                                    <a href="{{ route('cultivos.extras', $cultivo) }}">
-                                                        <x-jet-button>Agregar Fase</x-jet-button>
-                                                    </a>
-                                                    <a href="{{ route('cultivos.edit', $cultivo) }}">
+                                                    <a href="{{ route('cosechas.edit', $cosecha) }}">
                                                         <x-jet-button>Editar</x-jet-button>
                                                     </a>
-                                                    <form action="{{ route('cultivos.destroy', $cultivo) }}"
-                                                        method="POST">
+                                                    <form action="{{route('cosechas.destroy', $cosecha)}}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <x-jet-danger-button>
-                                                        
-                                                    
-                                            
-                                                            Eliminar
-                                                        </x-jet-danger-button>
+                                                        <button class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out " type="submit"  >
+                                                           Eliminar
+                                                        </button>
 
                                                     </form>
                                                 </td>
@@ -122,7 +89,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -130,7 +96,4 @@
             </div>
         </div>
     </div>
-
-
-
 </x-app-layout>

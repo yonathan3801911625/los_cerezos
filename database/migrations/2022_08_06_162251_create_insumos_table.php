@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string("codigo");
             $table->string("nombre");
             $table->string("unidad");
+            $table->double("cantidad")->default(0);
             $table->integer("precio");
-            $table->integer("cantidad")->default(0);
             $table->enum("tipo", ["Fungicidas",
             "Insecticidas", "Herbicidas",
             "Fertilizantes"]);

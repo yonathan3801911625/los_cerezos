@@ -49,6 +49,7 @@ class CultivoController extends Controller
         $cultivo->fecha_cosecha  = $request->fecha_cosecha;
         $cultivo->area_terreno  = $request->area_terreno;
         $cultivo->densidad  = $request->densidad;
+        $cultivo->plantas_area = $request->plantas_area;
         $cultivo->tipo  = $request->tipo;
         $cultivo->save();
 
@@ -202,6 +203,15 @@ class CultivoController extends Controller
         return $pdf->stream();
     }
 
+    public function downloadPDF()
+    {
+        $cultivos = Cultivo::all();
+
+         $pdf = Pdf::loadView('cultivos.download', ['cultivos' => $cultivos]);
+
+         return $pdf->stream();
+    }
+
 
     public function updateCultivo(Request $request, Cultivo $cultivo)
     {
@@ -210,6 +220,7 @@ class CultivoController extends Controller
         $cultivo->fecha_cosecha  = $request->fecha_cosecha;
         $cultivo->area_terreno  = $request->area_terreno;
         $cultivo->densidad  = $request->densidad;
+        $cultivo->plantas_area = $request->plantas_area;
         $cultivo->tipo  = $request->tipo;
         $cultivo->save();
         session()->flash("flash.banner","Cultivo modificado de manera satisfactoria");

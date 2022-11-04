@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\CostoAdicionalController;
+use App\Http\Controllers\CosechaController;
 use App\Http\Controllers\CultivoController;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\InsumoController;
@@ -33,16 +34,18 @@ Route::middleware([
         return view("dashboard");
     })->name("dashboard");
 
+
     Route::resource('/users', UserController::class)->middleware('can:users.index');
 
     Route::resource("/cultivos", CultivoController::class)->middleware('can:cultivos index');
-    ;
-    Route::get("/cultivos/reporte/{cultivo}", [CultivoController::class, "reporte"])->name("cultivos.reporte")->middleware('can:cultivos index');
+    
     Route::put("/cultivos/updateCultivo/{cultivo}", [CultivoController::class, "updateCultivo"])->name("cultivos.updateCultivo")->middleware('can:cultivos index');
+   
 
     Route::get("/cultivos/extras/{cultivo}", [CultivoController::class, 'extras'])->name("cultivos.extras")->middleware('can:cultivos index');
     Route::resource("/fases", FaseController::class)->middleware('can:Inicio fases');
     Route::resource("/costos", CostoAdicionalController::class)->middleware('can:Inicio costos');
+    Route::resource("/cosechas", CosechaController::class);
 
     Route::resource("/actividades", ActividadController::class)->middleware('can:Inicio actividades');
     Route::resource("/insumos", InsumoController::class)->middleware('can:Inicio insumos');
@@ -53,4 +56,19 @@ Route::middleware([
     Route::post("/destroy_cultivo_fase", [CultivoController::class, 'destroyCultivoFase'])->name("destroyCultivoFase")->middleware('can:cultivos index');
     // Route::get("/editar", [CultivoController::class, 'cultivos.editar'])->name("editar");
     Route::resource("/livewire", AgregarCostosModal::class)->middleware('can:Inicio costos');
+
+    //reportes
+    Route::get("/cultivos/reporte/{cultivo}", [CultivoController::class, "reporte"])->name("cultivos.reporte")->middleware('can:cultivos index');
+    Route::get('download-pdf', [CultivoController::class, 'downloadPDF'])->name('download-pdf');
+
+    Route::get('download-pdf-insumos', [InsumoController::class, 'downloadPDF'])->name('download-pdf-insumos');
+
+    Route::get('download-pdf-actividads', [ActividadController::class, 'downloadPDF'])->name('download-pdf-actividads');
+
+    Route::get('download-pdf-fases', [FaseController::class, 'downloadPDF'])->name('download-pdf-fases');
+
+    Route::get('download-pdf-movimientos', [MovimientoController::class, 'downloadPDF'])->name('download-pdf-movimientos');
+
+    Route::get('download-pdf-cosechas', [CosechaController::class, 'downloadPDF'])->name('download-pdf-cosechas');
+
 });
