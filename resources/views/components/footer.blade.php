@@ -80,7 +80,7 @@
         <!-- Copyright -->
         <div class="text-center p-1" style="background-color: rgb(74, 224, 127);">
           © Finca agrosena 4.0
-          <a class="text-white" href="">MDBootstrap.com</a>
+          <a class="text-white" href=""></a>
         </div>
         <!-- Copyright -->
         

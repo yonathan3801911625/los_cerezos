@@ -24,6 +24,6 @@
 
 </style>
 
-<button id="bd" {{ $attributes->merge(['type' => 'button', 'class' => '']) }}>
+<button id="bd" {{ $attributes->merge(['type' => 'submit', 'class' => '']) }}>
     {{ $slot }}
 </button>

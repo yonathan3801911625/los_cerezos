@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div  class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link id="linkk" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        <button id="foc">Dashboard</button>
                     </x-jet-nav-link>
                     @can('cultivos index')
                     <x-jet-nav-link id="linkk" href="{{ route('cultivos.index') }}" :active="request()->routeIs('cultivos*')">
