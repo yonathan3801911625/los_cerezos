@@ -1,4 +1,25 @@
 <x-app-layout>
+    <style> 
+        button#grand{
+         background-color: rgb(74, 224, 127);
+         color: white;
+         width: 170px;
+         height: 30px;
+         border-radius: 0.2rem;
+         margin: 2px;
+         font-family: Thin italic;
+         font-size: 15px;
+         letter-spacing: 1px;
+         
+     }
+ 
+     button#grand:hover{
+         background-color: white;
+         border:solid 1px rgb(74, 224, 127);
+         color: rgb(74, 224, 127);
+     }
+     </style>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Editar') }} {{ $cultivo->nombre }}
@@ -10,7 +31,7 @@
         <div class="flex justify-end">
             <div class="py-2">
                 <a href="{{ route('cultivos.reporte', $cultivo) }}" target="_blank">
-                    <x-jet-button>Generar Reporte</x-jet-button>
+                    <button id="grand">Generar Reporte</button>
                 </a>
             </div>
         </div>
@@ -61,15 +82,9 @@
                                             value="{{ $cultivo_fase->cultivo_id }}">
                                         {{-- <input type="hidden" name="cultivo_costo_id"
                                             value="{{ $cultivo_fase->cultivo_costo_id }}"> --}}
-                                        <button
-                                            class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs
-                            leading-tight uppercase rounded
-                            shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700
-                            focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg
-                            transition duration-150 ease-in-out "
-                                            type="submit">
+                                        <x-jet-danger-button>
                                             Eliminar
-                                        </button>
+                                        </x-jet-danger-button>
 
                                     </form>
                                 </div>

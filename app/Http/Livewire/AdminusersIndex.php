@@ -3,6 +3,7 @@ namespace App\Http\Livewire;
 
 use App\Http\Controllers\AdminUserController;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Commands\PublishCommand;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -27,5 +28,13 @@ class AdminusersIndex extends Component
        
         
       
+    }
+
+    public function destroy(User $user)
+    {  
+
+        $user->delete();
+        session()->flash("flash.banner","Usuario eliminado de manera satisfactoria");
+        return Redirect::route("user.index");
     }
 }

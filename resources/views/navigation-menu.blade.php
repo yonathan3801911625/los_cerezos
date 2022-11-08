@@ -1,6 +1,6 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav id="x" x-data="{ open: false }" >
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div   class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -11,29 +11,29 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                <div  class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link id="linkk" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        <button id="foc">Dashboard</button>
                     </x-jet-nav-link>
                     @can('cultivos index')
-                    <x-jet-nav-link href="{{ route('cultivos.index') }}" :active="request()->routeIs('cultivos*')">
+                    <x-jet-nav-link id="linkk" href="{{ route('cultivos.index') }}" :active="request()->routeIs('cultivos*')">
                     @endcan
                         {{ __('Cultivos') }}
                     </x-jet-nav-link>
 
                     @can('Inicio insumos')
-                    <x-jet-nav-link href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
+                    <x-jet-nav-link id="linkk" href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
                     @endcan
                         {{ __('Insumos') }}
                     </x-jet-nav-link>
                     @can('Inicio actividades')
-                    <x-jet-nav-link href="{{ route('actividads.index') }}" :active="request()->routeIs('actividads*')">
+                    <x-jet-nav-link id="linkk" href="{{ route('actividads.index') }}" :active="request()->routeIs('actividads*')">
                     @endcan
                         {{ __('Actividades') }}
                     </x-jet-nav-link>
 
                     @can('Inicio fases')
-                    <x-jet-nav-link href="{{ route('fases.index') }}" :active="request()->routeIs('fases*')">
+                    <x-jet-nav-link id="linkk" href="{{ route('fases.index') }}" :active="request()->routeIs('fases*')">
                     @endcan
                         {{ __('Fases') }}
                     </x-jet-nav-link>
@@ -41,13 +41,13 @@
                         {{ __('Costos') }}
                     </x-jet-nav-link> --}}
                     @can('Inicio movimientos')
-                    <x-jet-nav-link href="{{ route('movimientos.index') }}" :active="request()->routeIs('movimientos*')">
+                    <x-jet-nav-link id="linkk"  href="{{ route('movimientos.index') }}" :active="request()->routeIs('movimientos*')">
                     @endcan
                         {{ __('Movimientos') }}
                     </x-jet-nav-link>
 
                     @can('users.index')
-                    <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users*')">
+                    <x-jet-nav-link id="linkk" href="{{ route('users.index') }}" :active="request()->routeIs('users*')">
                     @endcan
                         {{ __('Usuarios') }}
                     </x-jet-nav-link>

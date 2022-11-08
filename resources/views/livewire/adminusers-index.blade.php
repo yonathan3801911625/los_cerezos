@@ -1,8 +1,8 @@
 
 
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
-    <div class=" bg-white overflow-hidden  shadow-xl sm:rounded-lg">
-      <nav class="navbar bg-light">
+    <div class="overflow-hidden  shadow-xl sm:rounded-lg">
+      <nav class="navbar bg-white">
             <div class="container-fluid">
               <a class="navbar-brand">Lista de usuarios</a>
               <form class="d-flex" >
@@ -13,10 +13,13 @@
           </nav>
     </div><br><br>
 
+   
+        
+    
     
 @if($users->count())
-    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-        <table class="min-w-full">
+    
+        <table class="min-w-full overflow-scroll">
             <thead class="border-b">
             <tr>
                 <th scope="col"
@@ -58,9 +61,19 @@
             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 
                 <a href="{{ route('users.edit', $user) }}">
-                    <button type="button"  class="btn btn-outline-success"><i class="fa-sharp fa-solid fa-user-pen"></i></button>
+                    <x-jet-button type="button"  class="bt">Rol <i class="fa-sharp fa-solid fa-user-pen"></i></x-jet-button>
+
                    
                 </a> 
+
+                <form action="{{route('users.destroy', $user)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <x-jet-danger-button>
+                        Eliminar
+                    </x-jet-danger-button>
+
+                </form>
 
 
 
@@ -87,6 +100,7 @@
   </div>
 
     @endif
-</div>
+
+      
 
 </div>

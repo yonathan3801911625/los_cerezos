@@ -1,6 +1,27 @@
 <div>
-    <x-jet-button wire:click="$toggle('abrirModal')">Agregar Costo Adicional
-    </x-jet-button>
+    <style> 
+        button#grand{
+         background-color: rgb(74, 224, 127);
+         color: white;
+         width: 190px;
+         height: 30px;
+         border-radius: 0.2rem;
+         margin: 2px;
+         font-family: Thin italic;
+         font-size: 15px;
+         letter-spacing: 1px;
+         
+     }
+ 
+     button#grand:hover{
+         background-color: white;
+         border:solid 1px rgb(74, 224, 127);
+         color: rgb(74, 224, 127);
+     }
+     </style>
+
+    <button id="grand" wire:click="$toggle('abrirModal')">Agregar Costo Adicional
+    </button>
 
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
