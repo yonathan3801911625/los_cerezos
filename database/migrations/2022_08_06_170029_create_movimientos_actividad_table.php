@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign("cultivo_fase_id")->references('id')->on('cultivo_fase')->cascadeOnDelete();
             $table->foreignId("actividad_id")->constrained();
             $table->integer("cantidad");
+            $table->integer("jornales");
             $table->integer("valor");
             $table->foreignId("user_id")->constrained();
             $table->timestamp('created_at')->useCurrent();

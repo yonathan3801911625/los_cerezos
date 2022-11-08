@@ -116,10 +116,6 @@ class CultivoController extends Controller
 
     public function extras(Cultivo $cultivo)
     {
-        // $cultivo = Cultivo::all();
-        // $insumo = Insumo::all();
-        // $actividad = Actividad::all();
-        // return view('cultivos.edit', compact("insumo", 'actividad', 'cultivo'));
         $cultivoFases =  DB::table('cultivo_fase')
             ->select('cultivo_fase.id as cultivo_fase_id', 'fases.nombre', 'cultivo_fase.cultivo_id')
             ->where('cultivo_id', $cultivo->id)
@@ -180,14 +176,8 @@ class CultivoController extends Controller
 
     public function destroyCultivoFase(Request $request)
     {
-        //
-        // dd($request);
-        // dd( $request->cultivo_fase);
         $cultivo_fase_id = json_decode($request->cultivo_fase_id);
         $cultivo_id = json_decode($request->cultivo_id);
-        //$cultivo_costo_id = json_decode($request->cultivo_costo_id);
-        // dd( $cultivo_fase);
-        // die;
         DB::table('cultivo_fase')->where('id', $cultivo_fase_id)->delete();
         return Redirect::route("cultivos.extras", $cultivo_id);
     }
@@ -206,9 +196,7 @@ class CultivoController extends Controller
     public function downloadPDF()
     {
         $cultivos = Cultivo::all();
-
          $pdf = Pdf::loadView('cultivos.download', ['cultivos' => $cultivos]);
-
          return $pdf->stream();
     }
 

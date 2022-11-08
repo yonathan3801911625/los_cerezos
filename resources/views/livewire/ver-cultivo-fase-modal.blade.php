@@ -5,7 +5,8 @@
         <x-slot name="title">
             <div class="p-2">
                 <h2>Ver Estado
-                    <!-- {{ $cultivo_fase_id }} -->
+                    {{-- {{ $cultivo_fase_id }}  --}}
+                    {{-- {{$costoAdicionals}} --}}
                 </h2>
             </div>
         </x-slot>
@@ -87,6 +88,7 @@
                                             <tr>
                                                 <th>Nombre Actividad</th>
                                                 <th>Horas Laboradas</th>
+                                                <th>Jornales</th>
                                                 <th>Precio</th>
                                                 <th>Fecha</th>
                                             </tr>
@@ -96,6 +98,7 @@
                                                 <tr>
                                                     <td>{{ $item->nombre_actividad }}</td>
                                                     <td>{{ $item->cantidad_movimiento }}</td>
+                                                    <td>{{ $item->cantidad_jornales }}</td>
                                                     <td>{{ $item->valor_movimiento }}</td>
                                                     <td>{{ $item->fecha_movimiento }}
                                                 </tr>
@@ -125,11 +128,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($costos as $item)
+                                            @foreach ($costoAdicionals as $item)
                                                 <tr>
-                                                    <td>{{ $item->fecha }}</td>
-                                                    <td>{{ $item->precio }}</td>
-                                                    <td>{{ $item->descripcion }}</td>
+                                                    <td>{{ $item->fecha_costo }}</td>
+                                                    <td>{{ $item->precio_costo }}</td>
+                                                    <td>{{ $item->descripcion_costo }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

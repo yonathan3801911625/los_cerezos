@@ -12,7 +12,8 @@ class AgregarCostosModal extends Component
 {
     public bool $disableForm = false;
     public bool $abrirModal = false;
-    public $cultivo_fase_id = null;
+    public $cultivo_fase_id;
+    public $cultivo_id;
     public $fecha;
     public $precio;
     public $descripcion;
@@ -28,7 +29,6 @@ class AgregarCostosModal extends Component
     {
         return view('livewire.agregar-costos-modal');
     }
-
     // public function getCostos()
     // {
     //     $this->costos = CostoAdicional::all();
@@ -38,7 +38,7 @@ class AgregarCostosModal extends Component
         $this->disableForm = false;
         DB::table('costo_adicionals')->insert(
             [
-                // 'cultivo_fase_id' => $this->cultivo_fase_id,
+                'cultivo_fase_id' => $this->cultivo_fase_id,
                 'fecha' => $this->fecha,
                 'precio' => $this->precio,
                 'descripcion' => $this->descripcion,

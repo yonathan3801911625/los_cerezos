@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Livewire\AgregarCostosModal;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,5 +32,10 @@ class Fase extends Model
     public function costoAdicional()
     {
         return $this->belongsToMany(CostoAdicional::class);
+    }
+
+    public function agregarCosto()
+    {
+        return $this->belongsToMany(AgregarCostosModal::class);
     }
 }

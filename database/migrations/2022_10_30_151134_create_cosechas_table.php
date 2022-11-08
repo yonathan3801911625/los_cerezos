@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('cosechas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("cultivo_id")->constrained();
+            $table->unsignedBigInteger("cultivo_id"); //Se cambia la funcion foreignId por unsingedByig... para la eliminacion en cascada ... Norberto Salazar Brito
+            $table->foreign("cultivo_id")->references('id')->on('cultivos')->cascadeOnDelete(); //Se agrega el cascadeOnDelete para eliminar el cultivo y automaticamente tambien elmine la fase
             $table->date('fecha');
             $table->integer("cantidad");
             $table->foreignId("user_id")->constrained();
