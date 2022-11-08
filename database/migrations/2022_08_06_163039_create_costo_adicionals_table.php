@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('costo_adicionals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cultivo_fase_id');
+            // $table->foreign("cultivo_fase_id")->references('id')->on('cultivo_fase')->cascadeOnDelete();
             //Se cambia la funcion foreignId por unsingedByig... para la eliminacion en cascada ... Norberto Salazar Brito
             //Se agrega el cascadeOnDelete para eliminar el cultivo y automaticamente tambien elmine la fase
             $table->date('fecha');
