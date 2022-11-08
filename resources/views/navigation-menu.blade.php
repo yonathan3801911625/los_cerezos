@@ -1,39 +1,59 @@
-<nav id="x" x-data="{ open: false }" >
+<style>
+    .text{
+        color:black;
+        text-align: center;
+        margin-left: 1rem;
+        display: block;
+        font-size: 15px;
+        letter-spacing: 2px;
+        font-weight: 200;
+    }
+</style>
+
+
+<nav  x-data="{ open: false }" class="navbar navbar-default navbar-fixed-top bg-white border-b border-gray-100">
+    
     <!-- Primary Navigation Menu -->
-    <div   class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
+                      
                     </a>
+                    <h1 class='text'>Finca agroSENA 4.0</h1>
+                
                 </div>
-
+            
+              
+                       
+                
                 <!-- Navigation Links -->
-                <div  class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link id="linkk" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        <button id="foc">Dashboard</button>
-                    </x-jet-nav-link>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    
+                   
+                    
                     @can('cultivos index')
-                    <x-jet-nav-link id="linkk" href="{{ route('cultivos.index') }}" :active="request()->routeIs('cultivos*')">
+                    <x-jet-nav-link href="{{ route('cultivos.index') }}" :active="request()->routeIs('cultivos*')">
                     @endcan
                         {{ __('Cultivos') }}
                     </x-jet-nav-link>
 
                     @can('Inicio insumos')
-                    <x-jet-nav-link id="linkk" href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
+                    <x-jet-nav-link href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
                     @endcan
                         {{ __('Insumos') }}
                     </x-jet-nav-link>
                     @can('Inicio actividades')
-                    <x-jet-nav-link id="linkk" href="{{ route('actividads.index') }}" :active="request()->routeIs('actividads*')">
+                    <x-jet-nav-link href="{{ route('actividads.index') }}" :active="request()->routeIs('actividads*')">
                     @endcan
                         {{ __('Actividades') }}
                     </x-jet-nav-link>
 
                     @can('Inicio fases')
-                    <x-jet-nav-link id="linkk" href="{{ route('fases.index') }}" :active="request()->routeIs('fases*')">
+                    <x-jet-nav-link href="{{ route('fases.index') }}" :active="request()->routeIs('fases*')">
                     @endcan
                         {{ __('Fases') }}
                     </x-jet-nav-link>
@@ -41,16 +61,19 @@
                         {{ __('Costos') }}
                     </x-jet-nav-link> --}}
                     @can('Inicio movimientos')
-                    <x-jet-nav-link id="linkk"  href="{{ route('movimientos.index') }}" :active="request()->routeIs('movimientos*')">
+                    <x-jet-nav-link href="{{ route('movimientos.index') }}" :active="request()->routeIs('movimientos*')">
                     @endcan
                         {{ __('Movimientos') }}
                     </x-jet-nav-link>
 
                     @can('users.index')
-                    <x-jet-nav-link id="linkk" href="{{ route('users.index') }}" :active="request()->routeIs('users*')">
+                    <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users*')">
                     @endcan
                         {{ __('Usuarios') }}
                     </x-jet-nav-link>
+
+                  
+
 
                 </div>
             </div>
@@ -108,6 +131,7 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
+                    @auth
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -156,6 +180,21 @@
                             </form>
                         </x-slot>
                     </x-jet-dropdown>
+                    @else
+                    
+                    <x-jet-nav-link   href="{{ route('login') }}" :active="request()->routeIs('login')">
+                      
+                            {{ __('Iniciar Sesion') }}
+                        </x-jet-nav-link>
+            
+                        <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    
+                            {{ __('Registrar') }}
+                        </x-jet-nav-link>
+                    
+                    
+                   
+                    @endauth
                 </div>
             </div>
 
@@ -175,9 +214,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
+        
 
             @can('cultivos index')
             <x-jet-responsive-nav-link href="{{ route('cultivos.index') }}" :active="request()->routeIs('cultivos*')">
@@ -212,9 +249,11 @@
             @endcan
                 {{ __('Usuarios') }}
             </x-jet-responsive-nav-link>
+           
         </div>
 
         <!-- Responsive Settings Options -->
+        @auth
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -281,7 +320,20 @@
                         <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
                     @endforeach
                 @endif
+
             </div>
-        </div>
     </div>
+    @else
+    <div class="py-1 border-t border-gray-200">
+        <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+            {{ __('Iniciar Sesion') }}
+        </x-jet-responsive-nav-link>
+      
+        <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+       
+            {{ __('Registrarse') }}
+        </x-jet-nav-link>
+    </div>
+@endauth
+</div>
 </nav>

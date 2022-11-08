@@ -1,7 +1,7 @@
 <x-app-layout>
   
-
-    <x-header/>
+<x-dashboard></x-dashboard>
+   
 
 
 </x-app-layout>

@@ -31,18 +31,26 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
+            <br/>
+            <div class="flex items-center">
+                
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+              
+                    <a  href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
+                      
                     </a>
+            
                 @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
+                    
+               
             </div>
+            <br>
+          
+            <x-jet-button  class="ml-4" style="text-align: center">
+                {{ __('Log in') }}
+            </x-jet-button>
+        
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

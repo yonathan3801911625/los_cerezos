@@ -1,9 +1,39 @@
+<style>
+    .heading-primary-bottom {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 5px;
+  font-weight: 700;
+}
+
+
+
+</style>
+
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Fases') }}
-        </h2>
-    </x-slot>
+    <style>
+        .header {
+        background-image: linear-gradient(
+        to right bottom, rgba(0, 0, 0, 0.397), 
+        rgba(1, 1, 1, 0.655)),
+        url('');
+        background-size: cover;
+        bacground-position: center;
+        position: relative;
+          }
+    </style>
+
+    <div class="header">
+    
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
+    <div class="overflow-hidden  shadow-xl sm:rounded-lg">
+        <nav class="navbar bg-white">
+              <div class="container-fluid">
+                <span class="heading-primary-bottom">¡Fases de los cultivos!</span>
+                </div>
+              </div>
+            </nav>
+      </div>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -69,5 +99,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </x-app-layout>

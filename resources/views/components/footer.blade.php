@@ -1,14 +1,14 @@
 <style>
     #footer{
       min-height: 70px;
-      background-color: #191919;
-      background-image: -moz-linear-gradient(top, #191919, #000000);
-      background-image: -o-linear-gradient(top, #191919, #000000);
-      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #191919), color-stop(1, #000000));
-      background-image: -webkit-linear-gradient(#191919, #000000);
-      background-image: linear-gradient(top, #191919, #000000);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#191919', endColorStr='#000000');
-      border-top: 1px solid rgba(50, 50, 50, 0.3);
+      background-color: white;
+      background-image: -moz-linear-gradient(top, white, white);
+      background-image: -o-linear-gradient(top, white, white);
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, white));
+      background-image: -webkit-linear-gradient(white, white);
+      background-image: linear-gradient(top, white,white);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='white', endColorStr='white');
+      border-top: 1px solid white;
       width: 100%;
       position: fixed;
       bottom: 0;              /* NUEVO */ 
@@ -17,9 +17,10 @@
     
     <footer id="footer" class="bg-light text-center text-white">
         <!-- Grid container -->
+        
         <div class="container p-2 pb-0">
           <!-- Section: Social media -->
-          <section class="mb-2">
+          <section class="mb-1">
             <!-- Facebook -->
             <a
               class="btn text-white btn-floating m-1"
@@ -78,10 +79,7 @@
         <!-- Grid container -->
       
         <!-- Copyright -->
-        <div class="text-center p-1" style="background-color: rgb(74, 224, 127);">
-          © Finca agrosena 4.0
-          <a class="text-white" href=""></a>
-        </div>
+      
         <!-- Copyright -->
         
       </footer>

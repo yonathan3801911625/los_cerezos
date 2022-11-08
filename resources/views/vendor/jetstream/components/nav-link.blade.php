@@ -8,7 +8,7 @@ $classes = ($active ?? false)
 
 <style>
     #x{
-        background-color:#191919;
+        background-color: transparent !important;
     }
     
 
