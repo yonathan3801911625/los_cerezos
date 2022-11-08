@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use App\Models\Actividad;
 use App\Models\CostoAdicional;
 use App\Models\Insumo;
+use Illuminate\Console\View\Components\Component as ComponentsComponent;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\Component as ViewComponent;
 use Livewire\Component;
 
+use function App\View\Components\render;
 
 class VerCultivoFaseModal extends Component
 {
@@ -31,6 +34,7 @@ class VerCultivoFaseModal extends Component
 
     public $costo;
     public $costosAdicionales;
+    public $costoadicionals;
 
 
     public $cantidad = 0;
@@ -43,7 +47,7 @@ class VerCultivoFaseModal extends Component
     {
         $this->getInsumos();
         $this->getActividads();
-        $this->getCostos();
+        $this->getCostoAdicionals();
     }
 
     public function getInsumos()
@@ -56,11 +60,11 @@ class VerCultivoFaseModal extends Component
         $this->actividades = Actividad::all();
     }
 
-    public function getCostos()
+    public function getCostoAdicionals()
     {
-        $this->costos = CostoAdicional::all();
+        return view('livewire.agregar-costos-modal');
     }
-
+    
 
 
     public function loadInsumos() {
@@ -74,9 +78,6 @@ class VerCultivoFaseModal extends Component
             )
             ->where('cultivo_fase_id', $this->cultivo_fase_id)
             ->join('insumos', 'movimientos_insumos.insumo_id', '=', 'insumos.id')
-            // ->select('fases.nombre as nombre_fase', 'cultivo_fase.created_at')
-            // ->join('cultivos', 'cultivo_fase.cultivo_id', '=', 'cultivos.id')
-            // ->join('fases', 'cultivo_fase.fase_id', '=', 'fases.id')
             ->get();
     }
 
@@ -85,33 +86,31 @@ class VerCultivoFaseModal extends Component
             ->select(
                 'actividads.nombre as nombre_actividad',
                 'movimientos_actividad.cantidad as cantidad_movimiento',
+                'movimientos_actividad.jornales as cantidad_jornales',
                 'movimientos_actividad.valor as valor_movimiento',
                 'movimientos_actividad.created_at as fecha_movimiento',
             )
             ->where('cultivo_fase_id', $this->cultivo_fase_id)
             ->join('actividads', 'movimientos_actividad.actividad_id', '=', 'actividads.id')
-            // ->select('fases.nombre as nombre_fase', 'cultivo_fase.created_at')
-            // ->join('cultivos', 'cultivo_fase.cultivo_id', '=', 'cultivos.id')
-            // ->join('fases', 'cultivo_fase.fase_id', '=', 'fases.id')
             ->get();
     }
-    public function loadCostos() {
-        $this->costosAdicionales =  DB::table('costo_adicionals')
+    public function loadCosto() {
+        $this->costoAdicionals =  DB::table('costo_adicionals')
             ->select(
-                'costos.id as id_costo',
+                
                 'costo_adicionals.fecha as fecha_costo',
                 'costo_adicionals.precio as precio_costo',
-                'costo_adicionals.observacion as observacion_costo',
+                'costo_adicionals.descripcion as descripcion_costo',
             )
             ->where('cultivo_fase_id', $this->cultivo_fase_id)
-            ->join('costos', 'costo_adicionals.costo_id', '=', 'costos.id')
+            ->join('cultivos', 'costo_adicionals.fecha', '=', 'costo_adicionals.fecha')
             ->get();
     }
 
     public function render()
     {   $this->loadInsumos();
         $this->loadActividad();
-        // $this->loadCostos();
+        $this->loadCosto();
         return view('livewire.ver-cultivo-fase-modal');
     }
 

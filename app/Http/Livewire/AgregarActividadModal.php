@@ -23,6 +23,7 @@ class AgregarActividadModal extends Component
     public bool $disableForm = false;  //para la validacion del boton debe se true
     public bool $tipoMovimiento = true;
     public $valor = 0;
+    public $jornales = 0;
 
 
 
@@ -53,7 +54,9 @@ class AgregarActividadModal extends Component
     public function updatePrice()
     {
         $this->valor = (int)$this->cantidad * (int)$this->actividadSelected->valor;
+        $this->jornales = (int)$this->cantidad / 8;
     }
+
 
     public function setTipoMovimiento($bool)
     {
@@ -80,6 +83,7 @@ class AgregarActividadModal extends Component
                 'cultivo_fase_id' => $this->cultivo_fase_id,
                 'actividad_id' => $this->actividadSelected->id,
                 'cantidad' => $this->cantidad,
+                'jornales' => $this->jornales,
                 'valor' => $this->valor,
                 'user_id' => Auth::user()->id
             ]

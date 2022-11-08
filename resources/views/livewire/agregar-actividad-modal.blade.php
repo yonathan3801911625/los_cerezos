@@ -13,13 +13,15 @@
             <div>
                 <div class="my-1 p-2">
                     <x-jet-label>Nombre de la Actividad</x-jet-label>
-                    {{--{{ $actividads }} --}}
-                    <select class="border-gray-300 focus:border-indigo-300
+                    {{-- {{ $actividads }} --}}
+                    <select
+                        class="border-gray-300 focus:border-indigo-300
                         focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                        rounded-md shadow-sm w-full" wire:model="keyActividadSelected" wire:change='onChangeActividad'>
+                        rounded-md shadow-sm w-full"
+                        wire:model="keyActividadSelected" wire:change='onChangeActividad'>
                         <option value="">-- Seleccione la actividad --</option>
                         @foreach ($actividads as $key => $actividad)
-                        <option value="{{ $key }}">{{ $actividad->nombre }}</option>
+                            <option value="{{ $key }}">{{ $actividad->nombre }}</option>
                         @endforeach
                     </select>
                     {{-- <br>
@@ -29,73 +31,78 @@
 
                 </div>
                 @if ($actividadSelected)
-                <div class="my-1 p-2">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Actividad</th>
+                    <div class="my-1 p-2">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Actividad</th>
 
-                        </tr>
-                        <tr>
-                            <td>
-                                {{ $actividadSelected->nombre }}
-                            </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ $actividadSelected->nombre }}
+                                </td>
 
-                        </tr>
-                    </table>
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Horas laboradas
-                                <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice' min="0" max="{{ $actividadSelected->cantidad }}" />
-                            </th>
-                        </tr>
-                </div>
-                <div class="my-1 p-2">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Cantidad Horas</th>
-                            <th>Hora labor</th>
-                            <th>Precio total</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                {{ $cantidad  }}
-                            </td>
-                            <td>
-                                ${{ $actividadSelected->valor }}
-                            </td>
-                            <td>
-                                ${{ $valor }}
-                            </td>
-                        </tr>
-                    </table>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Horas laboradas
+                                    <x-jet-input type="number" class="w-full" wire:model='cantidad'
+                                        wire:input='updatePrice' min="0"
+                                        max="{{ $actividadSelected->cantidad }}" />
+                                </th>
+                            </tr>
+                    </div>
+                    <div class="my-1 p-2">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Cantidad Horas</th>
+                                <th>Jornales</th>
+                                <th>Hora labor</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ $cantidad }}
+                                </td>
+                                <td>
+                                    {{ $jornales}}
+                                </td>
+                                <td>
+                                    ${{ $actividadSelected->valor }}
+                                </td>
+                                <td>
+                                    ${{ $valor }}
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Id Usuario</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                            </tr>
+                            <tr>
 
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Id Usuario</th>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                        </tr>
-                        <tr>
-
-                            <td>
-                                {{Auth::user()->id}}
-                            </td>
-                            <td>
-                                {{Auth::user()->name}}
-                            </td>
-                            <td>
-                                {{Auth::user()->email}}
-                            </td>
-                        </tr>
-                    </table>
-                    {{--{{Auth::user()}}
+                                <td>
+                                    {{ Auth::user()->id }}
+                                </td>
+                                <td>
+                                    {{ Auth::user()->name }}
+                                </td>
+                                <td>
+                                    {{ Auth::user()->email }}
+                                </td>
+                            </tr>
+                        </table>
+                        {{-- {{Auth::user()}}
                     {{Auth::user()->id}}
-                    {{Auth::user()->name}}--}}
+                    {{Auth::user()->name}} --}}
 
 
 
 
-                </div>
+                    </div>
                 @endif
             </div>
         </x-slot>
@@ -109,13 +116,14 @@
             <!-- <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled">
                 Guardar
             </x-jet-button> -->
-            <button class="inline-flex items-center px-4 py-2
+            <button
+                class="inline-flex items-center px-4 py-2
              bg-gray-800 border border-transparent rounded-md
              font-semibold text-xs text-white uppercase tracking-widest
              hover:bg-gray-700 active:bg-gray-900 focus:outline-none
              focus:border-gray-900 focus:ring focus:ring-gray-300
              disabled:opacity-25 transition ml-2"
-             {{ $disableForm ? 'disabled' : '' }} wire:click="save" wire:loading.attr="disabled">
+                {{ $disableForm ? 'disabled' : '' }} wire:click="save" wire:loading.attr="disabled">
                 Guardar
             </button>
         </x-slot>

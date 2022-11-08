@@ -8,9 +8,21 @@
                 <h2>Agregar Costo</h2>
             </div>
         </x-slot>
+        
 
         <x-slot name="content">
             <div class="my-1 p-2">
+                <table class="table table-bordered  mt-2">
+                    <tr>
+                        <th>Id Fase Cultivo</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ $cultivo_fase_id}}
+                        </td>
+                    </tr>
+        
+                </table>
                 <x-jet-label for="fecha" value="{{ __('Fecha') }}" />
                 <x-jet-input id="fecha" class="block mt-1 w-full" wire:model='fecha' type="date" name="fecha"
                     :value="old('fecha')" required autofocus />
@@ -40,6 +52,7 @@
                     </td>
                 </tr>
             </table>
+            
 
 
 
@@ -47,7 +60,7 @@
 
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$toggle('abrirModal')" wire:loading.attr="disabled">
-                Cancelar
+                Atras
             </x-jet-secondary-button>
 
             <button
