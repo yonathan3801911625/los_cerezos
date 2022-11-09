@@ -18,7 +18,32 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+
+    <body class="font-sans antialiased ">
+        
+        
+        <style>
+            button#ex{
+            background-color: rgb(74, 224, 127);
+            color: white;
+            width: 170px;
+            height: 30px;
+            border-radius: 0.2rem;
+            margin: 2px;
+            font-family: Thin italic;
+            font-size: 15px;
+            letter-spacing: 1px;
+            
+        }
+    
+        button#ex:hover{
+            background-color: white;
+            border:solid 1px rgb(74, 224, 127);
+            color: rgb(74, 224, 127);}
+            
+        </style>
+        
+
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">

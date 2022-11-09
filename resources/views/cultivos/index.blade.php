@@ -19,6 +19,25 @@
         bacground-position: center;
         position: relative;
           }
+
+          button#ex{
+         background-color: rgb(74, 224, 127);
+         color: white;
+         width: 170px;
+         height: 30px;
+         border-radius: 0.2rem;
+         margin: 2px;
+         font-family: Thin italic;
+         font-size: 15px;
+         letter-spacing: 1px;
+         
+     }
+ 
+     button#ex:hover{
+         background-color: white;
+         border:solid 1px rgb(74, 224, 127);
+         color: rgb(74, 224, 127);}
+          
     </style>
 
     <div class="header">
@@ -39,7 +58,8 @@
                     <a href="{{ route('cultivos.create') }}">
                         <x-jet-button>Crear</x-jet-button>
                     </a>
-                    <a href="{{ route('download-pdf') }}" target="_blank" class="btn btn-success btn-sm ">Exportar a PDF</a>
+                    <a href="{{ route('download-pdf') }}" target="_blank" ><button id="ex"> Exportar a PDF</button>
+                    </a>
                 </div>
             </div>
         </div>

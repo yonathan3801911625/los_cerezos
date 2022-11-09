@@ -26,7 +26,7 @@
     <x-jet-dialog-modal wire:model="abrirModal">
         <x-slot name="title">
             <div class="p-2">
-                <a class="btn btn-success" href="{{ route('insumos.create') }}"> Crear Insumo >> </a>
+                <a  href="{{ route('insumos.create') }}"><button id="ex"> Crear insumo</button>  </a>
             </div>
         </x-slot>
 

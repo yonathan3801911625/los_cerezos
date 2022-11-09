@@ -41,7 +41,7 @@
                     <a href="{{ route('insumos.create') }}">
                         <x-jet-button>Crear</x-jet-button>
                     </a>
-                    <a href="{{ route('download-pdf-insumos') }}" target="_blank" class="btn btn-success btn-sm ">Exportar a PDF</a>
+                    <a href="{{ route('download-pdf-insumos') }}" target="_blank" ><button id="ex">Exportar a Pdf </button> </a>
                 </div>
             </div>
         </div>

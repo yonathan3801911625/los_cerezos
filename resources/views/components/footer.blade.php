@@ -24,55 +24,35 @@
             <!-- Facebook -->
             <a
               class="btn text-white btn-floating m-1"
-              style="background-color: #3b5998;"
               href="#!"
               role="button"
-              ><i class="fab fa-facebook-f"></i
+              ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/768px-Facebook_Logo_%282019%29.png" width="40px"/>
             ></a>
       
             <!-- Twitter -->
-            <a
-              class="btn text-white btn-floating m-1"
-              style="background-color: #55acee;"
-              href="#!"
-              role="button"
-              ><i class="fab fa-twitter"></i
-            ></a>
+           
       
             <!-- Google -->
-            <a
-              class="btn text-white btn-floating m-1"
-              style="background-color: #dd4b39;"
-              href="#!"
-              role="button"
-              ><i class="fab fa-google"></i
-            ></a>
+           
       
             <!-- Instagram -->
             <a
               class="btn text-white btn-floating m-1"
-              style="background-color: #ac2bac;"
-              href="#!"
+              href="https://oferta.senasofiaplus.edu.co/sofia-oferta/"
               role="button"
-              ><i class="fab fa-instagram"></i
+              ><img src="https://tramiteinformativo.com/wp-content/uploads/2022/08/logo-sena-verde-png-sin-fondo.png" width="40px"/>
             ></a>
       
             <!-- Linkedin -->
             <a
               class="btn text-white btn-floating m-1"
-              style="background-color: #0082ca;"
-              href="#!"
+              
+              href="http://automatizacioncaldas.blogspot.com/"
               role="button"
-              ><i class="fab fa-linkedin-in"></i
+              ><img src="sen.png" width="210px">
             ></a>
             <!-- Github -->
-            <a
-              class="btn text-white btn-floating m-1"
-              style="background-color: #333333;"
-              href="#!"
-              role="button"
-              ><i class="fab fa-github"></i
-            ></a>
+            
           </section>
           <!-- Section: Social media -->
         </div>

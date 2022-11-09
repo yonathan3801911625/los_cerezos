@@ -1,28 +1,6 @@
-<style>
-    .heading-primary-bottom {
-  display: block;
-  font-size: 18px;
-  letter-spacing: 5px;
-  font-weight: 700;
-}
-      
-.header {
-    height: 95vh;
-  background-image: linear-gradient(
-    to right bottom, rgba(0, 0, 0, 0.397), 
-    rgba(1, 1, 1, 0.655)),
-    url('');
-  background-size: cover;
-  bacground-position: center;
-  position: relative;
-      }
-
-</style>
-
-      
 
 
-<div class="header">
+
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
     <div class="overflow-hidden  shadow-xl sm:rounded-lg">
       <nav class="navbar bg-white">
@@ -43,7 +21,7 @@
     
 @if($users->count())
     
-        <table class="min-w-full overflow-scroll  bg-white">
+        <table class="min-w-full overflow-scroll  bg-white sm:rounded-lg">
             <thead class="border-b">
             <tr>
                 <th scope="col"
@@ -129,4 +107,6 @@
       
 
 </div>
-</div>
+
+<br><br>
+

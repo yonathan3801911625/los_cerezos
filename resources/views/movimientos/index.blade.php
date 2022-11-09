@@ -37,11 +37,11 @@
                 <div class="p-2">
                     <div class="flex justify-end">
                         <livewire:agregar-movimiento-insumo-modal /><br>
-                        <a href="{{ route('download-pdf-movimientos') }}" target="_blank" class="btn btn-success btn-sm ">Exportar a PDF</a>
+                        <a href="{{ route('download-pdf-movimientos') }}" target="_blank"> <button id="ex">Exportar a Pdf </button> </a>
                 </div>
             </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="flex flex-col">
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
