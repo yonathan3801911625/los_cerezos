@@ -78,6 +78,12 @@ class CultivoController extends Controller
      */
     public function show(Cultivo $cultivo)
     {
+        $cosechas =  DB::table('cosechas')
+        ->where('cultivo_id', $cultivo->id)
+        // ->select('cultivos.nombre as nombre_cultivo','fases.nombre as nombre_fase', 'fases.*')
+        ->select('fecha', 'cantidad')
+        ->get();
+
         $fasesCultivo =  DB::table('cultivo_fase')
             ->where('cultivo_id', $cultivo->id)
             // ->select('cultivos.nombre as nombre_cultivo','fases.nombre as nombre_fase', 'fases.*')
@@ -94,6 +100,7 @@ class CultivoController extends Controller
         return view('cultivos.ver', [
             'cultivo' => $cultivo,
             'fasesCultivo' => $fasesCultivo,
+            'cosechas' => $cosechas,
             // 'fasesActividad' => $fasesActividad
         ]);
     }

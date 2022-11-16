@@ -27,12 +27,13 @@
         table{
             border-color: #000;
             border-collapse: collapse;
-            width: 80%;
-            text-align: center;
+            width: 100%;
             
             
         }
         tr, td, th{
+            padding: 15px;
+            text-align: :left;
             border: 1px solid;
             
 
@@ -43,23 +44,25 @@
 
 <body>
     <div class="container py-5">
-        <h5 class=" font-weight-bold">Listado de cosechas</h5>
+        <h5 class=" font-weight-bold">Listado de actividades</h5>
         <table class="table table-bordered mt-5">
             <thead>
                 <tr>
-                    <th>Cultivo Id</th>
-                    <th>Fecha </th>
-                    <th>Cantidad</th>
-                    <th>User Id</th>
+                    <th>Nombre</th>
+                    <th>Estado </th>
+                    <th>Fecha de realizacion</th>
+                    <th>Valor</th>
+                    <th>Observacion</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($cosechas as $cosecha)
+                @forelse ($actividads as $actividad)
                 <tr>
-                    <td>{{ $cosecha->cultivo_id }}</td>
-                    <td>{{ $cosecha->fecha }}</td>
-                    <td>{{ $cosecha->cantidad }}</td>
-                    <td>{{ $cosecha->user_id }}</td>
+                    <td>{{ $actividad->nombre }}</td>
+                    <td>{{ $actividad->estado }}</td>
+                    <td>{{ $actividad->fecha_realizacion }}</td>
+                    <td>{{ $actividad->valor }}</td>
+                    <td>{{ $actividad->observacion }}</td>
                 </tr>
                 @empty
 
