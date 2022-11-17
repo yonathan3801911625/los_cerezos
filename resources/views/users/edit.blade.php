@@ -70,8 +70,10 @@
                         @endforeach
 
                         <div class="my-1 flex justify-center">
-                            {!! Form::submit('Asignar rol',['class' => 'btn btn-outline-primary mt-2'])!!}
-                            {!! Form::close()!!}
+                            <x-jet-button>
+                                {!! Form::submit('Asignar rol',['class' => ''])!!}
+                                {!! Form::close()!!}
+                            </x-jet-button>
                         </div>
                     </div>
                 </div>

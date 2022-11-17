@@ -1,35 +1,28 @@
 <x-app-layout>
     <style>
         .header {
-        height: 95vh;
-        background-image: linear-gradient(
-        to right bottom, rgba(0, 0, 0, 0.397), 
-        rgba(1, 1, 1, 0.655)),
-        url('');
-        background-size: cover;
-        bacground-position: center;
-        position: relative;
+            height: 95vh;
+            background-image: linear-gradient(
+            to right bottom, rgba(0, 0, 0, 0.397), 
+            rgba(1, 1, 1, 0.655)),
+            url('');
+            background-size: cover;
+            bacground-position: center;
+            position: relative;
           }
 
-          button#ex{
-         background-color: rgb(74, 224, 127);
-         color: white;
-         width: 170px;
-         height: 30px;
-         border-radius: 0.2rem;
-         margin: 2px;
-         font-family: Thin italic;
-         font-size: 15px;
-         letter-spacing: 1px;
-         
-     }
- 
-     button#ex:hover{
-         background-color: white;
-         border:solid 1px rgb(74, 224, 127);
-         color: rgb(74, 224, 127);}
+        .heading-primary-bottom {
+            display: block;
+            font-size: 18px;
+            letter-spacing: 5px;
+            font-weight: 700;
+        }
+
+
+    
           
     </style>
+<div class="header">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
     <div class="overflow-hidden  shadow-xl sm:rounded-lg">
         <nav class="navbar bg-white">
@@ -131,4 +124,5 @@
             </div>
         </div>
     </div>
+</div>
 </x-app-layout>

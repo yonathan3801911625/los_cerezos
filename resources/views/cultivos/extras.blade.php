@@ -39,10 +39,10 @@
             <div class="p-2">
                 <div class="flex justify-end">
                 <a href="{{ route('cultivos.reporte', $cultivo) }}" target="_blank">
-                    <button id="grand">Generar Reporte</button>
+                    <button id="ex">Generar Reporte</button>
                 </a>
+                </div>
             </div>
-        </div>
         </div>
       
 
