@@ -8,7 +8,7 @@
       background-image: -webkit-linear-gradient(white, white);
       background-image: linear-gradient(top, white,white);
       filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='white', endColorStr='white');
-      border-top: 1px solid white;
+      border-top: 1px solid rgb(44, 42, 42);
       width: 100%;
       position: fixed;
       bottom: 0;              /* NUEVO */ 
@@ -44,13 +44,7 @@
             ></a>
       
             <!-- Linkedin -->
-            <a
-              class="btn text-white btn-floating m-1"
-              
-              href="http://automatizacioncaldas.blogspot.com/"
-              role="button"
-              ><img src="sen.png" width="210px">
-            ></a>
+           
             <!-- Github -->
             
           </section>

@@ -1,31 +1,31 @@
+<x-app-layout>
+
 <style>
+
     .heading-primary-bottom {
-  display: block;
-  font-size: 18px;
-  letter-spacing: 5px;
-  font-weight: 700;
-}
+
+        display: block;
+        font-size: 18px;
+        letter-spacing: 5px;
+        font-weight: 700;
+    }
+
+    .header {
+
+        background-image: linear-gradient(
+            to right bottom, rgba(0, 0, 0, 0.397), 
+            rgba(1, 1, 1, 0.655));
+        background-size: cover;
+    }
+
 </style>
 
-<x-app-layout>
-    <style>
-    .header {
-        height: 95vh;
-  background-image: linear-gradient(
-    to right bottom, rgba(0, 0, 0, 0.397), 
-    rgba(1, 1, 1, 0.655)),
-    url('');
-  background-size: cover;
-  bacground-position: center;
-  position: relative;
-      }
-    </style>
-    <div class="header">
+<div class="header">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
     <div class="overflow-hidden  shadow-xl sm:rounded-lg">
         <nav class="navbar bg-white">
               <div class="container-fluid">
-                <span class="heading-primary-bottom">¡Movimientos!</span>
+                <span class="heading-primary-bottom">Movimientos</span>
                 </div>
               </div>
             </nav>
@@ -112,12 +112,10 @@
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button
-                                                            class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs
-                                                        leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out "
-                                                            type="submit">
+                                                        <x-jet-danger-button>
+                                                      
                                                             Eliminar
-                                                        </button>
+                                                        </x-jet-danger-button>
 
                                                     </form>
                                                 </td>
@@ -133,9 +131,9 @@
         </div>
 
 
+        </div>
     </div>
 </div>
-    </div>
 </x-app-layout>
 
 

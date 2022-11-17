@@ -1,44 +1,58 @@
 <x-app-layout>
-    <style> 
-        button#grand{
-         background-color: rgb(74, 224, 127);
-         color: white;
-         width: 170px;
-         height: 30px;
-         border-radius: 0.2rem;
-         margin: 2px;
-         font-family: Thin italic;
-         font-size: 15px;
-         letter-spacing: 1px;
-         
-     }
+    <style>
+
+        .heading-primary-bottom {
+            display: block;
+            font-size: 18px;
+            letter-spacing: 5px;
+            font-weight: 700;
+        }
+
+        .head {
+            height: 95vh;
+            background-image: linear-gradient(
+                to right bottom, rgba(0, 0, 0, 0.397), 
+                rgba(1, 1, 1, 0.655));
+            background-size: cover;
+        }
+
+    </style>
+
+    <div class="head">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
+            <div class="overflow-hidden  shadow-xl sm:rounded-lg">
+                <nav class="navbar bg-white">
+                    <div class="container-fluid">
+                        <span class="heading-primary-bottom">
+                            {{ __('Editar') }} {{ $cultivo->nombre }}
+                        </span>
+                    </div>
+                </nav>
+            </div>
+        </div>
  
-     button#grand:hover{
-         background-color: white;
-         border:solid 1px rgb(74, 224, 127);
-         color: rgb(74, 224, 127);
-     }
-     </style>
-
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar') }} {{ $cultivo->nombre }}
-        </h2>
-    </x-slot>
 
 
-    <div class="p-4">
-        <div class="flex justify-end">
-            <div class="py-2">
+        <div class="py-12">
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="p-2">
+                <div class="flex justify-end">
                 <a href="{{ route('cultivos.reporte', $cultivo) }}" target="_blank">
                     <button id="grand">Generar Reporte</button>
                 </a>
             </div>
         </div>
+        </div>
+      
+
+            
+           
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
 
 
-
+           
             <div class="my-6">
                 <form action="{{ route('cultivos.update', $cultivo) }}" method="post">
                     @method('PUT')
@@ -105,9 +119,11 @@
                 </div>
             @endif
 
+            </div>
         </div>
     </div>
-
+</div>
+     
 </x-app-layout>
 
 

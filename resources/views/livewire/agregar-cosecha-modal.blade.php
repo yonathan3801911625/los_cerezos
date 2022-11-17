@@ -31,11 +31,11 @@
         </x-slot>
 
         <x-slot name="content">
-            <div class="my-1 p-2">
+            <div class="my-1 ">
                 <!-- <x-jet-label for="Id" value="{{ __('Id') }}" />
                 <x-jet-input id="Id" class="block mt-1 w-full" wire:model='Id' type="number" name="Id"
                     :value="old('Id')" required autofocus /> -->
-                <table class="table table-bordered  mt-2">
+                <table class="table table-bordered ">
                     <tr>
                         <th>Id Cultivo</th>
                     </tr>
