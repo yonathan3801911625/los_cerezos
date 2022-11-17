@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <style>
+
+        h5{
+        font-size: 35px;
+        font-family: 'Bungee Spice', cursive;
+        text-align: center;
+        color: rgb(73, 156, 32);
+        }
+        h2{
+        font-size: 25px;
+        font-family: 'Bungee Spice', cursive;
+        text-align: left;
+        color: rgb(73, 156, 32);
+        }
+
         html{
             padding: 0;
             margin: 0;
@@ -18,21 +32,21 @@
         table{
             border-color: #000;
             border-collapse: collapse;
-            width: 80%;
+            width: 100%;
+            
+            
         }
         tr, td, th{
-            border: 1px solid;☻
-
+            padding: 15px;
+            text-align: :left;
+            border: 1px solid;
         }
+
     </style>
 </head>
 <body>
     <main class="container">
-        <h1>Cultivo</h1>
-        <p>
-            <strong>Nombre:</strong>
-            {{$cultivo->nombre}}
-        </p>
+        <h5>{{$cultivo->nombre}}</h5>
         <section>
             @foreach ($fases as $fase)
                 <h2>Fase {{$fase->nombre}}</h2>
@@ -59,12 +73,12 @@
                                     ->join('actividads', 'movimientos_actividad.actividad_id', '=', 'actividads.id')
                                     ->get();
 
-                                    $valorTotal = 0;
+                                    $valorTotalM = 0;
                                 @endphp
                                 @foreach ($actividades as $actividad)
                                 @php
                                     $valor = $actividad->cantidad_movimiento * $actividad->valor_movimiento;
-                                    $valorTotal += $valor;
+                                    $valorTotalM += $valor;
                                 @endphp
                                 <tr>
                                     <td>{{$actividad->nombre_actividad}}</td>
@@ -75,7 +89,7 @@
                             <tfoot>
                                 <tr>
                                     <td>Total</td>
-                                    <td>{{$valorTotal}}</td>
+                                    <td>{{$valorTotalM}}</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -106,12 +120,12 @@
                                 ->join('insumos', 'movimientos_insumos.insumo_id', '=', 'insumos.id')
                                 ->get();
                     
-                                $valorTotal = 0;
+                                $valorTotalI = 0;
                                 @endphp
                                 @foreach ($insumos as $insumo)
                                 @php
                                 $valor = $insumo->precio_insumo * $insumo->cantidad_movimientos_insumos;
-                                $valorTotal += $valor;
+                                $valorTotalI += $valor;
                                 @endphp
                                 <tr>
                                     <td>{{$insumo->nombre_insumo}}</td>
@@ -125,15 +139,61 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="4">Total</td>
-                                    <td>{{$valorTotal}}</td>
+                                    <td>{{$valorTotalI}}</td>
                                 </tr>
                             </tfoot>
                         </table>
                     </section>
+                    <section>
+                        <h3>Costos adicionales</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>descripcion</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                $costos = DB::table('costo_adicionals')
+                                ->select(
+                                'costo_adicionals.fecha as fecha',
+                                'costo_adicionals.descripcion as descripcion',
+                                'costo_adicionals.precio as precio',
+                                )
+                                ->where('cultivo_fase_id', $fase->cultivo_fase_id)
+                                ->get();
+                    
+                                $valorTotalC = 0;
+                                @endphp
+                                @foreach ($costos as $costo)
+                                @php
+                                $valor = $costo->precio;
+                                $valorTotalC += $valor;
+                                @endphp
+                                <tr>
+                                    <td>{{$costo->fecha}}</td>
+                                    <td>{{$costo->descripcion}}</td>
+                                    <td>{{$costo->precio}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            <tr>
+                                <td colspan="2">Total</td>
+                                <td>{{$valorTotalC}}</td>
+                            </tr>
+                        </table>
+                    </section>
+                    @php
+                    $valorTotal= $valorTotalM+$valorTotalI+$valorTotalC;
+                    @endphp
+                   <section>
+                    <h3>Valor total: ${{$valorTotal}}</h3>
+                   </section>
                 </div>
             @endforeach
         </section>
-        
     </main>
 </body>
 </html>

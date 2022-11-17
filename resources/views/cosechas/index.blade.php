@@ -1,17 +1,35 @@
 <x-app-layout>
-
     <style>
+        .header {
+        height: 95vh;
+        background-image: linear-gradient(
+        to right bottom, rgba(0, 0, 0, 0.397), 
+        rgba(1, 1, 1, 0.655)),
+        url('');
+        background-size: cover;
+        bacground-position: center;
+        position: relative;
+          }
 
-        .heading-primary-bottom {
-            display: block;
-            font-size: 18px;
-            letter-spacing: 5px;
-            font-weight: 700;
-        }
-
+          button#ex{
+         background-color: rgb(74, 224, 127);
+         color: white;
+         width: 170px;
+         height: 30px;
+         border-radius: 0.2rem;
+         margin: 2px;
+         font-family: Thin italic;
+         font-size: 15px;
+         letter-spacing: 1px;
+         
+     }
+ 
+     button#ex:hover{
+         background-color: white;
+         border:solid 1px rgb(74, 224, 127);
+         color: rgb(74, 224, 127);}
+          
     </style>
-
-
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
     <div class="overflow-hidden  shadow-xl sm:rounded-lg">
         <nav class="navbar bg-white">
@@ -27,7 +45,7 @@
             <div class="p-2">
                 <div class="flex justify-end">
                 </div>
-                <a href="{{ route('download-pdf-cosechas') }}" target="_blank" class="btn btn-success btn-sm ">Exportar a PDF</a>
+                <a href="{{ route('download-pdf-cosechas') }}" target="_blank" ><button id="ex"> Exportar a PDF</button></a>
             </div>
         </div>
 

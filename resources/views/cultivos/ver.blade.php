@@ -147,7 +147,58 @@
                     </div>
 
                 </div>
+                <div class="accordion-item" >
+                    <h2  class="accordion-header" id="headingThree">
+                        <button id="hov" class="accordion-button collapsed  focus:border-gray-900 focus:ring focus:ring-gray-300" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" >
+                            Cosechas
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+
+                            <table  class="table">
+                                <thead >
+                                    <tr>
+                                        <th>
+                                            Cantidad
+                                        </th>
+
+                                        <th>
+                                            Fecha
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($cosechas as $cosecha)
+                                    <tr>
+                                        <td>
+                                            {{ $cosecha->cantidad }}
+                                        </td>
+                                        <td>
+                                            {{ $cosecha->fecha }}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+
+            <div class="my-4 flex justify-center">
+                <a style="color" href="{{route('cultivos.index')}}">
+                    
+                
+                <x-jet-button >
+                
+                  Volver
+               </x-jet-button>
+            </a>
+            </div>
+
         </div>
     </div>
     
