@@ -6,7 +6,7 @@
                 <span class="heading-primary-bottom">Lista de usuarios</span>
                 
                     <form class="d-flex" >
-                        <input wire:model="search" class="form-control me-2" type="search" placeholder="&#xf333; Buscar usuario" aria-label="Search" style="FontAwesome">
+                        <input wire:model="search" class="form-control me-2" type="search" placeholder="Buscar usuario" aria-label="Search" style="FontAwesome">
                     </form>
                     
             </div>
@@ -90,7 +90,7 @@
 
             <div class="alert alert-danger" role="alert">
                 ¡¡No existen registros con esas caracterizticas!!.
-                <img src="https://o.remove.bg/downloads/7dcf6641-0ea4-4f9d-9ba9-b9d4403478c5/hombre-de-negocios-divertido-de-la-historieta-con-un-signo-de-interrogaci%C3%B3n-20591168-removebg-preview.png" width="70px">             
+                <img src="personaje.png" width="70px">            
             </div>
 
         @endif

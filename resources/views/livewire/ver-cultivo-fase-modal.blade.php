@@ -1,4 +1,16 @@
+
 <div>
+    <style>
+           button#hov{
+             color: white;
+             background-color: rgb(85, 85, 85);
+        }
+
+        button#hov:hover{
+             
+             background-color: rgba(128, 128, 128, 0.774);
+        }
+    </style>
     <x-jet-button wire:click="$toggle('abrirModal')">Ver</x-jet-button>
 
     <x-jet-dialog-modal wire:model="abrirModal">
@@ -26,7 +38,7 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <button id="hov" class="accordion-button collapsed focus:border-gray-900 focus:ring focus:ring-gray-300 " type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Insumos
                                 </button>
@@ -74,7 +86,7 @@
 
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <button id="hov" class="accordion-button collapsed focus:border-gray-900 focus:ring focus:ring-gray-300 " type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     Actividades
                                 </button>
@@ -110,7 +122,7 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <button id="hov" class="accordion-button collapsed focus:border-gray-900 focus:ring focus:ring-gray-300 " type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     Costos Adicionales
                                 </button>

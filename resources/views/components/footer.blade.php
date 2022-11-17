@@ -13,6 +13,10 @@
       position: fixed;
       bottom: 0;              /* NUEVO */ 
     }
+
+    p{
+      color: rgb(0, 0, 0);
+    }
     </style>
     
     <footer id="footer" class="bg-light text-center text-white">
@@ -43,6 +47,12 @@
               ><img src="https://tramiteinformativo.com/wp-content/uploads/2022/08/logo-sena-verde-png-sin-fondo.png" width="40px"/>
             ></a>
       
+            <a
+              class="btn text-white btn-floating m-1"
+              href="https://oferta.senasofiaplus.edu.co/sofia-oferta/"
+              role="button"
+              ><img src="agroSENA_logo.png" width="45px"/>
+            ></a>
             <!-- Linkedin -->
            
             <!-- Github -->
@@ -50,6 +60,7 @@
           </section>
           <!-- Section: Social media -->
         </div>
+        
         <!-- Grid container -->
       
         <!-- Copyright -->

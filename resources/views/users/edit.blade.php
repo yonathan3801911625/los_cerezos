@@ -19,6 +19,8 @@
             font-weight: 700;
         }
 
+        
+
 </style>
 
 <div class="head">

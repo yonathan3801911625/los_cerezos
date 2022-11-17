@@ -61,13 +61,15 @@
                     </div>
 
                     <div class="my-2 px-6">
-                        <x-jet-label for="valor">Valor por hora</x-jet-label>
-                        <x-jet-input type="integer" id="valor" name="valor" class="w-full" />
+                        <x-jet-label for="nombre">Valor pot hora</x-jet-label>
+                        <x-jet-input type="text" id="valor" name="valor" class="w-full" />
                     </div>
+                    
+                    
 
                     <div class="my-2 px-6">
                         <x-jet-label for="observacion">Observacion</x-jet-label>
-                        <x-jet-input type="longtext" id="observacion" name="observacion" class="w-full" />
+                        <x-jet-input type="text" id="observacion" name="observacion" class="w-full" />
                     </div>
 
                     <div   class="my-1 flex justify-center">

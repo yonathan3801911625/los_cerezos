@@ -10,11 +10,14 @@
         }
 
         .header {
-        
+            height: 100%;
+            width: 100%;
             background-image: linear-gradient(
                 to right bottom, rgba(0, 0, 0, 0.397), 
                 rgba(1, 1, 1, 0.655));
-            background-size: cover;
+                text-align: center;
+            position: relative;
+            
         }
 
     </style>

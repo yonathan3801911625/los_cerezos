@@ -32,7 +32,7 @@
                 </label>
             </div>
             <br/>
-            <div class="flex items-center">
+            <div class="flex items-center justify-center my-1 ">
                 
                 @if (Route::has('password.request'))
               
@@ -43,13 +43,15 @@
             
                 @endif
                     
-               
             </div>
+            
             <br>
-          
-            <x-jet-button  class="ml-4" style="text-align: center">
+          <div class="justify-center my-1 flex">
+            <x-jet-button  class="ml-4" style="text-align: center ">
                 {{ __('Log in') }}
             </x-jet-button>
+          </div>
+          
         
         </form>
     </x-jet-authentication-card>

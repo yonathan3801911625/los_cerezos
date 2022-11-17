@@ -18,7 +18,18 @@
                 rgba(1, 1, 1, 0.655));
             background-size: cover;
         }
+      
+        button#hov{
+             color: white;
+             background-color: rgb(85, 85, 85);
+        }
 
+        button#hov:hover{
+             
+             background-color: rgba(128, 128, 128, 0.774);
+        }
+
+        
     </style>
    
 
@@ -48,7 +59,7 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button id="hov" class="accordion-button focus:border-gray-900 focus:ring focus:ring-gray-300" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button id="hov" class="accordion-button focus:border-gray-900 focus:ring focus:ring-gray-300 " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     Información General
                                 </button>
                             </h2>

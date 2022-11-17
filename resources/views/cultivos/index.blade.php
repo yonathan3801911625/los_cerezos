@@ -10,6 +10,7 @@
         }
 
         .header {
+            height: auto;
             background-image: linear-gradient(
                 to right bottom, rgba(0, 0, 0, 0.397), 
                 rgba(1, 1, 1, 0.655));
