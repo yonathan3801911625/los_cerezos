@@ -8,9 +8,7 @@
         }
 
    </style>
-   <div class="bg-dark p-2 text-dark bg-opacity-50"> 
-      @livewire('adminusers-index');
-   </div> 
-    
+   <br/>
+      @livewire('adminusers-index');   
 </x-app-layout>
    

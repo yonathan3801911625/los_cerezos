@@ -73,7 +73,7 @@ class UserController extends Controller
     {
         $user->roles()->sync($request->roles);
         session()->flash("flas.banner" , "Rol asignado correctamente");
-        return Redirect::route("users.edit", $user)->with('info', 'Se asignó los roles correctamente');
+        return Redirect::route("users.edit", $user)->with('info', 'Rol asignado correctamente');
     }
 
     /**

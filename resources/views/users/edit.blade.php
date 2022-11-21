@@ -2,14 +2,6 @@
 
     <style>
 
-        .head {
-        
-            height: 95vh;
-            background-image: linear-gradient(
-            to right bottom, rgba(0, 0, 0, 0.397), 
-            rgba(1, 1, 1, 0.655));
-            background-size: cover;
-        }
 
         .heading-primary-bottom {
 
@@ -19,11 +11,15 @@
             font-weight: 700;
         }
 
+        #bg{
+            background-color: rgba(74, 224, 126, 0.726);
+            color: white;
+        }
         
 
 </style>
 
-<div class="head">
+
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
         <div class="overflow-hidden  shadow-xl sm:rounded-lg">
@@ -45,8 +41,10 @@
 
                 @if(session('info'))
 
-                    <div class = "alert alert-primary">
+                    <div id="bg" class = "alert alert-primary">
+                        
                         <strong>{{session('info')}}</strong>
+                        
                     </div>
 
                 @endif
@@ -82,6 +80,6 @@
             </div> 
         </div>
     </div>
-</div>
+
     
 </x-app-layout>

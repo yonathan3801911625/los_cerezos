@@ -89,8 +89,8 @@
             @else
 
             <div class="alert alert-danger" role="alert">
-                ¡¡No existen registros con esas caracterizticas!!.
-                <img src="personaje.png" width="70px">            
+                ¡¡No existen registros con esas caracterizticas!! ☹️.
+                        
             </div>
 
         @endif

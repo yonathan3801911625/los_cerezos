@@ -10,17 +10,11 @@
         font-weight: 700;
     }
 
-    .header {
-
-        background-image: linear-gradient(
-            to right bottom, rgba(0, 0, 0, 0.397), 
-            rgba(1, 1, 1, 0.655));
-        background-size: cover;
-    }
+  
 
 </style>
 
-<div class="header">
+
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
     <div class="overflow-hidden  shadow-xl sm:rounded-lg">
         <nav class="navbar bg-white">
@@ -92,14 +86,19 @@
                                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                     {{ $movimiento->cantidad }}
                                                 </td>
+
+                                              
+
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {{ $movimiento->tipo }}
                                                 </td>
+                                                
                                                 <td
                                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                     {{ $movimiento->observacion }}
                                                 </td>
+
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     <a href="{{ route('movimientos.show', $movimiento) }}">
@@ -133,7 +132,7 @@
 
         </div>
     </div>
-</div>
+
 </x-app-layout>
 
 

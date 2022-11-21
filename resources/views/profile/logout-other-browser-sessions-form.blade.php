@@ -52,15 +52,28 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <x-jet-button wire:click="confirmLogout" wire:loading.attr="disabled">
+            <button id="ex" wire:click="confirmLogout" wire:loading.attr="disabled">
                 {{ __('Log Out Other Browser Sessions') }}
-            </x-jet-button>
+            </button>
 
             <x-jet-action-message class="ml-3" on="loggedOut">
                 {{ __('Done.') }}
             </x-jet-action-message>
         </div>
-
+<style>
+        button#ex{
+            background-color: rgb(74, 224, 127);
+            color: white;
+            width: 170px;
+            height: 44px;
+            border-radius: 0.2rem;
+            margin: 2px;
+            font-family: Thin italic;
+            font-size: 15px;
+            letter-spacing: 1px;
+            
+        }
+</style>
         <!-- Log Out Other Devices Confirmation Modal -->
         <x-jet-dialog-modal wire:model="confirmingLogout">
             <x-slot name="title">
@@ -86,11 +99,11 @@
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
 
-                <x-jet-button class="ml-3"
+                <button id="ex" class="ml-3"
                             wire:click="logoutOtherBrowserSessions"
                             wire:loading.attr="disabled">
                     {{ __('Log Out Other Browser Sessions') }}
-                </x-jet-button>
+                </button>
             </x-slot>
         </x-jet-dialog-modal>
     </x-slot>

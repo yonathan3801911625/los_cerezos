@@ -1,10 +1,31 @@
 <x-app-layout>
  
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar Cultivo') }} {{ $actividad->nombre }}
-        </h2>
-    </x-slot>
+    
+    <style>
+
+        .heading-primary-bottom {
+            display: block;
+            font-size: 18px;
+            letter-spacing: 5px;
+            font-weight: 700;
+        }
+
+    </style>
+
+
+
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
+        <div class="overflow-hidden  shadow-xl sm:rounded-lg">
+            <nav class="navbar bg-white">
+                <div class="container-fluid">
+                    <span class="heading-primary-bottom">
+                        {{ __('Editar Cultivo') }} {{ $actividad->nombre }}
+                    </span>
+                </div>
+            </nav>
+        </div>
+    </div>
+
 
 
     <div class="py-12">

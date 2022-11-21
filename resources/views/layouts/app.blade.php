@@ -39,7 +39,15 @@
         button#ex:hover{
             background-color: white;
             border:solid 1px rgb(74, 224, 127);
-            color: rgb(74, 224, 127);}
+            color: rgb(74, 224, 127);
+        }
+
+           
+        #background{
+            background-image: linear-gradient(
+            to right bottom, rgba(0, 0, 0, 0.397), 
+            rgba(1, 1, 1, 0.655));
+        }
             
         </style>
         
@@ -47,6 +55,7 @@
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
+            <div id="background" class="min-h-screen">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
@@ -63,11 +72,11 @@
                 {{ $slot }}
             </main>
         </div>
-
+        </div>
         @stack('modals')
 
         @livewireScripts
-        <x-footer/>
+       
     </body>
 
     <!-- JavaScript Bundle with Popper -->

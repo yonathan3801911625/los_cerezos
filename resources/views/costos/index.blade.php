@@ -1,5 +1,6 @@
 <x-app-layout>
     
+ 
     <style>
 
         .heading-primary-bottom {
@@ -11,15 +12,19 @@
 
     </style>
 
+
+
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
-    <div class="overflow-hidden  shadow-xl sm:rounded-lg">
-        <nav class="navbar bg-white">
-              <div class="container-fluid">
-                <span class="heading-primary-bottom">Costos</span>
+        <div class="overflow-hidden  shadow-xl sm:rounded-lg">
+            <nav class="navbar bg-white">
+                <div class="container-fluid">
+                    <span class="heading-primary-bottom">
+                        Costos
+                    </span>
                 </div>
-              </div>
             </nav>
-      </div>
+        </div>
+    </div>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

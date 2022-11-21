@@ -1,4 +1,3 @@
-
 <style>
   /* Default height for small devices */
   @import url('https://fonts.googleapis.com/css?family=Lato');
@@ -17,21 +16,21 @@ line-height: 1.7;
 color: #fff;
 }
 
-
 .header {
-height: 50vh;
+height: 95vh;
+width: 100%;
 background-image: linear-gradient(
   to right bottom, rgba(90, 232, 140, 0.829), 
   rgba(201, 109, 35, 0.8)),
   url('');
-
 background-size: cover;
 
+position: relative;
 }
 
 .text-box {
 position: absolute;
-top: 30%;
+top: 50%;
 left: 50%;
 text-align: center;
 transform: translate(-50%, -50%);
@@ -49,91 +48,85 @@ display: block;
 font-size: 18px;
 letter-spacing: 7px;
 font-weight: 700;
-text-align: center;
 }
 
-.carousel-inner {
-
-height: 500px;
+.btn:link,
+.btn:visited {
+text-transform: uppercase;
+text-decoration: none;
+display: inline-block;
+border-radius: 100px;
+padding: 15px 40px;
+margin-top: 40px;
 }
 
-.carousel-inner img{
-
-width: auto; 
-max-height: 100%; 
+.btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
 }
 
-.carousel-control-prev{
-  display: block;
-  width: 60px;
-  height: 80px;
-  border-radius: 50%;
-  background-color:black;
-  margin-top:195px; 
+.btn:active {
+transform: translateY(-1px);
+box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
-.carousel slide{
-  height: 400px;
+.btn::after {
+content: "";
+display: inline-block;
+width: 100%;
+height: 100%;
+border-radius: 100px;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+transition: all .4s;
 }
 
-.carousel-control-next{
-  display: block;
-  width: 60px;
-  height: 80px;
-  border-radius: 50%;
-  background-color:black;
-  margin-top:195px; 
+.btn-call-to-action {
+background-color: #fff;
+color: #777;
+position: relative;
 }
 
+.btn-call-to-action::after {
+background-color: #fff;
+}
+
+.btn-call-to-action:hover::after {
+transform: scaleX(1.35) scaleY(1.55);
+opacity: 0;
+}
+
+.btn-animate {
+animation: moveUp .7s cubic-bezier(.64,.01,.49,1.76) .75s;
+animation-fill-mode: backwards;
+}
+
+@keyframes moveUp {
+0% {
+  opacity: 0;
+  transform: translateY(50px);
+}
+100% {
+  opacity: 1;
+  transform: translate(0);
+}
+}
 </style>
 
+<!-- Navbar -->
 
+<!-- Navbar -->
+
+<!-- Background image -->
 
 <header class="header">
 
 <div class="text-box">
   <h1 class="heading-primary">
-    <span class="heading-primary-top">BIENVENIDO</span> 
-    <span class="heading-primary-bottom">¡Finca agroSENA 4.0!</span>
+    <span class="heading-primary-top">Los Cerezos</span> 
   </h1>
-
 </div>
-
 </header>
-<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
-<div class="carousel-inner">
 
-  <div class="carousel-item active">
-    <img src="IMG_1.JPG" class="d-block w-100" alt="...">
-  </div>
-
-  <div class="carousel-item">
-    <img src="portafa.JPG" class="d-block w-100" alt="...">
-  </div>
-
-  <div class="carousel-item">
-    <img src="vaca.JPG" class="d-block w-100" alt="...">
-  </div>
-
-  <div class="carousel-item">
-    <img src="IMG_4.JPG" class="d-block w-100" alt="...">
-  </div>
-
-  <div class="carousel-item">
-    <img src="IMG_5.JPG" class="d-block w-100" alt="...">
-  </div>
-
-</div>
-
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Previous</span>
-
-</button>
-
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Next</span>
-</button>
-</div>
