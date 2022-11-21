@@ -7,6 +7,7 @@
       padding: 1rem 0;
       background: #f7f7f7;
       text-align: center;
+      color: black;
     
     }
   
