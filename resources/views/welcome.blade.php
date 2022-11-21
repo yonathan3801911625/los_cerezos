@@ -1,4 +1,79 @@
+<style>
+    div.loader_container{
+        background-color: white;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        transition: all 5s;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+    
+    div.loader,
+    div.loader:before,
+    div.loader:after{
+        border-radius:50%;
+        width: 2.5em;
+        height: 2.5em;
+        animation: loader 1s infinite ease-in-out;
+        
+    }
+    
+    div.loader{
+        color: rgba(90, 232, 140, 0.829);
+        font-size: 13px;
+        position: relative;
+        animation-delay: -0.16s ;
+    
+    }
+    
+    div.loader:before,
+    div.loader:after{
+        content: '';
+        position: absolute;
+        top: 0;
+    }
+    
+    div.loader:before{
+        left: -3.5em;
+        animation-delay: 0.32s;
+        
+    }
+    
+    div.loader:after{
+        left: 3.5em;
+    }
+    
+    @keyframes loader{
+        0%,
+        80%,
+        100%{
+         box-shadow:0 2.5em 0 -1.3em;
+        }
+        40% {
+            box-shadow:0 2.5em  0 0;
+        }
+    }
+                
+            </style>
+    
+           <script> 
+        window.addEventListener('load', ()=>{
+        const loader_container = document.querySelector('.loader_container')
+        loader_container.style.opacity= 0
+        loader_container.style.visibility= 'hidden'
+       })
+          </script>
+          
+           <div class="loader_container">
+                <div class="loader"></div>
+           </div>
+
 <x-app-layout>
+
+
     <x-header/>
   </x-app-layout>
 

@@ -113,6 +113,8 @@ body {
     transform: translate(0);
   }
 }
+
+
 </style>
 
 <!-- Navbar -->
@@ -120,6 +122,7 @@ body {
 <!-- Navbar -->
 
 <!-- Background image -->
+
 
 <header class="header">
 
