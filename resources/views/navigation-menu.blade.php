@@ -189,7 +189,7 @@
             
                         <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
                     
-                            {{ __('Registrar') }}
+                            {{ __('Registrarse') }}
                         </x-jet-nav-link>
                     
                     
