@@ -3,10 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Insumo;
+use FontLib\Autoloader;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use PhpParser\Node\Expr\Cast\Array_;
 
 class AgregarMovimientoInsumoModal extends Component
 {
@@ -22,17 +22,13 @@ class AgregarMovimientoInsumoModal extends Component
 
     public $cantidad = 0;
     public bool $disableForm = true;
-    public bool $tipoMovimiento = true;
+    public  $tipoMovimiento;
     public $precio = 0;
 
+    public $movimientosActividad;
     public function mount()
     {
         $this->getInsumos();
-    }
-
-    public function render()
-    {
-        return view('livewire.agregar-movimiento-insumo-modal');
     }
 
     public function getInsumos()
@@ -58,11 +54,12 @@ class AgregarMovimientoInsumoModal extends Component
         $this->validateForm();
     }
 
-    public function setTipoMovimiento($bool)
+    public function setTipoMovimiento($string)
     {
-        $this->tipoMovimiento = $bool;
+        $this->tipoMovimiento = $string;
         if (!$this->tipoMovimiento) {
             $this->checkCantidad();
+            
         }
     }
 
@@ -74,7 +71,7 @@ class AgregarMovimientoInsumoModal extends Component
     }
 
     public function validateForm() {
-        if(!$this->tipoMovimiento) {
+        if($this->tipoMovimiento == 'salida') {
             if ($this->cantidad > $this->insumoSelected->cantidad ||
                 $this->cantidad == 0 ||
                 $this->cantidad == null) {
@@ -96,7 +93,9 @@ class AgregarMovimientoInsumoModal extends Component
 
     public function getCantidadCalculada() {
         $cantidadCalculada = 0;
-        if ($this->tipoMovimiento) {
+        if ($this->tipoMovimiento == 'entrada') {
+            $cantidadCalculada = $this->insumoSelected->cantidad + $this->cantidad;
+        }elseif ($this->tipoMovimiento == 'devolucion') {
             $cantidadCalculada = $this->insumoSelected->cantidad + $this->cantidad;
         } else {
             $cantidadCalculada = $this->insumoSelected->cantidad - $this->cantidad;
@@ -106,8 +105,11 @@ class AgregarMovimientoInsumoModal extends Component
 
     public function save()
     {
+        // dd( $this->tipoMovimiento);
+        
         DB::table('movimientos')->insert(
             [
+                
                 'insumo_id' => $this->insumoSelected->id,
                 'fecha' => $this->fecha,
                 'cantidad' => $this->cantidad,
@@ -124,6 +126,7 @@ class AgregarMovimientoInsumoModal extends Component
             );
 
        $this->resetForm();
+       
     }
 
     public function resetForm() {
@@ -131,7 +134,7 @@ class AgregarMovimientoInsumoModal extends Component
         $this->keyInsumoSelected = null;
         $this->abrirModal = false;
         $this->cantidad = 0;
-        $this->tipoMovimiento = true;
+        $this->tipoMovimiento;
     }
 
     public function verMovimiento() {
@@ -146,6 +149,30 @@ class AgregarMovimientoInsumoModal extends Component
             ->join('movimientos', 'registros_movimientos.movimiento_id', '=', 'movimientos.id')
             ->get();
     }
+    public function render(){
+        $this->loadMovimiento();
+        return view('livewire.agregar-movimiento-insumo-modal');
+    }
+    public function index()
+    {
+        $this->loadMovimiento();
+        return view('movimientos.index', compact('movimientos'));
+    }
+    public function loadMovimiento() {
+        $this->movimientosActividad =  DB::table('movimientos')
+            ->select(
+                
+                'movimientos.fecha as fecha_movimiento',
+                'movimientos.cantidad as cantidad_movimiento',
+                'movimientos.tipo as tipo_movimiento',
+                'movimientos.observacion as observacion_movimiento',
+
+            )
+            // ->where('cultivo_fase_id', $this->cultivo_fase_id)
+            ->join('cultivos', 'movimientos.fecha', '=', 'movimientos.fecha')
+            ->get();
+    }
+
 
 
 

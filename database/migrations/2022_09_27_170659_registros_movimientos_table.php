@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId("insumo_id")->constrained();
             $table->date("fecha");
             $table->integer("cantidad");
-            $table->boolean("tipo");
+            $table->string("tipo");
             $table->foreignId("user_id")->constrained();
             $table->string("observacion");
             $table->timestamps();

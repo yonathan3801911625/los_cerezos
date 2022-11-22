@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\AgregarMovimientoInsumoModal;
 use App\Models\Movimiento;
 use App\Models\Insumo;
 use Illuminate\Http\Request;
@@ -18,7 +19,9 @@ class MovimientoController extends Controller
     public function index()
     {
         $movimientos = Movimiento::all();
-        return view('movimientos.index', compact('movimientos'));
+        $movimientosActividad = Movimiento::all();
+        $insumos = Insumo::all();
+        return view('movimientos.index', compact('movimientos', 'insumos'));
     }
 
     /**
@@ -72,6 +75,7 @@ class MovimientoController extends Controller
     public function show(Movimiento $movimiento)
     {
         return view('movimientos.ver',compact('movimiento'));
+        return view('insumos.ver',compact('insumo'));
     }
 
     /**
@@ -82,7 +86,8 @@ class MovimientoController extends Controller
      */
     public function edit(Movimiento $movimiento)
     {
-        return view ('movimientos.edit', compact('movimiento'));
+        $insumos = Insumo::all();
+        return view ('movimientos.edit', compact('movimiento', 'insumos'));
     }
 
     /**
@@ -114,7 +119,7 @@ class MovimientoController extends Controller
     public function destroy(Movimiento $movimiento)
     {
         $movimiento->delete();
-        return back()->with("flash.banner", "Movimiento eliminada de manera exitosa");
+        return back()->with("flash.banner", "Movimiento modificado de manera exitosa");
     }
 
     public function downloadPDF()

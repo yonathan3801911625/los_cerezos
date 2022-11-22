@@ -32,7 +32,7 @@
 
         <x-slot name="content">
             <div>
-
+{{$tipoMovimiento}}
                 <div class="my-1 p-2">
                     <x-jet-label>Nombre del insumo</x-jet-label>
                     {{-- {{ $insumos }} --}}
@@ -82,34 +82,35 @@
                         <x-jet-label>Tipo de movimiento</x-jet-label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento1"
-                                wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento == 'devolucion') checked @endif>
+                                wire:click="setTipoMovimiento('entrada')" @if ($tipoMovimiento == 'entrada') checked @endif>
                             <label class="form-check-label" for="tipoMovimiento1">
-                                Devolucion
+                                Entrada
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento2"
-                                wire:click="setTipoMovimiento(false)" @if ($tipoMovimiento == 'salida') checked @endif>
+                                wire:click="setTipoMovimiento('salida')" @if ($tipoMovimiento == 'salida') checked @endif>
                             <label class="form-check-label" for="tipoMovimiento2">
                                 Salida
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento3"
-                                wire:click="setTipoMovimiento(true)" @if ($tipoMovimiento == 'entrada') checked @endif>
+                                wire:click="setTipoMovimiento('devolucion')" @if ($tipoMovimiento == 'devolucion') checked @endif>
                             <label class="form-check-label" for="tipoMovimiento3">
-                                Entrada
+                                Devolucion
                             </label>
                         </div>
                     </div>
 
-                    @if ($tipoMovimiento == 1)
+                    @if ($tipoMovimiento == 'entrada')
                         <div class="my-1 p-2">
                             <x-jet-label>Cantidad de entrada</x-jet-label>
                             <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice'
                                 min="0" />
                         </div>
-                    @elseif($tipoMovimiento == true)
+                        {{-- posibilidad de devolucion --}}
+                    @elseif($tipoMovimiento == 'devolucion')
                         <div class="my-1 p-2">
                             <x-jet-label>Cantidad de devolucion</x-jet-label>
                             <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice'

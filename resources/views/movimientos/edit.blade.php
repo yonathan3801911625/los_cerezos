@@ -33,6 +33,7 @@
                 <form action="{{route('movimientos.update', $movimiento)}}" method="post">
                     @method('PUT')
                     @include('movimientos.form')
+                    {{-- @include('livewire.agregar-movimiento-insumo-modal') --}}
 
                 </form>
             </div>
