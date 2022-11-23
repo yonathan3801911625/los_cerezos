@@ -4,8 +4,10 @@ namespace App\Http\Livewire;
 
 use App\Models\Insumo;
 use FontLib\Autoloader;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class AgregarMovimientoInsumoModal extends Component
@@ -111,8 +113,11 @@ class AgregarMovimientoInsumoModal extends Component
             [
                 
                 'insumo_id' => $this->insumoSelected->id,
+                'insumo_nombre' => $this->insumoSelected->nombre,
                 'fecha' => $this->fecha,
                 'cantidad' => $this->cantidad,
+                'insumo_precio' => $this->insumoSelected->precio,
+                'precio' => $this->precio,
                 'tipo' => $this->tipoMovimiento,
                 'user_id' => Auth::user()->id,
                 'observacion' => $this->observacion,
@@ -135,6 +140,8 @@ class AgregarMovimientoInsumoModal extends Component
         $this->abrirModal = false;
         $this->cantidad = 0;
         $this->tipoMovimiento;
+
+        return redirect(request()->header('Referer'));
     }
 
     public function verMovimiento() {

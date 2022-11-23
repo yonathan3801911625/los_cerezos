@@ -10,7 +10,6 @@
         }
     </style>
 
-
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
         <div class="overflow-hidden  shadow-xl sm:rounded-lg">
             <nav class="navbar bg-white">
@@ -33,6 +32,11 @@
                     <x-jet-input id="insumo_nombre" class="block mt-1 w-full" type="text" name="insumo_nombre"
                         :value="old('insumo_nombre', $movimiento->insumo_id)" readonly />
                 </div>
+                <div class="my-4 px-6">
+                    <x-jet-label for="insumo_nombre" value="{{ __('Nombre Insumo') }}" />
+                    <x-jet-input id="insumo_nombre" class="block mt-1 w-full" type="text" name="insumo_nombre"
+                        :value="old('insumo_nombre', $movimiento->insumo_nombre)" readonly />
+                </div>
 
                 <div class="my-4 px-6">
                     <x-jet-label for="tipoMovimiento" value="{{ __('Tipo de movimiento') }}" />
@@ -41,15 +45,25 @@
                 </div>
 
                 <div class="my-4 px-6">
-                    <x-jet-label for="cantidad" value="{{ __('Cantidad') }}" />
+                    <x-jet-label for="cantidad" value="{{ __('Cantidad Insumos') }}" />
                     <x-jet-input id="cantidad" class="block mt-1 w-full" type="text" name="cantidad"
                         :value="old('cantidad', $movimiento->cantidad)" readonly />
                 </div>
+                <div class="my-4 px-6">
+                    <x-jet-label for="insumo_precio" value="{{ __('Precio Unidad Insumo') }}" />
+                    <x-jet-input id="insumo_precio" class="block mt-1 w-full" type="text" name="insumo_precio"
+                        :value="old('insumo_precio', $movimiento->insumo_precio)" readonly />
+                </div>
 
                 <div class="my-4 px-6">
-                    <x-jet-label for="valor" value="{{ __('Valor') }}" />
+                    <x-jet-label for="valor" value="{{ __('Valor total Movimiento') }}" />
                     <x-jet-input id="valor" class="block mt-1 w-full" type="text" name="valor"
-                        :value="old('valor', $movimiento->valor_total)" readonly />
+                        :value="old('valor', $movimiento->precio)" readonly />
+                </div>
+                <div class="my-4 px-6">
+                    <x-jet-label for="observacion" value="{{ __('Valor total Movimiento') }}" />
+                    <x-jet-input id="observacion" class="block mt-1 w-full" type="text" name="observacion"
+                        :value="old('observacion', $movimiento->observacion)" readonly />
                 </div>
 
                 <div class="my-4 px-6">

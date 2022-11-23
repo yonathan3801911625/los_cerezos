@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Livewire\AgregarMovimientoInsumoModal;
 use App\Models\Movimiento;
 use App\Models\Insumo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 class MovimientoController extends Controller
 {
@@ -21,6 +21,7 @@ class MovimientoController extends Controller
         $movimientos = Movimiento::all();
         $movimientosActividad = Movimiento::all();
         $insumos = Insumo::all();
+        $insumo = new Insumo();
         return view('movimientos.index', compact('movimientos', 'insumos'));
     }
 
@@ -44,16 +45,20 @@ class MovimientoController extends Controller
     public function store(Request $request)
     {
         $movimiento = new Movimiento();
+        $insumo = new Insumo();
         $insumo = insumo::find($request->insumo);
         $movimiento->insumo_id = $request->insumo;
+        $movimiento->insumo_nombre = $request->insumo;
         $movimiento->tipoMovimiento = $request->tipoMovimiento;
         $movimiento->cantidad = $request->cantidad;
         $movimiento->valor = $request->valor;
         $movimiento->fecha = $request->fecha;
-        if($request->tipomovimiento == "Salida"){
-            $insumo->cantidad = $insumo->cantidad - $request->cantidad;
-        }else{
+        if($request->tipomovimiento == "entrada"){
             $insumo->cantidad = $insumo->cantidad + $request->cantidad;
+        }elseif($request->tipomovimiento == "devolucion"){
+            $insumo->cantidad = $insumo->cantidad + $request->cantidad;
+        }else{
+            $insumo->cantidad = $insumo->cantidad - $request->cantidad;
         }
         $movimiento->valor = $request->valor;
         //$valortotal= $request->precio*$request->cantidad;
@@ -73,9 +78,12 @@ class MovimientoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Movimiento $movimiento)
+    
     {
-        return view('movimientos.ver',compact('movimiento'));
-        return view('insumos.ver',compact('insumo'));
+        $movimientos = Movimiento::all();
+        $movimientosActividad = Movimiento::all();
+        $insumos = Insumo::all();
+        return view('movimientos.ver',compact('movimiento', 'insumos'));
     }
 
     /**
@@ -106,7 +114,7 @@ class MovimientoController extends Controller
         $movimiento->fecha = $request->fecha;
 
         $movimiento->save();
-        session()->flash("flash.banner","Movimiento Creado Satisfatoriamente");
+        session()->flash("flash.banner","Movimiento Moodificado Satisfatoriamente");
         return Redirect::route("movimientos.index");
     }
 
@@ -119,8 +127,9 @@ class MovimientoController extends Controller
     public function destroy(Movimiento $movimiento)
     {
         $movimiento->delete();
-        return back()->with("flash.banner", "Movimiento modificado de manera exitosa");
+        return back()->with("flash.banner", "Movimiento eliminado de manera exitosa");
     }
+    
 
     public function downloadPDF()
     {
@@ -130,4 +139,5 @@ class MovimientoController extends Controller
  
          return $pdf->stream();
     }
+    
 }

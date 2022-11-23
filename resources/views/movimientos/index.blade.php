@@ -10,7 +10,6 @@
         }
     </style>
 
-
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> <br>
         <div class="overflow-hidden  shadow-xl sm:rounded-lg">
             <nav class="navbar bg-white">
@@ -41,9 +40,13 @@
                                     <table class="min-w-full">
                                         <thead class="border-b">
                                             <tr>
+                                                {{-- <th scope="col"
+                                                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                    Insumo Id
+                                                </th> --}}
                                                 <th scope="col"
                                                     class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                    Insumo
+                                                    Nombre Insumo
                                                 </th>
                                                 <th scope="col"
                                                     class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -55,22 +58,33 @@
                                                 </th>
                                                 <th scope="col"
                                                     class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                    Tipo de movimiento
+                                                    Precio Unitario Insumo
                                                 </th>
                                                 <th scope="col"
                                                     class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                    Observación
+                                                    Precio Total
                                                 </th>
+                                                <th scope="col"
+                                                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                    Tipo de movimiento
+                                                </th>
+                                                {{-- <th scope="col"
+                                                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                    Observación
+                                                </th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($insumo= $movimientos as $movimiento)
+                                            @foreach ($movimientos as $movimiento)
                                                 <tr class="border-b">
-                                                    <td
+                                                    {{-- <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                         {{ $movimiento->insumo_id }}
+                                                    </td> --}}
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                        {{ $movimiento->insumo_nombre }}
                                                     </td>
-                                                    
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                         {{ $movimiento->fecha }}
@@ -79,6 +93,14 @@
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                         {{ $movimiento->cantidad }}
+                                                    </td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                        {{ $movimiento->insumo_precio }}
+                                                    </td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                        {{ $movimiento->precio }}
                                                     </td>
 
                                                     <td
@@ -92,24 +114,25 @@
                                                         @endif
                                                     </td>
 
-                                                    <td
+                                                    {{-- <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                         {{ $movimiento->observacion }}
-                                                    </td>
+                                                    </td> --}}
                                                     <td
                                                         class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                         <a href="{{ route('movimientos.show', $movimiento) }}">
-                                                            <x-jet-button>Ver</x-jet-button>
-                                                        </a>
+                                                            <x-jet-button>Info. General</x-jet-button>
+                                                        {{-- </a>
                                                         <a href="{{ route('movimientos.edit', $movimiento) }}">
                                                             <x-jet-button>Editar</x-jet-button>
-                                                        </a>
+                                                        </a> --}}
 
                                                         <form action="{{ route('movimientos.destroy', $movimiento) }}"
                                                             method="post">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <x-jet-danger-button type="submit" class="display:containt">Eliminar
+                                                            <x-jet-danger-button type="submit"
+                                                                class="display:containt">Eliminar
                                                             </x-jet-danger-button>
 
                                                         </form>

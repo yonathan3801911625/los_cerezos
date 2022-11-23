@@ -30,7 +30,7 @@
         </div>
     @endif 
     
-    {{-- <div class="my-1 p-2">
+    <div class="my-4 px-6">
         <x-jet-label>Tipo de movimiento</x-jet-label>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento1"
@@ -53,7 +53,7 @@
                 Devolucion
             </label>
         </div>
-    </div> --}}
+    </div>
 
     
     <div class="my-4 px-6">
