@@ -1,1 +1,1 @@
-<img src="{{ asset('agroSENA_logo.png')}}" alt="" style="width:128px;">
+<img src="{{ asset('logoAgro.png')}}" alt="" style="width:128px;">
