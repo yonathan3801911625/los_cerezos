@@ -23,7 +23,7 @@
                         <x-jet-application-mark class="block h-9 w-auto" />
                       
                     </a>
-                    <h1 class='text'>Finca agroSENA 4.0</h1>
+                    <h1 class='text'>Finca AgroSENA 4.0</h1>
                 
                 </div>
             

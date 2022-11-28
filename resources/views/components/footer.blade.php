@@ -22,30 +22,35 @@
                 <section class="mb-1">
                   <!-- Facebook -->
                   <a
-                    class="btn text-white btn-floating m-1"
-                    href="#!"
-                    role="button">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/768px-Facebook_Logo_%282019%29.png" width="40px"/> 
-                  </a>
+      
+                class="btn text-white btn-floating m-1"
+                href="http://automatizacioncaldas.blogspot.com/"
+                role="button">
+                <img src="sen.png" width="190px"/>
+  
+            </a>
             
-               
-                  <a
-
-                    class="btn text-white btn-floating m-1"
-                    href="https://oferta.senasofiaplus.edu.co/sofia-oferta/"
-                    role="button">
-                    <img src="https://tramiteinformativo.com/wp-content/uploads/2022/08/logo-sena-verde-png-sin-fondo.png" width="40px"/>
-
-                  </a>
-
-                  <a
+                <a
 
                   class="btn text-white btn-floating m-1"
-                  href=""
+                  href="https://oferta.senasofiaplus.edu.co/sofia-oferta/"
                   role="button">
-                  <img src="agroSENA_logo.png" width="40px"/>
+                  <img src="https://tramiteinformativo.com/wp-content/uploads/2022/08/logo-sena-verde-png-sin-fondo.png" width="35px"/>
 
                 </a>
+
+              
+
+              <a
+
+                  class="btn text-white btn-floating m-1"
+                  href="https://oferta.senasofiaplus.edu.co/sofia-oferta/"
+                  role="button">
+                  <img src="agroSENA_logo.png" width="35px"/>
+
+                </a>
+
+                
                   
                 </section>
            
