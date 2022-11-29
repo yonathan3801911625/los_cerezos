@@ -1,5 +1,5 @@
 
-               
+
 
 @csrf
 <div class="py-12">
@@ -14,7 +14,7 @@
         <x-jet-input id="nombre" class="w-full" type="text" name="nombre" :value="old('nombre', $insumo->nombre)" required autofocus />
     </div>
     <div class="my-2 px-6">
-       
+
             <x-jet-label for="tipo">Selecciona la unidad de medida</x-jet-label>
             <select name="unidad" id="unidad">
                 <option value="Mg">Mg</option>
@@ -22,8 +22,9 @@
                 <option value="Kg">Kg</option>
                 <option value="Ml">Ml</option>
                 <option value="Lt">Lt</option>
+                <option value="Und">Und</option>
             </select>
-       
+
     </div>
     <div class="my-2 px-6">
         <x-jet-label for="cantidad" value="{{ __('Cantidad') }}" />
@@ -63,4 +64,4 @@
     </div>
 </div>
 
-        
+

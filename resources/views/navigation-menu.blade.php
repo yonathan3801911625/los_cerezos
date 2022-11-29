@@ -12,7 +12,7 @@
 
 
 <nav  x-data="{ open: false }" class="navbar navbar-default navbar-fixed-top bg-white border-b border-gray-100">
-    
+
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -21,35 +21,36 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
-                      
+
                     </a>
                     <h1 class='text'>Finca AgroSENA 4.0</h1>
-                
+
                 </div>
-            
-              
-                       
-                
+
+
+
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    
-                   
-                    
+
+
+
                     @can('cultivos index')
                     <x-jet-nav-link href="{{ route('cultivos.index') }}" :active="request()->routeIs('cultivos*')">
                     @endcan
                         {{ __('Cultivos') }}
                     </x-jet-nav-link>
 
-                    @can('Inicio insumos')
-                    <x-jet-nav-link href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
-                    @endcan
-                        {{ __('Insumos') }}
-                    </x-jet-nav-link>
                     @can('Inicio actividades')
                     <x-jet-nav-link href="{{ route('actividads.index') }}" :active="request()->routeIs('actividads*')">
                     @endcan
                         {{ __('Actividades') }}
+                    </x-jet-nav-link>
+
+                    @can('Inicio insumos')
+                    <x-jet-nav-link href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
+                    @endcan
+                        {{ __('Insumos') }}
                     </x-jet-nav-link>
 
                     @can('Inicio fases')
@@ -72,7 +73,7 @@
                         {{ __('Usuarios') }}
                     </x-jet-nav-link>
 
-                  
+
 
 
                 </div>
@@ -181,19 +182,19 @@
                         </x-slot>
                     </x-jet-dropdown>
                     @else
-                    
+
                     <x-jet-nav-link   href="{{ route('login') }}" :active="request()->routeIs('login')">
-                      
+
                             {{ __('Iniciar Sesion') }}
                         </x-jet-nav-link>
-            
+
                         <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                    
+
                             {{ __('Registrarse') }}
                         </x-jet-nav-link>
-                    
-                    
-                   
+
+
+
                     @endauth
                 </div>
             </div>
@@ -213,24 +214,25 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            
-        
+
+
 
             @can('cultivos index')
             <x-jet-responsive-nav-link href="{{ route('cultivos.index') }}" :active="request()->routeIs('cultivos*')">
             @endcan
                 {{ __('Cultivos') }}
             </x-jet-responsive-nav-link>
-            @can('Inicio insumos')
-            <x-jet-responsive-nav-link href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
-            @endcan
-                {{ __('Insumos') }}
-            </x-jet-responsive-nav-link>
             @can('Inicio actividades')
             <x-jet-responsive-nav-link href="{{ route('actividads.index') }}" :active="request()->routeIs('actividads*')">
             @endcan
                 {{ __('Actividades') }}
             </x-jet-responsive-nav-link>
+            @can('Inicio insumos')
+            <x-jet-responsive-nav-link href="{{ route('insumos.index') }}" :active="request()->routeIs('insumos*')">
+            @endcan
+                {{ __('Insumos') }}
+            </x-jet-responsive-nav-link>
+
             @can('Inicio fases')
             <x-jet-responsive-nav-link href="{{ route('fases.index') }}" :active="request()->routeIs('fases*')">
             @endcan
@@ -249,7 +251,7 @@
             @endcan
                 {{ __('Usuarios') }}
             </x-jet-responsive-nav-link>
-           
+
         </div>
 
         <!-- Responsive Settings Options -->
@@ -328,9 +330,9 @@
         <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
             {{ __('Iniciar Sesion') }}
         </x-jet-responsive-nav-link>
-      
+
         <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-       
+
             {{ __('Registrarse') }}
         </x-jet-responsive-nav-link>
     </div>

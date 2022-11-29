@@ -1,5 +1,5 @@
 <div>
-    <style> 
+    <style>
         button#grand{
          background-color: rgb(74, 224, 127);
          color: white;
@@ -10,9 +10,9 @@
          font-family: Thin italic;
          font-size: 15px;
          letter-spacing: 1px;
-         
+
      }
- 
+
      button#grand:hover{
          background-color: white;
          border:solid 1px rgb(74, 224, 127);
@@ -94,13 +94,13 @@
                                 Salida
                             </label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        {{-- <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento3"
                                 wire:click="setTipoMovimiento('devolucion')" @if ($tipoMovimiento == 'devolucion') checked @endif>
                             <label class="form-check-label" for="tipoMovimiento3">
                                 Devolucion
                             </label>
-                        </div>
+                        </div> --}}
                     </div>
 
                     @if ($tipoMovimiento == 'entrada')
@@ -110,12 +110,12 @@
                                 min="0" />
                         </div>
                         {{-- posibilidad de devolucion --}}
-                    @elseif($tipoMovimiento == 'devolucion')
+                    {{-- @elseif($tipoMovimiento == 'devolucion')
                         <div class="my-1 p-2">
                             <x-jet-label>Cantidad de devolucion</x-jet-label>
                             <x-jet-input type="number" class="w-full" wire:model='cantidad' wire:input='updatePrice'
                                 min="0" />
-                        </div>
+                        </div> --}}
                     @else
                         <div class="my-1 p-2">
                             <x-jet-label>Cantidad de salida</x-jet-label>

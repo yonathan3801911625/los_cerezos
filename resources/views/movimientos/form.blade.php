@@ -5,7 +5,7 @@
     <x-jet-input id="insumo_id" class="block mt-1 w-full" type="text" name="insumo_id" :value="old('insumo_id', $movimiento->insumo_id)"  readonly />
     </div>
 
-    
+
 
     <div class="my-4 px-6">
     <x-jet-label for="cantidad" value="{{ __('Cantidad')}}" />
@@ -17,19 +17,19 @@
         <x-jet-label for="tipo_movimiento" value="{{ __('Tipo de movimiento')}}" />
         <x-jet-input id="tipo_movimiento" class="block mt-1 w-full" type="text" name="tipo_movimiento" :value="old('tipo_movimiento' , $movimiento->tipo )" required autofocus />
         </div>
-        
-    @elseif($movimiento->tipo == 'devolucion')
+
+    {{-- @elseif($movimiento->tipo == 'devolucion')
     <div class="my-4 px-6">
         <x-jet-label for="tipo_movimiento" value="{{ __('Tipo de movimiento')}}" />
         <x-jet-input id="tipo_movimiento" class="block mt-1 w-full" type="text" name="tipo_movimiento" :value="old('tipo_movimiento' , $movimiento->tipo )" required autofocus />
-        </div>
+        </div> --}}
     @else
     <div class="my-4 px-6">
         <x-jet-label for="tipo_movimiento" value="{{ __('Tipo de movimiento')}}" />
         <x-jet-input id="tipo_movimiento" class="block mt-1 w-full" type="text" name="tipo_movimiento" :value="old('tipo_movimiento' , $movimiento->tipo )" required autofocus />
         </div>
-    @endif 
-    
+    @endif
+
     <div class="my-4 px-6">
         <x-jet-label>Tipo de movimiento</x-jet-label>
         <div class="form-check form-check-inline">
@@ -46,16 +46,16 @@
                 Salida
             </label>
         </div>
-        <div class="form-check form-check-inline">
+        {{-- <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="tipoMovimiento" id="tipoMovimiento3"
                 wire:click="setTipoMovimiento('devolucion')" @if ($movimiento->tipo == 'devolucion') checked @endif>
             <label class="form-check-label" for="tipoMovimiento3">
                 Devolucion
             </label>
-        </div>
+        </div> --}}
     </div>
 
-    
+
     <div class="my-4 px-6">
     <x-jet-label for="fecha" value="{{ __('Fecha')}}" />
     <x-jet-input id="fecha" class="block mt-1 w-full" type="date" name="fecha" :value="old('fecha', $movimiento->fecha)" required autofocus />
@@ -68,5 +68,4 @@
                 </x-jet-button>
             </a>
         </div>
-  
- 
+
